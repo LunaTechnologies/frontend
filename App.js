@@ -1,112 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Dimensions,
+  Text
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const App = () => {
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style = {styles.global}>
+      <View style={styles.semiCircleLogo}></View>
+      <Text style = {styles.title}>Hey, Login Now.</Text>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+
+  global:{
+    fontFamily: 'Poppins, sans-serif'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+
+  semiCircleLogo:{
+    height: 0.05 * height,
+    width: 0.1 * height,
+    backgroundColor: 'black',
+    marginTop: 0.1 * height,
+    marginLeft: 0.02 * height,
+    // borderRadius: '150px 150px 0 0',
+    borderTopLeftRadius: 150,
+    borderTopRightRadius: 150,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    transform: [{rotate: '90deg'}, {scale: 0.7}],
+
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+
+
+  title:{
+    color: 'black',
+    fontSize: 30,
+    fontFamily: 'Overpass'
   },
-  highlight: {
-    fontWeight: '700',
-  },
+
+
 });
 
 export default App;
