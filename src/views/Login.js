@@ -3,25 +3,28 @@ import {
   SafeAreaView,
   Text,
   View,
+  Keyboard,
   TextInput,
   StyleSheet,
+  ScrollView,
   TouchableOpacity,
-  Keyboard,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '../constants/colors';
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 const Login = () => {
+  const [login, setLogin] = useState(true);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [color, setColor] = useState(colors.gray);
   const [opacity, setOpacity] = useState(0);
 
   const submit = () => {};
-  const switchPage = () => {};
 
   useEffect(() => {
     if (!username) {
@@ -36,71 +39,121 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <View style={styles.logoSection}>
-        <View style={styles.logo}></View>
-      </View>
-
-      <View style={styles.title}>
-        <Text style={styles.title.text}>Hey,</Text>
-        <Text style={styles.title.text}>Login Now.</Text>
-      </View>
-
-      <View style={styles.subTitle}>
-        <Text style={styles.subTitle.text}>If you are new / </Text>
-        <TouchableOpacity style={styles.subTitle.button} onPress={switchPage}>
-          <Text style={{ color: colors.black }}>Create New</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.form}>
-        <View style={styles.form.inputFields}>
-          <View style={styles.form.usernameField}>
-            <TouchableOpacity
-              style={{ ...styles.form.iconUsername, ...{ opacity } }}
-              onPress={() => {
-                setUsername('');
-              }}
-            />
-            <TextInput
-              placeholder="Username"
-              style={{
-                ...styles.form.textInput,
-                ...{ backgroundColor: color },
-              }}
-              value={username}
-              onChangeText={username => {
-                setUsername(username);
-                setColor(colors.lightOrange);
-                setOpacity(100);
-              }}
-            />
-          </View>
-          <TextInput
-            placeholder="Password"
-            style={styles.form.textInput}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-          />
+      <ScrollView>
+        <View style={styles.logoSection}>
+          <View style={styles.logo}></View>
         </View>
 
-        <View style={styles.form.bottomElements}>
-          <View style={styles.subTitle}>
-            <Text style={styles.subTitle.text}>Forgot Passcode? / </Text>
-            <TouchableOpacity style={styles.subTitle.button}>
-              <Text style={{ color: colors.black }}>Reset</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.title}>
+          <Text style={styles.title.text}>Hey,</Text>
+          <Text style={styles.title.text}>
+            {login ? 'Login' : 'Signup'} Now.
+          </Text>
+        </View>
 
-          <TouchableOpacity style={styles.form.submit} onPress={submit}>
-            <Text style={styles.form.submit.text}>Login</Text>
+        <View style={styles.subTitle}>
+          <Text style={styles.subTitle.text}>If you are new / </Text>
+          <TouchableOpacity
+            style={styles.subTitle.button}
+            onPress={() => {
+              setLogin(!login);
+            }}>
+            <Text style={{ color: colors.black }}>Create New</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      <View style={styles.skipSection}>
-        <Text style={styles.skipSection.skip}>Skip now</Text>
-      </View>
+        <View
+          style={{
+            ...styles.form,
+            ...{ height: (login ? 0.55 : 0.6) * height },
+          }}>
+          <View
+            style={{
+              ...styles.form.inputFields,
+              ...{ height: (login ? 0.3 : 0.5) * height },
+            }}>
+            <View style={styles.form.usernameField}>
+              <TouchableOpacity
+                style={{ ...styles.form.iconUsername, ...{ opacity } }}
+                onPress={() => {
+                  setUsername('');
+                }}
+              />
+              <TextInput
+                placeholder="Username"
+                style={{
+                  ...styles.form.textInput,
+                  ...{ backgroundColor: color },
+                }}
+                value={username}
+                onChangeText={username => {
+                  setUsername(username);
+                  setColor(colors.lightOrange);
+                  setOpacity(100);
+                }}
+              />
+            </View>
+            {!login && (
+              <TextInput
+                placeholder="Email"
+                style={styles.form.textInput}
+                value={email}
+                onChangeText={setEmail}
+              />
+            )}
+            <TextInput
+              placeholder="Password"
+              style={styles.form.textInput}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+            />
+            {!login && (
+              <TextInput
+                placeholder="Confirm Password"
+                style={styles.form.textInput}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry={true}
+              />
+            )}
+          </View>
+
+          <View
+            style={{
+              ...styles.form.bottomElements,
+              ...{ height: (login ? 0.2 : 0.05) * height },
+            }}>
+            {login && (
+              <View style={styles.subTitle}>
+                <Text style={styles.subTitle.text}>Forgot Passcode? / </Text>
+                <TouchableOpacity style={styles.subTitle.button}>
+                  <Text style={{ color: colors.black }}>Reset</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+
+            <TouchableOpacity style={styles.form.submit} onPress={submit}>
+              <Text style={styles.form.submit.text}>Login</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View
+          style={{
+            ...styles.skipSection,
+            ...{ height: (login ? 0.08 : 0.15) * height },
+          }}>
+          <TouchableOpacity style={styles.skipSection.skip}>
+            <Text
+              style={{
+                fontSize: 18,
+                color: colors.darkGray,
+              }}>
+              Skip now
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -108,7 +161,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   background: {
     width,
-    height,
+    // height,
     backgroundColor: colors.white,
     paddingHorizontal: 20,
   },
@@ -154,7 +207,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    height: height * 0.55,
+    height: height * 0.7,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -192,10 +245,10 @@ const styles = StyleSheet.create({
     },
 
     bottomElements: {
-      height: 0.2 * height,
+      // height: 0.2 * height,
       display: 'flex',
       justifyContent: 'space-between',
-      // alignItems: 'center',
+      alignItems: 'center',
     },
 
     submit: {
@@ -215,7 +268,7 @@ const styles = StyleSheet.create({
   },
 
   skipSection: {
-    height: height * 0.05,
+    height: height * 0.08,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
