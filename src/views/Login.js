@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -6,7 +6,9 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '../constants/colors';
 import { Dimensions } from 'react-native';
 
@@ -15,9 +17,22 @@ const { width, height } = Dimensions.get('window');
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [color, setColor] = useState(colors.gray);
+  const [opacity, setOpacity] = useState(0);
 
   const submit = () => {};
   const switchPage = () => {};
+
+  useEffect(() => {
+    if (!username) {
+      setColor(colors.gray);
+      setOpacity(0);
+    }
+
+    Keyboard.addListener('keyboardDidHide', () => {
+      Keyboard.dismiss();
+    });
+  }, [username]);
 
   return (
     <SafeAreaView style={styles.background}>
@@ -39,8 +54,34 @@ const Login = () => {
 
       <View style={styles.form}>
         <View style={styles.form.inputFields}>
-          <TextInput placeholder="username" style={styles.form.textInput} />
-          <TextInput placeholder="password" style={styles.form.textInput} />
+          <View style={styles.form.usernameField}>
+            <TouchableOpacity
+              style={{ ...styles.form.iconUsername, ...{ opacity } }}
+              onPress={() => {
+                setUsername('');
+              }}
+            />
+            <TextInput
+              placeholder="Username"
+              style={{
+                ...styles.form.textInput,
+                ...{ backgroundColor: color },
+              }}
+              value={username}
+              onChangeText={username => {
+                setUsername(username);
+                setColor(colors.lightOrange);
+                setOpacity(100);
+              }}
+            />
+          </View>
+          <TextInput
+            placeholder="Password"
+            style={styles.form.textInput}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={true}
+          />
         </View>
 
         <View style={styles.form.bottomElements}>
@@ -69,22 +110,27 @@ const styles = StyleSheet.create({
     width,
     height,
     backgroundColor: colors.white,
-    padding: 20,
+    paddingHorizontal: 20,
   },
   logoSection: {
     width,
     height: height * 0.1,
     display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-    padding: 2,
+    justifyContent: 'center',
+    position: 'relative',
   },
   logo: {
-    width: 60,
-    height: 60,
+    height: 0.05 * height,
+    width: 0.1 * height,
     backgroundColor: colors.black,
-    borderRadius: 50,
+    borderTopLeftRadius: 150,
+    borderTopRightRadius: 150,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    transform: [{ rotate: '90deg' }, { scale: 0.7 }],
+
+    position: 'absolute',
+    left: -20,
   },
 
   title: {
@@ -119,6 +165,10 @@ const styles = StyleSheet.create({
       justifyContent: 'space-evenly',
       alignItems: 'center',
     },
+    usernameField: {
+      position: 'relative',
+      borderRadius: 10,
+    },
     textInput: {
       width: width * 0.8,
       backgroundColor: colors.gray,
@@ -126,6 +176,19 @@ const styles = StyleSheet.create({
       margin: 2,
       padding: 15,
       fontSize: 14,
+    },
+    iconUsername: {
+      width: 25,
+      height: 25,
+      borderRadius: 50,
+      backgroundColor: colors.blue,
+      position: 'absolute',
+      right: 10,
+      top: '50%',
+      // transform: translateY(-50%);
+      transform: [{ translateY: -25 / 2 }],
+      zIndex: 1,
+      opacity: 0,
     },
 
     bottomElements: {
@@ -137,9 +200,9 @@ const styles = StyleSheet.create({
 
     submit: {
       width: width * 0.8,
-      height: 77,
+      height: 65,
       backgroundColor: colors.black,
-      borderRadius: 20,
+      borderRadius: 12,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
