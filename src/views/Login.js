@@ -24,6 +24,8 @@ const Login = () => {
   const [color, setColor] = useState(colors.gray);
   const [opacity, setOpacity] = useState(0);
 
+  const [passwordEquality, setPasswordEquality] = useState(false);
+
   const submit = () => {};
 
   useEffect(() => {
@@ -35,7 +37,13 @@ const Login = () => {
     Keyboard.addListener('keyboardDidHide', () => {
       Keyboard.dismiss();
     });
-  }, [username]);
+
+    if (password !== '') {
+      if (password === confirmPassword) {
+        setPasswordEquality(true);
+      }
+    }
+  }, [username, password, confirmPassword]);
 
   return (
     <SafeAreaView style={styles.background}>
@@ -81,6 +89,7 @@ const Login = () => {
               />
               <TextInput
                 placeholder="Username"
+                placeholderTextColor={colors.black}
                 style={{
                   ...styles.form.textInput,
                   ...{ backgroundColor: color },
@@ -96,6 +105,7 @@ const Login = () => {
             {!login && (
               <TextInput
                 placeholder="Email"
+                placeholderTextColor={colors.black}
                 style={styles.form.textInput}
                 value={email}
                 onChangeText={setEmail}
@@ -103,6 +113,7 @@ const Login = () => {
             )}
             <TextInput
               placeholder="Password"
+              placeholderTextColor={colors.black}
               style={styles.form.textInput}
               value={password}
               onChangeText={setPassword}
@@ -111,6 +122,7 @@ const Login = () => {
             {!login && (
               <TextInput
                 placeholder="Confirm Password"
+                placeholderTextColor={colors.black}
                 style={styles.form.textInput}
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
