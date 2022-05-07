@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   background: {
     width,
     height,
+    backgroundColor: colors.white,
   },
   imageSection: {
     width,
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
 
       text: {
         fontSize: 12,
+        color: colors.black,
       },
     },
     button: {

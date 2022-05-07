@@ -38,11 +38,7 @@ const Login = () => {
       Keyboard.dismiss();
     });
 
-    if (password !== '') {
-      if (password === confirmPassword) {
-        setPasswordEquality(true);
-      }
-    }
+    setPasswordEquality(password !== '' && password == confirmPassword);
   }, [username, password, confirmPassword]);
 
   return (
@@ -123,7 +119,14 @@ const Login = () => {
               <TextInput
                 placeholder="Confirm Password"
                 placeholderTextColor={colors.black}
-                style={styles.form.textInput}
+                style={{
+                  ...styles.form.textInput,
+                  ...{
+                    backgroundColor: passwordEquality
+                      ? colors.lightGreen // Maybe change this
+                      : colors.gray,
+                  },
+                }}
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
                 secureTextEntry={true}

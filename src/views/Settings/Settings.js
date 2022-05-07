@@ -10,7 +10,7 @@ import styles from './SettingsStyles';
 
 const Settings = () => {
   return (
-    <SafeAreaView styles={styles.background}>
+    <SafeAreaView style={styles.background}>
       <ScrollView>
         <View style={styles.imageSection}>
           <View style={styles.imageSection.image}></View>
