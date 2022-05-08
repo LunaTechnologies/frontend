@@ -12,21 +12,57 @@ import {
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-const { width, height } = Dimensions.get('window');
+import Axios from 'axios';
+
+const { height } = Dimensions.get('window');
 
 const Login = () => {
+  // Page state: Signup or Login
   const [login, setLogin] = useState(true);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordEquality, setPasswordEquality] = useState(false);
+
   const [color, setColor] = useState(colors.gray);
   const [opacity, setOpacity] = useState(0);
 
-  const [passwordEquality, setPasswordEquality] = useState(false);
+  const submit = async () => {
+    const baseurl = 'http://192.168.100.50:3001/api/Auth/';
+    let endpoint = '';
+    let body = {};
 
-  const submit = () => {};
+    if (login) {
+      endpoint = 'login';
+      body = {
+        email,
+        password,
+      };
+    } else {
+      endpoint = 'register';
+      body = {
+        userName: username,
+        email,
+        password,
+        role: 'user',
+      };
+    }
+
+    const url = `${baseurl}${endpoint}/`;
+    console.log(url);
+    try {
+      const response = await Axios.post(url, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     if (!username) {
@@ -34,6 +70,7 @@ const Login = () => {
       setOpacity(0);
     }
 
+    // Drop focus on keyboard hide
     Keyboard.addListener('keyboardDidHide', () => {
       Keyboard.dismiss();
     });
@@ -69,7 +106,7 @@ const Login = () => {
         <View
           style={{
             ...styles.form,
-            ...{ height: (login ? 0.55 : 0.6) * height },
+            ...{ height: (login ? 0.55 : 0.6) * height }, // Change styles on page switch(Signup or Login)
           }}>
           <View
             style={{
@@ -88,7 +125,7 @@ const Login = () => {
                 placeholderTextColor={colors.black}
                 style={{
                   ...styles.form.textInput,
-                  ...{ backgroundColor: color },
+                  ...{ backgroundColor: color }, // Add background color based on condition
                 }}
                 value={username}
                 onChangeText={username => {
@@ -123,7 +160,7 @@ const Login = () => {
                   ...styles.form.textInput,
                   ...{
                     backgroundColor: passwordEquality
-                      ? colors.lightGreen // Maybe change this
+                      ? colors.lightGreen // Highlight on matching password and confirmPassword
                       : colors.gray,
                   },
                 }}
