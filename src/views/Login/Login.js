@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Keyboard,
+  Platform,
   TextInput,
   Dimensions,
   ScrollView,
@@ -81,10 +82,12 @@ const Login = () => {
       setOpacity(0);
     }
 
-    // Drop focus on keyboard hide
-    Keyboard.addListener('keyboardDidHide', () => {
-      Keyboard.dismiss();
-    });
+    // Drop focus on keyboard hide only on android
+    if (Platform.OS === 'android') {
+      Keyboard.addListener('keyboardDidHide', () => {
+        Keyboard.dismiss();
+      });
+    }
 
     setPasswordEquality(password !== '' && password == confirmPassword);
   }, [username, password, confirmPassword]);
