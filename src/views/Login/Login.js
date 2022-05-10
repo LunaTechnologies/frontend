@@ -30,7 +30,7 @@ const Login = () => {
   const [opacity, setOpacity] = useState(0);
 
   const submit = async () => {
-    const baseurl = 'http://192.168.100.50:3001/api/Auth/';
+    const baseurl = 'https://9e51-54-165-38-8.ngrok.io/api/Auth';
     let endpoint = '';
     let body = {};
 
@@ -46,22 +46,33 @@ const Login = () => {
         userName: username,
         email,
         password,
-        role: 'user',
+        role: 'User',
       };
     }
 
-    const url = `${baseurl}${endpoint}/`;
-    console.log(url);
-    try {
-      const response = await Axios.post(url, body, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(response.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const url = `${baseurl}/${endpoint}/`;
+
+    // TODO Add Constraints for password
+    Axios.post(url, body)
+      .then(res => {
+        const { data } = res;
+        if (login) {
+          if (!data.success) {
+            // Error handling
+            return;
+          }
+
+          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('refreshToken', data.refreshToken);
+        } else {
+          if (data === 'Registered') {
+            return;
+          } else {
+            // Error handling for specific error message
+          }
+        }
+      })
+      .catch(err => console.error(err));
   };
 
   useEffect(() => {
@@ -121,15 +132,15 @@ const Login = () => {
                 }}
               />
               <TextInput
-                placeholder="Username"
+                placeholder="Email"
                 placeholderTextColor={colors.black}
                 style={{
                   ...styles.form.textInput,
                   ...{ backgroundColor: color }, // Add background color based on condition
                 }}
-                value={username}
-                onChangeText={username => {
-                  setUsername(username);
+                value={email}
+                onChangeText={email => {
+                  setEmail(email);
                   setColor(colors.lightOrange);
                   setOpacity(100);
                 }}
@@ -137,11 +148,11 @@ const Login = () => {
             </View>
             {!login && (
               <TextInput
-                placeholder="Email"
+                placeholder="Username"
                 placeholderTextColor={colors.black}
                 style={styles.form.textInput}
-                value={email}
-                onChangeText={setEmail}
+                value={username}
+                onChangeText={setUsername}
               />
             )}
             <TextInput
