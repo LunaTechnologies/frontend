@@ -13,7 +13,7 @@ import {
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-import Axios from 'axios';
+import { submit, validate } from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
@@ -29,52 +29,6 @@ const Login = () => {
 
   const [color, setColor] = useState(colors.gray);
   const [opacity, setOpacity] = useState(0);
-
-  const submit = async () => {
-    const baseurl = 'https://9e51-54-165-38-8.ngrok.io/api/Auth';
-    let endpoint = '';
-    let body = {};
-
-    if (login) {
-      endpoint = 'login';
-      body = {
-        email,
-        password,
-      };
-    } else {
-      endpoint = 'register';
-      body = {
-        userName: username,
-        email,
-        password,
-        role: 'User',
-      };
-    }
-
-    const url = `${baseurl}/${endpoint}/`;
-
-    // TODO Add Constraints for password
-    Axios.post(url, body)
-      .then(res => {
-        const { data } = res;
-        if (login) {
-          if (!data.success) {
-            // Error handling
-            return;
-          }
-
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('refreshToken', data.refreshToken);
-        } else {
-          if (data === 'Registered') {
-            return;
-          } else {
-            // Error handling for specific error message
-          }
-        }
-      })
-      .catch(err => console.error(err));
-  };
 
   useEffect(() => {
     if (!username) {
@@ -203,7 +157,26 @@ const Login = () => {
               </View>
             )}
 
-            <TouchableOpacity style={styles.form.submit} onPress={submit}>
+            <TouchableOpacity
+              style={styles.form.submit}
+              onPress={() => {
+                submit(
+                  validate(
+                    login
+                      ? {
+                          email,
+                          password,
+                        }
+                      : {
+                          userName: username,
+                          email,
+                          password,
+                          confirmPassword,
+                        },
+                  ),
+                  login,
+                );
+              }}>
               <Text style={styles.form.submit.text}>Login</Text>
             </TouchableOpacity>
           </View>
