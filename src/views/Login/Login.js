@@ -104,13 +104,17 @@ const Login = () => {
         </View>
 
         <View style={styles.subTitle}>
-          <Text style={styles.subTitle.text}>If you are new / </Text>
+          <Text style={styles.subTitle.text}>
+            {login ? 'If you are new' : 'Already have an account?'} /{' '}
+          </Text>
           <TouchableOpacity
             style={styles.subTitle.button}
             onPress={() => {
               setLogin(!login);
             }}>
-            <Text style={{ color: colors.black }}>Create New</Text>
+            <Text style={{ color: colors.black }}>
+              {login ? 'Create New' : 'Login'}
+            </Text>
           </TouchableOpacity>
         </View>
 

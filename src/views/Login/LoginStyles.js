@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   logo: {
-    height: 0.05 * height,
-    width: 0.1 * height,
+    // WEIRD
+    height: 40.77,
+    width: 81.54,
     backgroundColor: colors.black,
     borderTopLeftRadius: 150,
     borderTopRightRadius: 150,
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
       width: width * 0.8,
+      height: 0.075 * height,
       backgroundColor: colors.gray,
       color: colors.black,
       borderRadius: 10,
