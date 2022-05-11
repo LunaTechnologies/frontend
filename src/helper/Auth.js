@@ -37,7 +37,7 @@ const validate = data => {
 const submit = (body, login) => {
   if (!body) return;
 
-  const baseurl = 'https://9e51-54-165-38-8.ngrok.io/api/Auth';
+  const baseurl = 'https://bcba-54-165-38-8.ngrok.io/api/Auth';
   const endpoint = login ? '/login' : '/register';
 
   // Login callback function
