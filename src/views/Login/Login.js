@@ -107,7 +107,7 @@ const Login = () => {
                   setOpacity(100);
                 }}
               />
-              <ErrorText text={'Email is invalid'} />
+              <ErrorText text="Email is invalid" />
             </View>
             {!login && (
               <TextInput
