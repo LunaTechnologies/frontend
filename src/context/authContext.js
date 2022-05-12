@@ -1,8 +1,14 @@
-import { createContext } from 'react';
+import React, { useState, createContext } from 'react';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  const [emailError, setEmailError] = useState(false);
+  return (
+    <AuthContext.Provider value={{ emailError, setEmailError }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
+export { AuthContext };

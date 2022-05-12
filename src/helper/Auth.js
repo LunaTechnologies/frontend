@@ -1,10 +1,14 @@
+import { useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 import Axios from 'axios';
 import { RENTAL_API_URL } from '@env';
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
+const [emailError, setEmailError] = useContext(AuthContext);
+
 const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
 
-const validate = data => {
+const validate = (data, errors) => {
   const { email, password } = data;
   const emailRegex = new RegExp(
     '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$',
@@ -18,7 +22,7 @@ const validate = data => {
   if (!emailRegex.test(email)) {
     // Error with email
     error = true;
-    console.log('ERR 1');
+    errors.email.setEmailError(true);
   }
   if (!passwordRegex.test(password)) {
     // Error with password

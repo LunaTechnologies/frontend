@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -15,6 +15,7 @@ import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
 import { submit, validate } from '../../helper/Auth';
+import { AuthContext } from '../../context/authContext';
 
 const { height } = Dimensions.get('window');
 
@@ -30,6 +31,8 @@ const Login = () => {
 
   const [color, setColor] = useState(colors.gray);
   const [opacity, setOpacity] = useState(0);
+
+  const [emailError, setEmailError] = useState(false);
 
   useEffect(() => {
     if (!username) {
@@ -107,7 +110,7 @@ const Login = () => {
                   setOpacity(100);
                 }}
               />
-              <ErrorText text="Email is invalid" />
+              {emailError && <ErrorText text="Email is invalid" />}
             </View>
             {!login && (
               <TextInput
@@ -175,6 +178,7 @@ const Login = () => {
                           password,
                           confirmPassword,
                         },
+                    { email: { emailError, setEmailError } },
                   ),
                   login,
                 );
