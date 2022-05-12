@@ -10,6 +10,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import ErrorText from '../../components/ErrorText/ErrorText';
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
@@ -85,7 +86,7 @@ const Login = () => {
               ...styles.form.inputFields,
               ...{ height: (login ? 0.3 : 0.5) * height },
             }}>
-            <View style={styles.form.usernameField}>
+            <View style={styles.form.emailField}>
               <TouchableOpacity
                 style={{ ...styles.form.iconUsername, ...{ opacity } }}
                 onPress={() => {
@@ -106,6 +107,7 @@ const Login = () => {
                   setOpacity(100);
                 }}
               />
+              <ErrorText text={'Email is invalid'} />
             </View>
             {!login && (
               <TextInput

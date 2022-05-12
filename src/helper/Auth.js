@@ -1,4 +1,8 @@
 import Axios from 'axios';
+import { RENTAL_API_URL } from '@env';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
+
+const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
 
 const validate = data => {
   const { email, password } = data;
@@ -14,22 +18,27 @@ const validate = data => {
   if (!emailRegex.test(email)) {
     // Error with email
     error = true;
+    console.log('ERR 1');
   }
   if (!passwordRegex.test(password)) {
     // Error with password
-    error = true;
+    // error = true;
+    console.log(`ERR 2 ${password}`);
   }
   if (data['userName'] && data.userName === '') {
     // Error with empty username
     error = true;
+    console.log('ERR 3');
   }
   if (data['confirmPassword'] && data.confirmPassword !== data.password) {
     // Error with confirm password
     error = true;
+    console.log('ERR 4');
   }
 
   if (error) {
     // TODO Error Handling for the whole page
+    console.log('Validity error');
     return;
   } else return data;
 };
@@ -37,17 +46,23 @@ const validate = data => {
 const submit = (body, login) => {
   if (!body) return;
 
-  const baseurl = 'https://9e51-54-165-38-8.ngrok.io/api/Auth';
+  const baseurl = `${apiurl}/api/Auth`;
   const endpoint = login ? '/login' : '/register';
 
   // Login callback function
-  const loginClosure = res => {
+  const loginClosure = async res => {
     if (!res.data.success) {
       // TODO Error Handling
       return;
     }
-    localStorage.setItem('accessToken', res.data.accessToken);
-    localStorage.setItem('refreshToken', res.data.refreshToken);
+
+    try {
+      await AsyncStorage.setItem('accessToken', res.data.accessToken);
+      await AsyncStorage.setItem('refreshToken', res.data.refreshToken);
+    } catch (err) {
+      console.error(err);
+    }
+    console.log(res.data);
   };
 
   // Register callback function
@@ -61,6 +76,7 @@ const submit = (body, login) => {
   };
 
   const url = `${baseurl}${endpoint}`;
+  console.log(url);
 
   Axios.post(url, body, {
     headers: { 'Content-Type': 'application/json' },

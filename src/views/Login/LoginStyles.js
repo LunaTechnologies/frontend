@@ -65,20 +65,24 @@ const styles = StyleSheet.create({
       justifyContent: 'space-evenly',
       alignItems: 'center',
     },
-    usernameField: {
+    emailField: {
       position: 'relative',
       borderRadius: 10,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     textInput: {
       width: width * 0.8,
       height: 0.075 * height,
       backgroundColor: colors.gray,
-      color: colors.black,
+      color: colors,
       borderRadius: 10,
       margin: 2,
       padding: 15,
       fontSize: 14,
     },
+
     iconUsername: {
       width: 25,
       height: 25,
