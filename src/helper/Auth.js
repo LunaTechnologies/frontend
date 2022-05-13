@@ -44,11 +44,24 @@ const validate = (data, errors) => {
   return error ? null : data;
 };
 
-const submit = (body, login) => {
+const submit = (body, login, errors) => {
   if (!body) return;
 
   const baseurl = `${apiurl}/api/Auth`;
   const endpoint = login ? '/login' : '/register';
+
+  const { email, password, userName } = body;
+  const formatBody = login
+    ? {
+        email,
+        password,
+      }
+    : {
+        userName,
+        email,
+        password,
+        role: 'User',
+      };
 
   // Login callback function
   const loginClosure = async res => {
@@ -77,12 +90,13 @@ const submit = (body, login) => {
     } else {
       // TODO Error Handling
     }
+    console.log(res.data);
   };
 
   const url = `${baseurl}${endpoint}`;
-  console.log(url);
+  console.log(formatBody);
 
-  Axios.post(url, body, {
+  Axios.post(url, formatBody, {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(login ? loginClosure : registerClosure)

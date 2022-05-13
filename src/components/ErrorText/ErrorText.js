@@ -9,7 +9,7 @@ const ErrorText = props => {
       <Text
         style={{
           ...styles.errorField.errorText,
-          ...{ color: props.colors ? props.colors : colors.red },
+          ...{ color: props.success ? colors.lightGreen : colors.red },
         }}>
         {props.text}
       </Text>

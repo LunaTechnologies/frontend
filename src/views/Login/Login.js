@@ -216,10 +216,7 @@ const Login = () => {
             )}
 
             {login && registerSuccess && (
-              <ErrorText
-                text="Registered successfully!"
-                color={colors.lightGreen}
-              />
+              <ErrorText text="Registered successfully!" success={true} />
             )}
 
             <TouchableOpacity
@@ -241,6 +238,7 @@ const Login = () => {
                     errors,
                   ),
                   login,
+                  errors,
                 );
               }}>
               <Text style={styles.form.submit.text}>Login</Text>
