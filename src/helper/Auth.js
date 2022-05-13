@@ -82,6 +82,7 @@ const submit = (body, login, errors) => {
 
   // Register callback function
   const registerClosure = res => {
+    console.log(res);
     if (res.data === 'Registered') {
       // TODO Switch to Login
       errors.login.setLogin(true);
@@ -89,8 +90,8 @@ const submit = (body, login, errors) => {
       return;
     } else {
       // TODO Error Handling
+      return;
     }
-    console.log(res.data);
   };
 
   const url = `${baseurl}${endpoint}`;
@@ -100,7 +101,12 @@ const submit = (body, login, errors) => {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(login ? loginClosure : registerClosure)
-    .catch(err => console.error(err));
+    .catch(err => {
+      errors.register.setRegisterError({
+        success: false,
+        text: err.response.data,
+      });
+    });
 };
 
 export { submit, validate };

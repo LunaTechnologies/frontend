@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   Keyboard,
@@ -38,6 +37,10 @@ const Login = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const [loginError, setLoginError] = useState(false);
+  const [registerError, setRegisterError] = useState({
+    status: true,
+    test: '',
+  });
   const [registerSuccess, setRegisterSuccess] = useState(false);
 
   const errors = {
@@ -46,7 +49,12 @@ const Login = () => {
     username: { usernameError, setUsernameError },
     confirmPassword: { confirmPasswordError, setConfirmPasswordError },
     login: { loginError, setLoginError, setLogin },
-    register: { registerSuccess, setRegisterSuccess },
+    register: {
+      registerError,
+      setRegisterError,
+      registerSuccess,
+      setRegisterSuccess,
+    },
   };
 
   const errorMessageStatus = {
@@ -217,6 +225,10 @@ const Login = () => {
 
             {login && registerSuccess && (
               <ErrorText text="Registered successfully!" success={true} />
+            )}
+
+            {!login && !registerError.status && (
+              <ErrorText text={registerError.text} />
             )}
 
             <TouchableOpacity
