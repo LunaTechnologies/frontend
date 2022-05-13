@@ -80,16 +80,16 @@ const Login = () => {
     }
 
     setPasswordEquality(password !== '' && password == confirmPassword);
+  }, [username, password, confirmPassword]);
 
-    // Handle error deactivation
+  // Reset all errors
+  const resetErrors = () => {
     Object.entries(errorMessageStatus).forEach(([error, setError]) => {
       if (error) {
-        setTimeout(() => {
-          setError(false);
-        }, 60);
+        setError(false);
       }
     });
-  }, [username, password, confirmPassword]);
+  };
 
   return (
     <SafeAreaView style={styles.background}>
@@ -113,6 +113,7 @@ const Login = () => {
             style={styles.subTitle.button}
             onPress={() => {
               setLogin(!login);
+              resetErrors();
             }}>
             <Text style={{ color: colors.black }}>
               {login ? 'Create New' : 'Login'}
@@ -253,7 +254,9 @@ const Login = () => {
                   errors,
                 );
               }}>
-              <Text style={styles.form.submit.text}>Login</Text>
+              <Text style={styles.form.submit.text}>
+                {login ? 'Login' : 'Signup'}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
