@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
   SafeAreaView,
+  StyleSheet,
   Text,
   View,
   Keyboard,
@@ -15,7 +16,6 @@ import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
 import { submit, validate } from '../../helper/Auth';
-import { AuthContext } from '../../context/authContext';
 
 const { height } = Dimensions.get('window');
 
@@ -33,6 +33,28 @@ const Login = () => {
   const [opacity, setOpacity] = useState(0);
 
   const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
+  const [loginError, setLoginError] = useState(false);
+
+  const errors = {
+    email: { emailError, setEmailError },
+    password: { passwordError, setPasswordError },
+    username: { usernameError, setUsernameError },
+    confirmPassword: { confirmPasswordError, setConfirmPasswordError },
+    login: { loginError, setLoginError },
+  };
+
+  const errorMessageStatus = {
+    emailError: setEmailError,
+    passwordError: setPasswordError,
+    usernameError: setUsernameError,
+    confirmPasswordError: setConfirmPasswordError,
+
+    loginError: setLoginError,
+  };
 
   useEffect(() => {
     if (!username) {
@@ -48,6 +70,15 @@ const Login = () => {
     }
 
     setPasswordEquality(password !== '' && password == confirmPassword);
+
+    // Handle error deactivation
+    Object.entries(errorMessageStatus).forEach(([error, setError]) => {
+      if (error) {
+        setTimeout(() => {
+          setError(false);
+        }, 60);
+      }
+    });
   }, [username, password, confirmPassword]);
 
   return (
@@ -113,38 +144,51 @@ const Login = () => {
               {emailError && <ErrorText text="Email is invalid" />}
             </View>
             {!login && (
+              <View style={styles.flex}>
+                <TextInput
+                  placeholder="Username"
+                  placeholderTextColor={colors.black}
+                  style={styles.form.textInput}
+                  value={username}
+                  onChangeText={setUsername}
+                />
+                {usernameError && <ErrorText text="Username cannot be empty" />}
+              </View>
+            )}
+            <View style={styles.flex}>
               <TextInput
-                placeholder="Username"
+                placeholder="Password"
                 placeholderTextColor={colors.black}
                 style={styles.form.textInput}
-                value={username}
-                onChangeText={setUsername}
-              />
-            )}
-            <TextInput
-              placeholder="Password"
-              placeholderTextColor={colors.black}
-              style={styles.form.textInput}
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={true}
-            />
-            {!login && (
-              <TextInput
-                placeholder="Confirm Password"
-                placeholderTextColor={colors.black}
-                style={{
-                  ...styles.form.textInput,
-                  ...{
-                    backgroundColor: passwordEquality
-                      ? colors.lightGreen // Highlight on matching password and confirmPassword
-                      : colors.gray,
-                  },
-                }}
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry={true}
               />
+              {passwordError && (
+                <ErrorText text="Password must contain a number, a special character, a lower- and upper-case letter and be at least 8 characters long" />
+              )}
+            </View>
+            {!login && (
+              <View style={styles.flex}>
+                <TextInput
+                  placeholder="Confirm Password"
+                  placeholderTextColor={colors.black}
+                  style={{
+                    ...styles.form.textInput,
+                    ...{
+                      backgroundColor: passwordEquality
+                        ? colors.lightGreen // Highlight on matching password and confirmPassword
+                        : colors.gray,
+                    },
+                  }}
+                  value={confirmPassword}
+                  onChangeText={setConfirmPassword}
+                  secureTextEntry={true}
+                />
+                {confirmPasswordError && (
+                  <ErrorText text="Passwords do not match" />
+                )}
+              </View>
             )}
           </View>
 
@@ -160,6 +204,9 @@ const Login = () => {
                   <Text style={{ color: colors.black }}>Reset</Text>
                 </TouchableOpacity>
               </View>
+            )}
+            {login && loginError && (
+              <ErrorText text="Login failed! Try again..." />
             )}
 
             <TouchableOpacity
@@ -178,7 +225,7 @@ const Login = () => {
                           password,
                           confirmPassword,
                         },
-                    { email: { emailError, setEmailError } },
+                    errors,
                   ),
                   login,
                 );

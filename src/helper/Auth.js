@@ -1,10 +1,6 @@
-import { useContext } from 'react';
-import { AuthContext } from '../context/authContext';
 import Axios from 'axios';
 import { RENTAL_API_URL } from '@env';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
-
-const [emailError, setEmailError] = useContext(AuthContext);
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
 
@@ -13,9 +9,14 @@ const validate = (data, errors) => {
   const emailRegex = new RegExp(
     '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$',
   );
-  const passwordRegex = new RegExp(
-    '^(?=.*[A-Z])(?=.*[W])(?=.*[0-9])(?=.*[a-z]).{8,128}$',
-  );
+  const checkPassword = password => {
+    if (!(8 <= password.length && password.length <= 128)) return false;
+    if (!/[A-Z]/.test(password)) return false;
+    if (!/[a-z]/.test(password)) return false;
+    if (!/[0-9]/.test(password)) return false;
+    if (!/[!@#$%^&*?<>]/.test(password)) return false;
+    return true;
+  };
 
   let error = false;
 
@@ -24,27 +25,23 @@ const validate = (data, errors) => {
     error = true;
     errors.email.setEmailError(true);
   }
-  if (!passwordRegex.test(password)) {
+  if (!checkPassword(password)) {
     // Error with password
-    // error = true;
-    console.log(`ERR 2 ${password}`);
+    error = true;
+    errors.password.setPasswordError(true);
   }
-  if (data['userName'] && data.userName === '') {
+  if (data.userName === '') {
     // Error with empty username
     error = true;
-    console.log('ERR 3');
+    errors.username.setUsernameError(true);
   }
-  if (data['confirmPassword'] && data.confirmPassword !== data.password) {
+  if (data.confirmPassword !== data.password) {
     // Error with confirm password
     error = true;
-    console.log('ERR 4');
+    errors.confirmPassword.setConfirmPasswordError(true);
   }
 
-  if (error) {
-    // TODO Error Handling for the whole page
-    console.log('Validity error');
-    return;
-  } else return data;
+  return error ? null : data;
 };
 
 const submit = (body, login) => {
@@ -56,17 +53,18 @@ const submit = (body, login) => {
   // Login callback function
   const loginClosure = async res => {
     if (!res.data.success) {
-      // TODO Error Handling
+      errors.login.setLoginError(true);
       return;
     }
 
     try {
+      console.log(res.data.accessToken);
       await AsyncStorage.setItem('accessToken', res.data.accessToken);
       await AsyncStorage.setItem('refreshToken', res.data.refreshToken);
     } catch (err) {
       console.error(err);
     }
-    console.log(res.data);
+    // TODO Move to next page
   };
 
   // Register callback function

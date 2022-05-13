@@ -5,7 +5,7 @@ const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   errorField: {
-    width,
+    width: width * 0.9,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     errorText: {
       color: colors.red,
       fontSize: 14,
+      textAlign: 'center',
     },
   },
 });
