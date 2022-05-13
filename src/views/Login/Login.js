@@ -38,13 +38,15 @@ const Login = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const [loginError, setLoginError] = useState(false);
+  const [registerSuccess, setRegisterSuccess] = useState(false);
 
   const errors = {
     email: { emailError, setEmailError },
     password: { passwordError, setPasswordError },
     username: { usernameError, setUsernameError },
     confirmPassword: { confirmPasswordError, setConfirmPasswordError },
-    login: { loginError, setLoginError },
+    login: { loginError, setLoginError, setLogin },
+    register: { registerSuccess, setRegisterSuccess },
   };
 
   const errorMessageStatus = {
@@ -130,6 +132,7 @@ const Login = () => {
               <TextInput
                 placeholder="Email"
                 placeholderTextColor={colors.black}
+                autoCapitalize="none"
                 style={{
                   ...styles.form.textInput,
                   ...{ backgroundColor: color }, // Add background color based on condition
@@ -148,6 +151,7 @@ const Login = () => {
                 <TextInput
                   placeholder="Username"
                   placeholderTextColor={colors.black}
+                  autoCapitalize="none"
                   style={styles.form.textInput}
                   value={username}
                   onChangeText={setUsername}
@@ -159,6 +163,7 @@ const Login = () => {
               <TextInput
                 placeholder="Password"
                 placeholderTextColor={colors.black}
+                autoCapitalize="none"
                 style={styles.form.textInput}
                 value={password}
                 onChangeText={setPassword}
@@ -173,6 +178,7 @@ const Login = () => {
                 <TextInput
                   placeholder="Confirm Password"
                   placeholderTextColor={colors.black}
+                  autoCapitalize="none"
                   style={{
                     ...styles.form.textInput,
                     ...{
@@ -207,6 +213,13 @@ const Login = () => {
             )}
             {login && loginError && (
               <ErrorText text="Login failed! Try again..." />
+            )}
+
+            {login && registerSuccess && (
+              <ErrorText
+                text="Registered successfully!"
+                color={colors.lightGreen}
+              />
             )}
 
             <TouchableOpacity

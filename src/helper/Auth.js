@@ -71,6 +71,8 @@ const submit = (body, login) => {
   const registerClosure = res => {
     if (res.data === 'Registered') {
       // TODO Switch to Login
+      errors.login.setLogin(true);
+      errors.register.setRegisterSuccess(true);
       return;
     } else {
       // TODO Error Handling
