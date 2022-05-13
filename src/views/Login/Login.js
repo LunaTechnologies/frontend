@@ -141,6 +141,7 @@ const Login = () => {
               <TextInput
                 placeholder="Email"
                 placeholderTextColor={colors.black}
+                clearTextOnFocus="false"
                 autoCapitalize="none"
                 style={{
                   ...styles.form.textInput,
@@ -161,6 +162,7 @@ const Login = () => {
                   placeholder="Username"
                   placeholderTextColor={colors.black}
                   autoCapitalize="none"
+                  clearTextOnFocus="false"
                   style={styles.form.textInput}
                   value={username}
                   onChangeText={setUsername}
@@ -173,6 +175,7 @@ const Login = () => {
                 placeholder="Password"
                 placeholderTextColor={colors.black}
                 autoCapitalize="none"
+                clearTextOnFocus="false"
                 style={styles.form.textInput}
                 value={password}
                 onChangeText={setPassword}
@@ -188,6 +191,7 @@ const Login = () => {
                   placeholder="Confirm Password"
                   placeholderTextColor={colors.black}
                   autoCapitalize="none"
+                  clearTextOnFocus="false"
                   style={{
                     ...styles.form.textInput,
                     ...{
