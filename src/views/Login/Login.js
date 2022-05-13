@@ -14,7 +14,12 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-import { submit, validate } from '../../helper/Auth';
+import {
+  emailExists,
+  submit,
+  usernameExists,
+  validate,
+} from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
@@ -32,8 +37,10 @@ const Login = () => {
   const [opacity, setOpacity] = useState(0);
 
   const [emailError, setEmailError] = useState(false);
+  const [emailExist, setEmailExist] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
+  const [usernameExist, setUsernameExist] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const [loginError, setLoginError] = useState(false);
@@ -55,6 +62,7 @@ const Login = () => {
       registerSuccess,
       setRegisterSuccess,
     },
+    exist: { setEmailExist, setUsernameExist },
   };
 
   const errorMessageStatus = {
@@ -80,14 +88,13 @@ const Login = () => {
     }
 
     setPasswordEquality(password !== '' && password == confirmPassword);
+    console.log(usernameExist);
   }, [username, password, confirmPassword]);
 
   // Reset all errors
   const resetErrors = () => {
     Object.entries(errorMessageStatus).forEach(([error, setError]) => {
-      if (error) {
-        setError(false);
-      }
+      if (error) setError(false);
     });
   };
 
@@ -146,12 +153,19 @@ const Login = () => {
                 style={{
                   ...styles.form.textInput,
                   ...{ backgroundColor: color }, // Add background color based on condition
+                  ...{
+                    borderColor:
+                      (!login && emailExist) || emailError
+                        ? colors.red
+                        : colors.gray,
+                  },
                 }}
                 value={email}
                 onChangeText={email => {
                   setEmail(email);
                   setColor(colors.lightOrange);
                   setOpacity(100);
+                  emailExists(email, errors.exist);
                 }}
               />
               {emailError && <ErrorText text="Email is invalid" />}
@@ -163,9 +177,20 @@ const Login = () => {
                   placeholderTextColor={colors.black}
                   autoCapitalize="none"
                   clearTextOnFocus={false}
-                  style={styles.form.textInput}
+                  style={{
+                    ...styles.form.textInput,
+                    ...{
+                      borderColor:
+                        (!login && usernameExist) || usernameError
+                          ? colors.red
+                          : colors.gray,
+                    },
+                  }}
                   value={username}
-                  onChangeText={setUsername}
+                  onChangeText={username => {
+                    setUsername(username);
+                    usernameExists(username, errors.exist);
+                  }}
                 />
                 {usernameError && <ErrorText text="Username cannot be empty" />}
               </View>
@@ -176,7 +201,10 @@ const Login = () => {
                 placeholderTextColor={colors.black}
                 autoCapitalize="none"
                 clearTextOnFocus={false}
-                style={styles.form.textInput}
+                style={{
+                  ...styles.form.textInput,
+                  ...{ borderColor: passwordError ? colors.red : colors.gray },
+                }}
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={true}
@@ -197,6 +225,11 @@ const Login = () => {
                     ...{
                       backgroundColor: passwordEquality
                         ? colors.lightGreen // Highlight on matching password and confirmPassword
+                        : colors.gray,
+                    },
+                    ...{
+                      borderColor: confirmPasswordError
+                        ? colors.red
                         : colors.gray,
                     },
                   }}

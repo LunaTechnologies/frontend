@@ -78,6 +78,7 @@ const submit = (body, login, errors) => {
       console.error(err);
     }
     // TODO Move to next page
+    console.log('Login successfull');
   };
 
   // Register callback function
@@ -107,4 +108,16 @@ const submit = (body, login, errors) => {
     });
 };
 
-export { submit, validate };
+const emailExists = (email, errors) => {
+  Axios.get(`${apiurl}/api/User/emailExist`, { params: { email } })
+    .then(({ data }) => errors.setEmailExist(data))
+    .catch(() => {});
+};
+
+const usernameExists = (username, errors) => {
+  Axios.get(`${apiurl}/api/User/usernameExist?username=${username}`)
+    .then(({ data }) => errors.setUsernameExist(data))
+    .catch(() => {});
+};
+
+export { submit, validate, emailExists, usernameExists };
