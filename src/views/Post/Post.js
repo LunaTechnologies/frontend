@@ -5,8 +5,16 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 import BackArrow from '../../components/BackArrow/BackArrow';
 import PostField from '../../components/PostField/PostField';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
+import * as ImagePicker from 'react-native-image-picker';
 
 const Post = () => {
+  const addImages = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log('Add Image Response: ', response);
+    });
+  };
+
   return (
     <SafeAreaView>
       <BackArrow />
@@ -17,7 +25,7 @@ const Post = () => {
       </PostField>
 
       <PostField text="Upload Images">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={addImages}>
           <View style={PostStyles.addImagesButton}>
             <View style={PostStyles.addImagesBackgroundCircle}></View>
             <Icon name="pluscircleo" style={PostStyles.addImageIcon}></Icon>
