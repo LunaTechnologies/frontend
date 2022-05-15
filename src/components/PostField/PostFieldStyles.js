@@ -1,7 +1,7 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {colors} from '../../constants/colors';
+import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../constants/colors';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export default PostFieldStyles = StyleSheet.create({
   global: {
@@ -19,7 +19,6 @@ export default PostFieldStyles = StyleSheet.create({
 
     height: 40,
     marginBottom: 16,
-    position: 'relative',
   },
   asterisk: {
     color: 'red',

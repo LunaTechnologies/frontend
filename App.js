@@ -9,6 +9,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Dropdown from './src/components/Dropdown/Dropdown';
 import Catalog from './src/views/Catalog/Catalog';
 import Post from './src/views/Post/Post';
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <ScrollView>
         {/* <Catalog /> */}
         <Post />
+        {/* <Dropdown options={['Lei', 'Euro', 'USD', 'GBP']} /> */}
       </ScrollView>
     </SafeAreaView>
   );
