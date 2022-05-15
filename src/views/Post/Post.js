@@ -13,11 +13,19 @@ const Post = () => {
       <Text style={PostStyles.title}>Post</Text>
 
       <PostField text="Add Title">
-        <PostFieldTextInput></PostFieldTextInput>
+        <PostFieldTextInput placeholder="ex: iPhone 8"></PostFieldTextInput>
       </PostField>
 
       <PostField text="Upload Images">
         <Button title="Add Images" style={PostStyles.addImages}></Button>
+      </PostField>
+
+      <PostField text="Add Description">
+        <PostFieldTextInput
+          height="0.25"
+          textAlignVertical="top"
+          multiline={true}
+          placeholder="Add the details you would like to see in a post! :)"></PostFieldTextInput>
       </PostField>
     </SafeAreaView>
   );
