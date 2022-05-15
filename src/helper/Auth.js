@@ -6,9 +6,7 @@ const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
 
 const validate = (data, errors) => {
   const { email, password } = data;
-  const emailRegex = new RegExp(
-    '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$',
-  );
+  const emailRegex = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z.-]+.[a-zA-Z-.]+$');
   const checkPassword = password => {
     if (!(8 <= password.length && password.length <= 128)) return false;
     if (!/[A-Z]/.test(password)) return false;
