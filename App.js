@@ -14,8 +14,10 @@ import Post from './src/views/Post/Post';
 const App = () => {
   return (
     <SafeAreaView>
-      {/* <Catalog /> */}
-      <Post />
+      <ScrollView>
+        {/* <Catalog /> */}
+        <Post />
+      </ScrollView>
     </SafeAreaView>
   );
 };

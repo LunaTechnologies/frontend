@@ -32,6 +32,11 @@ const PostFieldTextInput = props => {
         }
         value={value}
         onChangeText={setValue}
+        keyboardType={
+          !('keyboardType' in props) || props.keyboardType != 'numeric'
+            ? 'default'
+            : 'numeric'
+        }
         placeholder={props.placeholder}></TextInput>
     </SafeAreaView>
   );

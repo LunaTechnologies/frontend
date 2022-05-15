@@ -27,6 +27,19 @@ const Post = () => {
           multiline={true}
           placeholder="Add the details you would like to see in a post! :)"></PostFieldTextInput>
       </PostField>
+
+      <PostField text="Select Price">
+        <PostFieldTextInput
+          width="0.5"
+          keyboardType="numeric"
+          placeholder="ex: 100"></PostFieldTextInput>
+      </PostField>
+
+      <PostField text="Add Phone Number">
+        <PostFieldTextInput
+          keyboardType="numeric"
+          placeholder="ex: 0123 456 789"></PostFieldTextInput>
+      </PostField>
     </SafeAreaView>
   );
 };
