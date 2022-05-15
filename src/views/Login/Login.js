@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -88,7 +88,6 @@ const Login = () => {
     }
 
     setPasswordEquality(password !== '' && password == confirmPassword);
-    console.log(usernameExist);
   }, [username, password, confirmPassword]);
 
   // Reset all errors
@@ -203,7 +202,9 @@ const Login = () => {
                 clearTextOnFocus={false}
                 style={{
                   ...styles.form.textInput,
-                  ...{ borderColor: passwordError ? colors.red : colors.gray },
+                  ...{
+                    borderColor: passwordError ? colors.red : colors.gray,
+                  },
                 }}
                 value={password}
                 onChangeText={setPassword}
