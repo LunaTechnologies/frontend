@@ -7,11 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "link": "react-native link"
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.68.1"
+    "react-native": "0.68.1",
+    "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

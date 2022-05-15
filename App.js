@@ -5,15 +5,17 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
 import Catalog from './src/views/Catalog/Catalog';
-
+import Post from './src/views/Post/Post';
 const App = () => {
   return (
     <SafeAreaView>
-      <Catalog />
+      {/* <Catalog /> */}
+      <Post />
     </SafeAreaView>
   );
 };
