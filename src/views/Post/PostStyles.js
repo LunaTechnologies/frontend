@@ -15,7 +15,39 @@ export default CatalogStyles = StyleSheet.create({
     height: 0.1 * height,
   },
 
-  addImages: {
-    // backgroundColor: 'orange',
+  addImagesButton: {
+    backgroundColor: colors.lightOrange,
+    borderRadius: 12,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  addImagesBackgroundCircle: {
+    position: 'absolute',
+    backgroundColor: colors.orange,
+    width: '75%',
+    height: '200%',
+    width: 230,
+    borderRadius: 100,
+    // top: 0,
+    // left: '50%',
+    // transform: [{translateX: -50}],
+    zIndex: -1,
+  },
+  addImageIcon: {
+    color: colors.white,
+    fontSize: 24,
+  },
+  addImagesText: {
+    fontSize: 24,
+    color: colors.white,
+    fontWeight: 'bold',
+    padding: 24,
+
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    zIndex: 1,
   },
 });

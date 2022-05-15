@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text, Button} from 'react-native';
+import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import PostStyles from './PostStyles';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import BackArrow from '../../components/BackArrow/BackArrow';
@@ -17,7 +17,13 @@ const Post = () => {
       </PostField>
 
       <PostField text="Upload Images">
-        <Button title="Add Images" style={PostStyles.addImages}></Button>
+        <TouchableOpacity>
+          <View style={PostStyles.addImagesButton}>
+            <View style={PostStyles.addImagesBackgroundCircle}></View>
+            <Icon name="pluscircleo" style={PostStyles.addImageIcon}></Icon>
+            <Text style={PostStyles.addImagesText}>Add Images</Text>
+          </View>
+        </TouchableOpacity>
       </PostField>
 
       <PostField text="Add Description">
