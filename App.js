@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import Login from './src/views/Login/Login';
+import ServicePage from './src/views/ServicePage/ServicePage';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Login />
+      <ServicePage />
     </SafeAreaView>
   );
 };

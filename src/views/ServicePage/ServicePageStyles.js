@@ -7,6 +7,34 @@ const styles = StyleSheet.create({
   background: {
     width,
     height,
+    backgroundColor: colors.white,
+    color: colors.black,
+  },
+  imageSection: {
+    image: { width, height: 0.4 * height },
+  },
+
+  titleSection: {
+    title: {},
+  },
+
+  priceSection: {
+    price: {},
+  },
+
+  descriptionSection: {
+    title: {},
+    descriptionContainer: {},
+    description: {},
+  },
+  ownerSection: {
+    image: {},
+    info: {
+      text: {},
+      name: {},
+      messageButtonContainer: {},
+      messageButton: {},
+    },
   },
 });
 
