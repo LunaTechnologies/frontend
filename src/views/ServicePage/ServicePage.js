@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Text,
-  SafeAreaView,
-  ScrollView,
   View,
+  Text,
   Image,
+  ScrollView,
+  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import styles from './ServicePageStyles.js';
@@ -52,9 +52,18 @@ const ServicePage = () => {
             </View>
           </View>
           <View style={styles.ownerSection.messageButtonContainer}>
-            <ToucableOpacity style={styles.ownerSection.messageButton}>
-              Icon // TODO Add Icon
-            </ToucableOpacity>
+            <TouchableOpacity style={styles.ownerSection.messageButton}>
+              <Text>Icon</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.phoneSection}>
+            <Text style={styles.phoneSection.title}>Phone Number: </Text>
+            <Text style={styles.phoneSection.number}>0123 456 789</Text>
+          </View>
+          <View style={styles.rentSection}>
+            <TouchableOpacity style={styles.rentSection.button}>
+              <Text style={styles.rentSection.text}>Rent</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
