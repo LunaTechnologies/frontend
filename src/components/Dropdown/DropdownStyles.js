@@ -6,6 +6,7 @@ const { width, height } = Dimensions.get('window');
 export default DropdownStyles = StyleSheet.create({
   container: {
     width: 0.5 * width,
+    height: '100%',
     zIndex: 10,
   },
 
@@ -18,7 +19,8 @@ export default DropdownStyles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
 
-    padding: 12,
+    height: '100%',
+    // height: 20,
     width: '100%',
   },
 

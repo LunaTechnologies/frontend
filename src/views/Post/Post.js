@@ -1,12 +1,23 @@
 import React from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import PostStyles from './PostStyles';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
+
 import BackArrow from '../../components/BackArrow/BackArrow';
 import PostField from '../../components/PostField/PostField';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Switch from '../../components/Switch/Switch';
+
 import * as ImagePicker from 'react-native-image-picker';
+
+const { width, height } = Dimensions.get('window');
 
 const Post = () => {
   const addImages = () => {
@@ -45,12 +56,34 @@ const Post = () => {
       </PostField>
 
       <PostField text="Select Price">
-        <PostFieldTextInput
-          width="0.5"
-          keyboardType="numeric"
-          placeholder="ex: 100"
-        />
-        <Dropdown width={0.3} options={['Lei', 'Euro', 'USD', 'GBP']} />
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 0.1 * height,
+            // backgroundColor: 'red',
+          }}>
+          <PostFieldTextInput
+            width="0.5"
+            keyboardType="numeric"
+            placeholder="ex: 100"
+          />
+          <Dropdown width={0.3} options={['Lei', 'Euro', 'USD', 'GBP']} />
+        </View>
+      </PostField>
+
+      <PostField text="Payed Per" flexDirection="row">
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 0.1 * height,
+            // backgroundColor: 'red',
+          }}>
+          <Dropdown
+            width={0.5}
+            options={['Hour', 'Day', 'Week', 'Month']}
+            defaultOption="Day"
+          />
+        </View>
       </PostField>
 
       <PostField text="Add Phone Number">
@@ -58,6 +91,12 @@ const Post = () => {
           keyboardType="numeric"
           placeholder="ex: 0123 456 789"
         />
+      </PostField>
+
+      <PostField text="I agree to the terms and conditions" fontSize={16}>
+        <Icon name="book" />
+
+        <Switch></Switch>
       </PostField>
     </SafeAreaView>
   );

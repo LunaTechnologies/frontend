@@ -13,12 +13,15 @@ const { width, height } = Dimensions.get('window');
 
 const Dropdown = props => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(props.options[0]);
+  const [selectedOption, setSelectedOption] = useState(
+    'defaultOption' in props ? props.defaultOption : props.options[0],
+  );
 
   return (
     <SafeAreaView
       style={{ ...DropdownStyles.container, width: props.width * width }}>
       <TouchableOpacity
+        style={{ height: '100%' }}
         onPress={() => {
           setToggleMenu(!toggleMenu);
         }}>
@@ -39,38 +42,37 @@ const Dropdown = props => {
           {toggleMenu && <View style={DropdownStyles.borderLine}></View>}
         </Text>
       </TouchableOpacity>
-      {toggleMenu && (
-        <View>
-          {props.options.map((value, index) => {
-            const isLastOption = index == props.options.length - 1;
-            return (
-              <TouchableOpacity
-                key={index}
-                onPress={() => {
-                  setSelectedOption(value);
-                  setToggleMenu(!toggleMenu);
-                }}>
-                <Text
-                  style={{
-                    ...DropdownStyles.option,
 
-                    borderBottomLeftRadius: isLastOption
-                      ? DropdownStyles.optionBorderRadius
-                      : 0,
-                    borderBottomRightRadius: isLastOption
-                      ? DropdownStyles.optionBorderRadius
-                      : 0,
-                  }}>
-                  {value}
-                </Text>
-                {!isLastOption && (
-                  <View style={DropdownStyles.borderLine}></View>
-                )}
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      )}
+      {toggleMenu &&
+        // <View style={{ height: '100%' }}>
+        props.options.map((value, index) => {
+          const isLastOption = index == props.options.length - 1;
+          return (
+            <TouchableOpacity
+              style={{ height: '100%' }}
+              key={index}
+              onPress={() => {
+                setSelectedOption(value);
+                setToggleMenu(!toggleMenu);
+              }}>
+              <Text
+                style={{
+                  ...DropdownStyles.option,
+
+                  borderBottomLeftRadius: isLastOption
+                    ? DropdownStyles.optionBorderRadius
+                    : 0,
+                  borderBottomRightRadius: isLastOption
+                    ? DropdownStyles.optionBorderRadius
+                    : 0,
+                }}>
+                {value}
+              </Text>
+              {!isLastOption && <View style={DropdownStyles.borderLine}></View>}
+            </TouchableOpacity>
+          );
+        })}
+      {/* </View> */}
     </SafeAreaView>
   );
 };
