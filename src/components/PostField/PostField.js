@@ -1,23 +1,18 @@
 import React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
+import PostFieldTitle from '../PostFieldTitle/PostFieldTitle';
 import PostFieldStyles from './PostFieldStyles';
 
 const PostField = props => {
   return (
-    <SafeAreaView style={{ ...PostFieldStyles.global, height: props.height }}>
-      <Text
-        style={{
-          ...PostFieldStyles.text,
-          fontSize:
-            'fontSize' in props
-              ? props.fontSize
-              : PostFieldStyles.text.fontSize,
-        }}>
-        {props.text}
-        {(!('optional' in props) || props.optional == 'false') && (
-          <Text style={PostFieldStyles.asterisk}> *</Text>
-        )}
-      </Text>
+    <SafeAreaView
+      style={{
+        ...PostFieldStyles.global,
+        ...props.style,
+      }}>
+      {/* <PostFieldTitle style={{ fontSize: props.fontSize }}></PostFieldTitle> */}
+      <PostFieldTitle text={props.text}></PostFieldTitle>
+
       <View
         style={{
           width: '100%',

@@ -1,9 +1,9 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {colors} from '../../constants/colors';
+import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../constants/colors';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-export default CatalogStyles = StyleSheet.create({
+export default PostStyles = StyleSheet.create({
   title: {
     color: colors.black,
     fontSize: 32,
@@ -49,5 +49,18 @@ export default CatalogStyles = StyleSheet.create({
     textAlignVertical: 'center',
     textAlign: 'center',
     zIndex: 1,
+  },
+
+  terms: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  termsIcon: {
+    fontSize: 30,
+    color: colors.black,
   },
 });

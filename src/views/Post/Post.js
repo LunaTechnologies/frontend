@@ -11,11 +11,13 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 import BackArrow from '../../components/BackArrow/BackArrow';
 import PostField from '../../components/PostField/PostField';
+import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
 
 import * as ImagePicker from 'react-native-image-picker';
+import PostFieldStyles from '../../components/PostField/PostFieldStyles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -93,11 +95,14 @@ const Post = () => {
         />
       </PostField>
 
-      <PostField text="I agree to the terms and conditions" fontSize={16}>
-        <Icon name="book" />
-
-        <Switch></Switch>
-      </PostField>
+      <View style={PostStyles.terms}>
+        <Icon name="book" style={{ ...PostStyles.termsIcon }} />
+        <PostFieldTitle
+          text="I agree to the terms and conditions"
+          style={{ fontSize: 16, marginBottom: 0 }}
+        />
+        <Switch />
+      </View>
     </SafeAreaView>
   );
 };
