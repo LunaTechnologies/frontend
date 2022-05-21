@@ -15,9 +15,9 @@ import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
 import * as ImagePicker from 'react-native-image-picker';
-import PostFieldStyles from '../../components/PostField/PostFieldStyles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -103,6 +103,8 @@ const Post = () => {
         />
         <Switch />
       </View>
+
+      <SubmitButton text="Post" />
     </SafeAreaView>
   );
 };

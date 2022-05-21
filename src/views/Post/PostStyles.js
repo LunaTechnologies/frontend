@@ -58,9 +58,13 @@ export default PostStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
+    // backgroundColor: 'red',
+    width: 0.9 * width,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   termsIcon: {
-    fontSize: 30,
+    fontSize: 26,
     color: colors.black,
   },
 });
