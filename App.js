@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import Dropdown from './src/components/Dropdown/Dropdown';
+import { PostProvider } from './src/contexts/PostContext';
 import Catalog from './src/views/Catalog/Catalog';
 import Post from './src/views/Post/Post';
 const App = () => {
@@ -17,7 +18,9 @@ const App = () => {
     <SafeAreaView>
       <ScrollView>
         {/* <Catalog /> */}
-        <Post />
+        <PostProvider>
+          <Post />
+        </PostProvider>
         {/* <Dropdown options={['Lei', 'Euro', 'USD', 'GBP']} /> */}
       </ScrollView>
     </SafeAreaView>

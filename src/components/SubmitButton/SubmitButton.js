@@ -5,7 +5,9 @@ import SubmitButtonStyles from './SubmitButtonStyles';
 
 const SubmitButton = props => {
   return (
-    <TouchableOpacity style={SubmitButtonStyles.background}>
+    <TouchableOpacity
+      style={SubmitButtonStyles.background}
+      onPress={props.onPress}>
       <Text style={SubmitButtonStyles.text}>{props.text}</Text>
     </TouchableOpacity>
   );
