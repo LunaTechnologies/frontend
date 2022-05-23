@@ -10,17 +10,12 @@ const PostField = props => {
         ...PostFieldStyles.global,
         ...props.style,
       }}>
-      {/* <PostFieldTitle style={{ fontSize: props.fontSize }}></PostFieldTitle> */}
-      <PostFieldTitle text={props.text}></PostFieldTitle>
+      <PostFieldTitle text={props.text} />
 
       <View
         style={{
-          width: '100%',
-          // backgroundColor: 'red',
-          flexDirection:
-            'flexDirection' in props ? props.flexDirection : 'column',
-          justifyContent: 'space-around',
-          zIndex: 1,
+          ...PostFieldStyles.children,
+          ...props.style,
         }}>
         {props.children}
       </View>

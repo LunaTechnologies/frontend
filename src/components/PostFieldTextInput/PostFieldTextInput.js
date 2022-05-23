@@ -15,29 +15,27 @@ const PostFieldTextInput = props => {
   const { value, setValue } = props.state;
 
   return (
-    <SafeAreaView>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
-        <TextInput
-          style={{
-            ...PostFieldTextInputStyles.textInput,
-            ...props.style,
-          }}
-          multiline={
-            !('multiline' in props) || props.multiline == false ? false : true
-          }
-          value={value.toString()}
-          onChangeText={setValue}
-          keyboardType={
-            !('keyboardType' in props) || props.keyboardType != 'numeric'
-              ? 'default'
-              : 'numeric'
-          }
-          placeholder={props.placeholder}></TextInput>
-      </TouchableWithoutFeedback>
-    </SafeAreaView>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
+      <TextInput
+        style={{
+          ...PostFieldTextInputStyles.textInput,
+          ...props.style,
+        }}
+        multiline={
+          !('multiline' in props) || props.multiline == false ? false : true
+        }
+        value={value.toString()}
+        onChangeText={setValue}
+        keyboardType={
+          !('keyboardType' in props) || props.keyboardType != 'numeric'
+            ? 'default'
+            : 'numeric'
+        }
+        placeholder={props.placeholder}></TextInput>
+    </TouchableWithoutFeedback>
   );
 };
 

@@ -55,14 +55,14 @@ const Post = () => {
   };
 
   return (
-    <PostProvider>
+    <SafeAreaView>
       <BackArrow />
       <Text style={PostStyles.title}>Post</Text>
 
       <PostField text="Add Title">
         <PostFieldTextInput
-          placeholder="ex: iPhone 8"
           state={{ value: title, setValue: setTitle }}
+          placeholder="ex: iPhone 8"
         />
       </PostField>
 
@@ -79,9 +79,9 @@ const Post = () => {
       <PostField text="Add Description">
         <PostFieldTextInput
           style={{ height: 0.25 * height, textAlignVertical: 'top' }}
+          state={{ value: description, setValue: setDescription }}
           multiline={true}
           placeholder="Add the details you would like to see in a post! :)"
-          state={{ value: description, setValue: setDescription }}
         />
       </PostField>
 
@@ -94,19 +94,26 @@ const Post = () => {
           }}>
           <PostFieldTextInput
             style={{ width: 0.5 * width }}
+            state={{ value: price, setValue: setPrice }}
             keyboardType="numeric"
             placeholder="ex: 100"
-            state={{ value: price, setValue: setPrice }}
           />
           <Dropdown
-            width={0.3}
-            options={['Lei', 'Euro', 'USD', 'GBP']}
+            style={{ width: 0.3 * width }}
             state={{ selectedOption: currency, setSelectedOption: setCurrency }}
+            options={['Lei', 'Euro', 'USD', 'GBP']}
           />
         </View>
       </PostField>
 
-      <PostField text="Payed Per" flexDirection="row">
+      <PostField
+        text="Payed Per"
+        style={{
+          flexDirection: 'row',
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          backgroundColor: 'red',
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -114,24 +121,23 @@ const Post = () => {
             // backgroundColor: 'red',
           }}>
           <Dropdown
-            width={0.5}
-            options={['Hour', 'Day', 'Week', 'Month']}
-            // defaultOption="Day"
+            style={{ width: 0.5 * width }}
             state={{ selectedOption: payedPer, setSelectedOption: setPayedPer }}
+            options={['Hour', 'Day', 'Week', 'Month']}
           />
         </View>
       </PostField>
 
       <PostField text="Add Phone Number">
         <PostFieldTextInput
+          state={{ value: phoneNumber, setValue: setPhoneNumber }}
           keyboardType="numeric"
           placeholder="ex: 0123 456 789"
-          state={{ value: phoneNumber, setValue: setPhoneNumber }}
         />
       </PostField>
 
       <View style={PostStyles.terms}>
-        <Icon name="book" style={{ ...PostStyles.termsIcon }} />
+        <Icon name="book" style={PostStyles.termsIcon} />
         <PostFieldTitle
           text="I agree to the terms and conditions"
           style={{ fontSize: 16, marginBottom: 0 }}
@@ -140,7 +146,7 @@ const Post = () => {
       </View>
 
       <SubmitButton text="Post" onPress={post} />
-    </PostProvider>
+    </SafeAreaView>
   );
 };
 

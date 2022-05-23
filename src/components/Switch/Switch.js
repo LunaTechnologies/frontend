@@ -30,7 +30,8 @@ const Switch = () => {
           ...SwitchStyles.circle,
           left: toggled ? initialOffset : offset,
           right: toggled ? offset : initialOffset,
-        }}></View>
+        }}
+      />
     </TouchableOpacity>
   );
 };

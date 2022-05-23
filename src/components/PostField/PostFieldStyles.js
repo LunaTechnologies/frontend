@@ -11,17 +11,9 @@ export default PostFieldStyles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  text: {
-    color: colors.black,
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlignVertical: 'center',
-
-    height: 40,
-    marginBottom: 16,
-  },
-  asterisk: {
-    color: 'red',
-    fontWeight: 'bold',
+  children: {
+    width: '100%',
+    justifyContent: 'space-around',
+    zIndex: 1,
   },
 });

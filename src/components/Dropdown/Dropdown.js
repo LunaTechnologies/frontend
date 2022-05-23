@@ -17,7 +17,10 @@ const Dropdown = props => {
 
   return (
     <SafeAreaView
-      style={{ ...DropdownStyles.container, width: props.width * width }}>
+      style={{
+        ...DropdownStyles.container,
+        ...props.style,
+      }}>
       <TouchableOpacity
         style={{ height: '100%' }}
         onPress={() => {

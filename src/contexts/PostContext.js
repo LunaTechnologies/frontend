@@ -7,7 +7,7 @@ export const PostProvider = ({ children }) => {
   const [images, setImages] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [currency, setCurrency] = useState('lei');
+  const [currency, setCurrency] = useState('Lei');
   const [payedPer, setPayedPer] = useState('Day');
   const [phoneNumber, setPhoneNumber] = useState('');
 
