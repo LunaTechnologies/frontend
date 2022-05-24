@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
   titleSection: {
     width,
-    height: height * 0.1,
+    height: height * 0.07,
     display: 'flex',
     justifyContent: 'center',
     paddingLeft: 20,
@@ -51,15 +51,21 @@ const styles = StyleSheet.create({
     description: { color: colors.black, textAlign: 'center' },
   },
   ownerSection: {
-    width: width - 40,
+    width: width - 60,
     height: 60,
     display: 'flex',
-    backgroundColor: colors.gray,
     flexDirection: 'row',
-    margin: 20,
+    alignItems: 'center',
+    backgroundColor: colors.gray,
+    marginHorizontal: 30,
+    marginVertical: 20,
     image: { width: 60, height: 60 },
     info: {
-      text: { color: colors.black },
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: width - 60 - width * 0.3,
+      text: { color: colors.black, fontWeight: 'bold' },
       name: { color: colors.black },
       messageButtonContainer: {},
       messageButton: {},
@@ -68,6 +74,7 @@ const styles = StyleSheet.create({
   phoneSection: {
     display: 'flex',
     flexDirection: 'row',
+    marginHorizontal: 20,
     title: { color: colors.black },
     number: {
       color: colors.blue,
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     button: {
       width: 0.8 * width,
-      height: 0.1 * height,
+      height: 0.08 * height,
       backgroundColor: colors.black,
       borderRadius: 20,
       display: 'flex',

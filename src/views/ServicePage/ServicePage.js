@@ -4,14 +4,32 @@ import {
   Text,
   Image,
   ScrollView,
+  Dimensions,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import styles from './ServicePageStyles.js';
 import { getData } from '../../helper/GetService';
 
+import CarouselImage from '../../components/CarouselImages/CarouselImages';
+
+const { width, height } = Dimensions.get('window');
+
+// TODO Add Carousel
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
+
+  const dummyData = [
+    {
+      path: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
+    },
+    {
+      path: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
+    },
+    {
+      path: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
+    },
+  ];
 
   useEffect(() => {
     getData(id, setData);
@@ -21,22 +39,11 @@ const ServicePage = ({ id }) => {
     <SafeAreaView style={styles.background}>
       <ScrollView>
         <View style={styles.imageSection}>
-          {/* {data.picturePaths &&
-       data.picturePaths.forEach(pic => (*/}
-          <Image
-            style={styles.imageSection.image}
-            source={{
-              uri: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
-            }}
+          <CarouselImage
+            images={dummyData}
+            width={width}
+            height={0.3 * height}
           />
-
-          <Image
-            style={styles.imageSection.image}
-            source={{
-              uri: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
-            }}
-          />
-          {/* ))}*/}
         </View>
         <View>
           <View style={styles.titleSection}>
