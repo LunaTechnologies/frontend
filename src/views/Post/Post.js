@@ -13,12 +13,14 @@ import BackArrow from '../../components/BackArrow/BackArrow';
 import PostField from '../../components/PostField/PostField';
 import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
-import { PostContext, PostProvider } from '../../contexts/PostContext';
+import { PostContext } from '../../contexts/PostContext';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
 import * as ImagePicker from 'react-native-image-picker';
+
+import { submitPost } from '../../helper/SubmitPost';
 
 const { width, height } = Dimensions.get('window');
 
@@ -30,6 +32,16 @@ const Post = () => {
   const { currency, setCurrency } = useContext(PostContext);
   const { payedPer, setPayedPer } = useContext(PostContext);
   const { phoneNumber, setPhoneNumber } = useContext(PostContext);
+
+  const data = {
+    title,
+    images,
+    description,
+    price,
+    currency,
+    payedPer,
+    phoneNumber,
+  };
 
   const addImages = () => {
     const options = {};
@@ -145,7 +157,12 @@ const Post = () => {
         <Switch />
       </View>
 
-      <SubmitButton text="Post" onPress={post} />
+      <SubmitButton
+        text="Post"
+        onPress={() => {
+          submitPost(data);
+        }}
+      />
     </SafeAreaView>
   );
 };
