@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -13,28 +13,39 @@ import { getData } from '../../helper/GetService';
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
 
-  getData(id, setData);
+  useEffect(() => {
+    getData(id, setData);
+  }, []);
 
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>
         <View style={styles.imageSection}>
-          {/*TODO Get images and loop through them*/}
-          {data.pictures.forEach(pic => {
-            <Image
-              style={styles.imageSection.image}
-              source={{
-                uri: pic.path,
-              }}
-            />;
-          })}
+          {/* {data.picturePaths &&
+       data.picturePaths.forEach(pic => (*/}
+          <Image
+            style={styles.imageSection.image}
+            source={{
+              uri: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
+            }}
+          />
+
+          <Image
+            style={styles.imageSection.image}
+            source={{
+              uri: 'https://codecool.com/wp-content/uploads/2021/09/Courses-Header.jpg',
+            }}
+          />
+          {/* ))}*/}
         </View>
         <View>
           <View style={styles.titleSection}>
             <Text style={styles.titleSection.title}>{data.title}</Text>
           </View>
           <View style={styles.priceSection}>
-            <Text style={styles.priceSection.price}>{data.price}</Text>
+            <Text style={styles.priceSection.price}>
+              {data.price}/{data.servType}
+            </Text>
           </View>
           <View style={styles.descriptionSection}>
             <Text style={styles.descriptionSection.title}>Description</Text>

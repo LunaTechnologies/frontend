@@ -51,11 +51,12 @@ const styles = StyleSheet.create({
     description: { color: colors.black, textAlign: 'center' },
   },
   ownerSection: {
-    width,
+    width: width - 40,
     height: 60,
     display: 'flex',
     backgroundColor: colors.gray,
     flexDirection: 'row',
+    margin: 20,
     image: { width: 60, height: 60 },
     info: {
       text: { color: colors.black },
@@ -70,15 +71,17 @@ const styles = StyleSheet.create({
     title: { color: colors.black },
     number: {
       color: colors.blue,
-      textDecoration: 'underline',
     },
   },
   rentSection: {
-    width: 0.8 * width,
-    height: 0.1 * height,
-    margin: 'auto',
-    // marginHorizontal: 20,
+    width,
+    height: 0.15 * height,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     button: {
+      width: 0.8 * width,
+      height: 0.1 * height,
       backgroundColor: colors.black,
       borderRadius: 20,
       display: 'flex',

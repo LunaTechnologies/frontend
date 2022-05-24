@@ -5,7 +5,7 @@ import ServicePage from './src/views/ServicePage/ServicePage';
 const App = () => {
   return (
     <SafeAreaView>
-      <ServicePage />
+      <ServicePage id="Pc7kwl2FzOIooBH" />
     </SafeAreaView>
   );
 };
