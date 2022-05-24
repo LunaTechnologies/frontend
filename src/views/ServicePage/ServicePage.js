@@ -13,7 +13,7 @@ import { getData } from '../../helper/GetService';
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
 
-  getData(setData);
+  getData(id, setData);
 
   return (
     <SafeAreaView style={styles.background}>
