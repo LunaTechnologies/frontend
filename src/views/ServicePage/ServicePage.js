@@ -40,7 +40,7 @@ const ServicePage = ({ id }) => {
       <ScrollView>
         <View style={styles.imageSection}>
           <CarouselImage
-            images={dummyData}
+            images={data.picturePaths ? data.picturePaths : dummyData}
             width={width}
             height={0.3 * height}
           />

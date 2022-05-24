@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   image: {},
-  container: { width, backgroundColor: colors.red },
+  container: { width },
 });
 
 export { styles };
