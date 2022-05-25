@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Image } from 'react-native';
 import { styles } from './CarouselImagesStyles';
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 const CarouselImages = ({ images, width, height }) => {
   let carouselRef = useRef();
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const renderItem = ({ item, index }) => (
     <View style={styles.conainer}>
@@ -16,14 +17,26 @@ const CarouselImages = ({ images, width, height }) => {
   );
 
   return (
-    <Carousel
-      layout={'default'}
-      ref={ref => (carouselRef.current = ref)}
-      data={images}
-      renderItem={renderItem}
-      sliderWidth={width}
-      itemWidth={width}
-    />
+    <View>
+      <Carousel
+        layout={'default'}
+        ref={ref => (carouselRef.current = ref)}
+        data={images}
+        renderItem={renderItem}
+        sliderWidth={width}
+        itemWidth={width}
+        onSnapToItem={index => setActiveSlide(index)}
+      />
+      <Pagination
+        dotsLength={images.length}
+        activeDotIndex={activeSlide}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
+        containerStyle={styles.pagination.container}
+        dotStyle={styles.pagination.dot}
+        inactiveDotStyle={styles.pagination.inactiveDot}
+      />
+    </View>
   );
 };
 
