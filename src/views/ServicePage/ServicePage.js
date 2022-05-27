@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import styles from './ServicePageStyles.js';
 import { getData } from '../../helper/GetService';
+import { colors } from '../../constants/colors';
 
 import CarouselImage from '../../components/CarouselImages/CarouselImages';
 import BackArrow from '../../components/BackArrow/BackArrow';
@@ -39,7 +40,7 @@ const ServicePage = ({ id }) => {
     <SafeAreaView style={styles.background}>
       <ScrollView>
         <View style={styles.imageSection}>
-          <BackArrow />
+          <BackArrow color={colors.white} />
           <CarouselImage
             images={data.picturePaths ? data.picturePaths : dummyData}
             width={width}

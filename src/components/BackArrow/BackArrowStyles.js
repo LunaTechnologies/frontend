@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { colors } from '../../constants/colors';
 
 export default BackArrowStyles = StyleSheet.create({
@@ -6,6 +6,7 @@ export default BackArrowStyles = StyleSheet.create({
     position: 'absolute',
     left: 20,
     top: 20,
+    zIndex: 10,
   },
 
   arrow: {
