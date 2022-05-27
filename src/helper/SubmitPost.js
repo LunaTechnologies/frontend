@@ -27,7 +27,7 @@ export const submitPost = data => {
   //     console.log(err);
   //   });
 
-  // Axios.post(`${url}/GetServiceByIdentificationString?IdentificationString=Pc7kwl2FzOIooBH`, bodyFormData)
+  // Axios.post(`${url}/CreateService`, bodyFormData)
   //   .then(response => {
   //     console.log(response);
   //   })
@@ -36,16 +36,16 @@ export const submitPost = data => {
   //   });
   axios({
     method: 'post',
-    url: `${url}/GetServiceByIdentificationString?IdentificationString=Pc7kwl2FzOIooBH`,
+    url: `${url}/CreateService`,
     data: bodyFormData,
     headers: { 'Content-Type': 'multipart/form-data' },
   })
-    .then(function (response) {
+    .then(response => {
       //handle success
       console.log(response);
     })
-    .catch(function (response) {
+    .catch(err => {
       //handle error
-      console.log(response);
+      console.log(err);
     });
 };
