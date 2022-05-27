@@ -12,10 +12,10 @@ import styles from './ServicePageStyles.js';
 import { getData } from '../../helper/GetService';
 
 import CarouselImage from '../../components/CarouselImages/CarouselImages';
+import BackArrow from '../../components/BackArrow/BackArrow';
 
 const { width, height } = Dimensions.get('window');
 
-// TODO Add Carousel
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
 
@@ -39,6 +39,7 @@ const ServicePage = ({ id }) => {
     <SafeAreaView style={styles.background}>
       <ScrollView>
         <View style={styles.imageSection}>
+          <BackArrow />
           <CarouselImage
             images={data.picturePaths ? data.picturePaths : dummyData}
             width={width}
