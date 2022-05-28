@@ -12,12 +12,13 @@ export const submitPost = data => {
   bodyFormData.append('Title', title);
   bodyFormData.append('Description', description);
   bodyFormData.append('PhoneNumber', phoneNumber);
-  bodyFormData.append('Price', parseFloat(price));
+  // bodyFormData.append('Price', parseFloat(price));
+  bodyFormData.append('Price', 0);
   bodyFormData.append('Username', 'alexeu123');
   // bodyFormData.append('ServType', payedPer);
   bodyFormData.append('ServType', 'zi');
   // bodyFormData.append('', );
-  console.log('Images: ', images);
+  // console.log('Images: ', images);
   console.log(bodyFormData);
 
   // Axios.get(
@@ -70,6 +71,14 @@ export const submitPost = data => {
       console.log(res);
     })
     .catch(err => {
-      console.log(err);
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        // console.log('aici');
+        console.log(err.response.headers);
+      }
+      console.log(err.message);
+      console.log(err.request);
+      console.log(err.config);
     });
 };
