@@ -44,10 +44,15 @@ const Post = () => {
   };
 
   const addImages = () => {
-    const options = {};
+    const options = { selectionLimit: 0 };
     ImagePicker.launchImageLibrary(options, response => {
-      console.log('Add Image Response: ', response);
-      setImages(response);
+      const selectedImages = response.assets.map(x => {
+        return {
+          path: x.uri,
+        };
+      });
+      console.log('Add Image Response: ', selectedImages);
+      setImages(selectedImages);
     });
   };
 
