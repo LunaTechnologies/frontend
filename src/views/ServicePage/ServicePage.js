@@ -14,6 +14,7 @@ import { colors } from '../../constants/colors';
 
 import CarouselImage from '../../components/CarouselImages/CarouselImages';
 import BackArrow from '../../components/BackArrow/BackArrow';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,7 +45,7 @@ const ServicePage = ({ id }) => {
           <CarouselImage
             images={data.picturePaths ? data.picturePaths : dummyData}
             width={width}
-            height={0.3 * height}
+            height={0.5 * height}
           />
         </View>
         <View>
@@ -53,7 +54,13 @@ const ServicePage = ({ id }) => {
           </View>
           <View style={styles.priceSection}>
             <Text style={styles.priceSection.price}>
-              {data.price}/{data.servType}
+              <Text style={styles.priceSection.price.valueStyle}>
+                {data.price + ' '}
+              </Text>
+
+              <Text style={styles.priceSection.price.lengthStyle}>
+                / {data.servType}
+              </Text>
             </Text>
           </View>
           <View style={styles.descriptionSection}>
@@ -75,12 +82,16 @@ const ServicePage = ({ id }) => {
               <Text style={styles.ownerSection.info.text}>Owner</Text>
               <Text style={styles.ownerSection.info.name}>{data.username}</Text>
             </View>
+            <View style={styles.ownerSection.messageButtonContainer}>
+              <TouchableOpacity style={styles.ownerSection.messageButton}>
+                <Icon
+                  name="chatbox-outline"
+                  style={styles.ownerSection.messageIcon}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.ownerSection.messageButtonContainer}>
-            <TouchableOpacity style={styles.ownerSection.messageButton}>
-              <Text>Icon</Text>
-            </TouchableOpacity>
-          </View>
+
           <View style={styles.phoneSection}>
             <Text style={styles.phoneSection.title}>Phone Number: </Text>
             <Text style={styles.phoneSection.number}>{data.phoneNumber}</Text>
