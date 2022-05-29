@@ -36,16 +36,19 @@ const styles = StyleSheet.create({
     price: {
       color: colors.black,
       fontSize: 15,
-      valueStyle: { fontSize: 20, fontWeight: 'bold' },
-      lengthStyle: { color: colors.darkGray },
     },
+    valueStyle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    lengthStyle: { color: colors.darkGray },
   },
 
   descriptionSection: {
     paddingHorizontal: 20,
     title: { height: 0.05 * height, color: colors.black, fontSize: 20 },
     descriptionContainer: {
-      height: 0.2 * height,
+      minHeight: 0.2 * height,
       backgroundColor: colors.gray,
       borderRadius: 20,
       paddingHorizontal: 10,
@@ -54,6 +57,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     description: { color: colors.black, textAlign: 'center' },
+    readMore: {
+      text: { color: colors.black, fontWeight: 'bold', fontSize: 20 },
+    },
   },
   ownerSection: {
     width: width - 60,

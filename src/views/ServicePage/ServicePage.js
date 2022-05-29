@@ -20,6 +20,7 @@ const { width, height } = Dimensions.get('window');
 
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
+  const [descTooLong, setDescTooLong] = useState(true);
 
   const dummyData = [
     {
@@ -34,7 +35,7 @@ const ServicePage = ({ id }) => {
   ];
 
   useEffect(() => {
-    getData(id, setData);
+    getData(id, setData, setDescTooLong);
   }, []);
 
   return (
@@ -54,11 +55,11 @@ const ServicePage = ({ id }) => {
           </View>
           <View style={styles.priceSection}>
             <Text style={styles.priceSection.price}>
-              <Text style={styles.priceSection.price.valueStyle}>
+              <Text style={styles.priceSection.valueStyle}>
                 {data.price + ' '}
               </Text>
 
-              <Text style={styles.priceSection.price.lengthStyle}>
+              <Text style={styles.priceSection.lengthStyle}>
                 / {data.servType}
               </Text>
             </Text>
