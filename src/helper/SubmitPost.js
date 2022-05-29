@@ -8,7 +8,8 @@ export const submitPost = data => {
     data;
   const bodyFormData = new FormData();
 
-  bodyFormData.append('pictures', images);
+  // bodyFormData.append('pictures', images);
+  bodyFormData.append('pictures', JSON.stringify(images));
   bodyFormData.append('Title', title);
   bodyFormData.append('Description', description);
   bodyFormData.append('PhoneNumber', phoneNumber);
@@ -67,8 +68,13 @@ export const submitPost = data => {
     data: bodyFormData,
     headers: { 'Content-Type': 'multipart/form-data' },
   })
-    .then(res => {
-      console.log(res);
+    .then(response => {
+      console.log('\n\n');
+      console.log(response.data);
+      console.log(response.status);
+      console.log(response.statusText);
+      console.log(response.headers);
+      console.log(response.config);
     })
     .catch(err => {
       if (err.response) {
