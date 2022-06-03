@@ -30,6 +30,26 @@
 		F73E625971B847C19A5A6C33 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC38A576944253AD3C133B /* Octicons.ttf */; };
 		FE1D7325EE1D464D8193600F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */; };
 		631CAC4AA3334CFCBD04E585 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 620550051CFE4021B2E06071 /* Zocial.ttf */; };
+		E48C7D9AAE4343B3BF04AC8D /* Overpass-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */; };
+		882F563376894E0EBAB2BAE9 /* Overpass-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */; };
+		3DDD40CFEFAC43BD91A6F406 /* Overpass-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3BCF2829201403CBA957186 /* Overpass-Black.ttf */; };
+		94B6782137FB4F89BBAF7781 /* Overpass-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6DD850063CA413E9A7FFA0E /* Overpass-BlackItalic.ttf */; };
+		F5780C9A7301449F86890D9B /* Overpass-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9352E972ADB4128BE0D1CD5 /* Overpass-Bold.ttf */; };
+		D7983063BD4E4B75A145F120 /* Overpass-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A09FAB4352CB4B24A69E4F01 /* Overpass-BoldItalic.ttf */; };
+		745F6C0A17914B3096E93A45 /* Overpass-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657C825E5A2F4C5E9A7540BC /* Overpass-ExtraBold.ttf */; };
+		03427BBE1D3D4048976AAAF2 /* Overpass-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E3CA6D0509C4DE888BA0713 /* Overpass-ExtraBoldItalic.ttf */; };
+		16B5DA8268394BEBB76FFBF1 /* Overpass-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55C307AE903642E69A72DD36 /* Overpass-ExtraLight.ttf */; };
+		8DC78FDE5C46490DB9324759 /* Overpass-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80C795EFA25941E8AAD855DD /* Overpass-ExtraLightItalic.ttf */; };
+		1B1E480104FC4330AF3FAB0D /* Overpass-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E93CCF1A0F74D3983B9803D /* Overpass-Italic.ttf */; };
+		9F4E4F2596994FD9BFF6A4AF /* Overpass-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6090480F64DC49C795094240 /* Overpass-Light.ttf */; };
+		F0E4481578194C8DBA468C90 /* Overpass-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89BFF1BCB1B64B8081C5B80D /* Overpass-LightItalic.ttf */; };
+		4ED47E4867CF465C9C26F19B /* Overpass-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAD92815028D4B31B8C64140 /* Overpass-Medium.ttf */; };
+		D385D5C9C123466A959BF968 /* Overpass-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19BA99BDF30749D5BEAE86A1 /* Overpass-MediumItalic.ttf */; };
+		8A9AE47536E44D19AEB69DFE /* Overpass-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1400EF89820D4A67B353DCBF /* Overpass-Regular.ttf */; };
+		C15E7DD55C1E4BEF960A3F22 /* Overpass-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D5844C7C0FA481CB8FA5901 /* Overpass-SemiBold.ttf */; };
+		5652AB3D451F4BF69A8C0D5C /* Overpass-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14A89AA96520411BB02E8895 /* Overpass-SemiBoldItalic.ttf */; };
+		90F8072AC3824AC88C4D82C8 /* Overpass-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 328BE19DCF594B30B05F52B7 /* Overpass-Thin.ttf */; };
+		679C494C68874C6FA2E84E66 /* Overpass-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59414E7C62174DDB9237EBDF /* Overpass-ThinItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +96,26 @@
 		42DC38A576944253AD3C133B /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		620550051CFE4021B2E06071 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-Italic-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3BCF2829201403CBA957186 /* Overpass-Black.ttf */ = {isa = PBXFileReference; name = "Overpass-Black.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A6DD850063CA413E9A7FFA0E /* Overpass-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-BlackItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9352E972ADB4128BE0D1CD5 /* Overpass-Bold.ttf */ = {isa = PBXFileReference; name = "Overpass-Bold.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A09FAB4352CB4B24A69E4F01 /* Overpass-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-BoldItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		657C825E5A2F4C5E9A7540BC /* Overpass-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Overpass-ExtraBold.ttf"; path = "../assets/fonts/Overpass/static/Overpass-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8E3CA6D0509C4DE888BA0713 /* Overpass-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-ExtraBoldItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		55C307AE903642E69A72DD36 /* Overpass-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Overpass-ExtraLight.ttf"; path = "../assets/fonts/Overpass/static/Overpass-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		80C795EFA25941E8AAD855DD /* Overpass-ExtraLightItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-ExtraLightItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-ExtraLightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1E93CCF1A0F74D3983B9803D /* Overpass-Italic.ttf */ = {isa = PBXFileReference; name = "Overpass-Italic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6090480F64DC49C795094240 /* Overpass-Light.ttf */ = {isa = PBXFileReference; name = "Overpass-Light.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		89BFF1BCB1B64B8081C5B80D /* Overpass-LightItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-LightItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CAD92815028D4B31B8C64140 /* Overpass-Medium.ttf */ = {isa = PBXFileReference; name = "Overpass-Medium.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		19BA99BDF30749D5BEAE86A1 /* Overpass-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-MediumItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1400EF89820D4A67B353DCBF /* Overpass-Regular.ttf */ = {isa = PBXFileReference; name = "Overpass-Regular.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9D5844C7C0FA481CB8FA5901 /* Overpass-SemiBold.ttf */ = {isa = PBXFileReference; name = "Overpass-SemiBold.ttf"; path = "../assets/fonts/Overpass/static/Overpass-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14A89AA96520411BB02E8895 /* Overpass-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-SemiBoldItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		328BE19DCF594B30B05F52B7 /* Overpass-Thin.ttf */ = {isa = PBXFileReference; name = "Overpass-Thin.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		59414E7C62174DDB9237EBDF /* Overpass-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Overpass-ThinItalic.ttf"; path = "../assets/fonts/Overpass/static/Overpass-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +240,26 @@
 				42DC38A576944253AD3C133B /* Octicons.ttf */,
 				99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */,
 				620550051CFE4021B2E06071 /* Zocial.ttf */,
+				2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */,
+				4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */,
+				D3BCF2829201403CBA957186 /* Overpass-Black.ttf */,
+				A6DD850063CA413E9A7FFA0E /* Overpass-BlackItalic.ttf */,
+				D9352E972ADB4128BE0D1CD5 /* Overpass-Bold.ttf */,
+				A09FAB4352CB4B24A69E4F01 /* Overpass-BoldItalic.ttf */,
+				657C825E5A2F4C5E9A7540BC /* Overpass-ExtraBold.ttf */,
+				8E3CA6D0509C4DE888BA0713 /* Overpass-ExtraBoldItalic.ttf */,
+				55C307AE903642E69A72DD36 /* Overpass-ExtraLight.ttf */,
+				80C795EFA25941E8AAD855DD /* Overpass-ExtraLightItalic.ttf */,
+				1E93CCF1A0F74D3983B9803D /* Overpass-Italic.ttf */,
+				6090480F64DC49C795094240 /* Overpass-Light.ttf */,
+				89BFF1BCB1B64B8081C5B80D /* Overpass-LightItalic.ttf */,
+				CAD92815028D4B31B8C64140 /* Overpass-Medium.ttf */,
+				19BA99BDF30749D5BEAE86A1 /* Overpass-MediumItalic.ttf */,
+				1400EF89820D4A67B353DCBF /* Overpass-Regular.ttf */,
+				9D5844C7C0FA481CB8FA5901 /* Overpass-SemiBold.ttf */,
+				14A89AA96520411BB02E8895 /* Overpass-SemiBoldItalic.ttf */,
+				328BE19DCF594B30B05F52B7 /* Overpass-Thin.ttf */,
+				59414E7C62174DDB9237EBDF /* Overpass-ThinItalic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -317,6 +377,26 @@
 				F73E625971B847C19A5A6C33 /* Octicons.ttf in Resources */,
 				FE1D7325EE1D464D8193600F /* SimpleLineIcons.ttf in Resources */,
 				631CAC4AA3334CFCBD04E585 /* Zocial.ttf in Resources */,
+				E48C7D9AAE4343B3BF04AC8D /* Overpass-Italic-VariableFont_wght.ttf in Resources */,
+				882F563376894E0EBAB2BAE9 /* Overpass-VariableFont_wght.ttf in Resources */,
+				3DDD40CFEFAC43BD91A6F406 /* Overpass-Black.ttf in Resources */,
+				94B6782137FB4F89BBAF7781 /* Overpass-BlackItalic.ttf in Resources */,
+				F5780C9A7301449F86890D9B /* Overpass-Bold.ttf in Resources */,
+				D7983063BD4E4B75A145F120 /* Overpass-BoldItalic.ttf in Resources */,
+				745F6C0A17914B3096E93A45 /* Overpass-ExtraBold.ttf in Resources */,
+				03427BBE1D3D4048976AAAF2 /* Overpass-ExtraBoldItalic.ttf in Resources */,
+				16B5DA8268394BEBB76FFBF1 /* Overpass-ExtraLight.ttf in Resources */,
+				8DC78FDE5C46490DB9324759 /* Overpass-ExtraLightItalic.ttf in Resources */,
+				1B1E480104FC4330AF3FAB0D /* Overpass-Italic.ttf in Resources */,
+				9F4E4F2596994FD9BFF6A4AF /* Overpass-Light.ttf in Resources */,
+				F0E4481578194C8DBA468C90 /* Overpass-LightItalic.ttf in Resources */,
+				4ED47E4867CF465C9C26F19B /* Overpass-Medium.ttf in Resources */,
+				D385D5C9C123466A959BF968 /* Overpass-MediumItalic.ttf in Resources */,
+				8A9AE47536E44D19AEB69DFE /* Overpass-Regular.ttf in Resources */,
+				C15E7DD55C1E4BEF960A3F22 /* Overpass-SemiBold.ttf in Resources */,
+				5652AB3D451F4BF69A8C0D5C /* Overpass-SemiBoldItalic.ttf in Resources */,
+				90F8072AC3824AC88C4D82C8 /* Overpass-Thin.ttf in Resources */,
+				679C494C68874C6FA2E84E66 /* Overpass-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
