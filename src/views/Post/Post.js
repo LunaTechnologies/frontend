@@ -85,7 +85,7 @@ const Post = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: '#fff'}}>
       <BackArrow />
       <Text style={PostStyles.title}>Post</Text>
 
