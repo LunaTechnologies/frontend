@@ -28,6 +28,7 @@ import { submitPost2 } from '../../helper/SubmitPost2';
 import { PostContext } from '../../contexts/PostContext';
 import PostStyles from './PostStyles';
 
+
 const { width, height } = Dimensions.get('window');
 
 const Post = () => {
@@ -177,7 +178,7 @@ const Post = () => {
       <SubmitButton
         text="Post"
         onPress={() => {
-          submitPost(data);
+          submitPost2(data);
           // submitPost2(data);
         }}
       />
