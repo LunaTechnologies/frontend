@@ -6,21 +6,27 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import PostStyles from './PostStyles';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
 
+// Components
 import BackArrow from '../../components/BackArrow/BackArrow';
 import PostField from '../../components/PostField/PostField';
 import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
 import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTextInput';
-import { PostContext } from '../../contexts/PostContext';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
+// Packages
+import Icon from 'react-native-vector-icons/dist/AntDesign';
 import * as ImagePicker from 'react-native-image-picker';
 
+// Helpers
 import { submitPost } from '../../helper/SubmitPost';
+import { submitPost2 } from '../../helper/SubmitPost2';
+
+// Contexts + Styles
+import { PostContext } from '../../contexts/PostContext';
+import PostStyles from './PostStyles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -46,29 +52,19 @@ const Post = () => {
   const addImages = () => {
     const options = { selectionLimit: 0 };
     ImagePicker.launchImageLibrary(options, response => {
-      // const selectedImages = response.assets.map(x => {
-      //   return {
-      //     path: x.uri,
-      //   };
-      // });
-      // console.log('Add Image Response: ', selectedImages);
-      // setImages(selectedImages);
-      // console.log(response);
-      // console.log(response.assets);
+
       const pictures = response.assets.map(x => {
-        return { uri: x.uri, type: x.type, fileName: x.fileName };
+        return { 
+          name: x.fileName,
+          type: x.type, 
+          uri: Platform.OS === 'ios'? x.uri.replace('file://', '') : x.uri ,
+        };
       });
-      const firstPicture = response.assets[0];
-      const picture = {
-        uri: firstPicture.uri,
-        type: firstPicture.type,
-        fileName: firstPicture.fileName,
-      };
+      const firstPicture = pictures[0];
+      console.log(firstPicture)
+
+      setImages(pictures);
       // console.log(pictures);
-      console.log(picture);
-      // const picture = {response.assets}
-      // setImages(response);
-      setImages(picture);
     });
   };
 
@@ -182,6 +178,7 @@ const Post = () => {
         text="Post"
         onPress={() => {
           submitPost(data);
+          // submitPost2(data);
         }}
       />
     </SafeAreaView>
