@@ -29,12 +29,12 @@ const submitPost = data => {
   formData.append('Price', parseFloat(price));
   formData.append('ServType', 'zi');
 
-  const token = getToken();
-  if (!token) {
-    // TODO Handle error
-    console.error('Token Error');
-    return;
-  }
+  // const token = getToken();
+  // if (!token) {
+  //   // TODO Handle error
+  //   console.error('Token Error');
+  //   return;
+  // }
 
   axios({
     method: 'post',
@@ -42,11 +42,11 @@ const submitPost = data => {
     data: formData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${tokenTest}`,
     },
   })
     .then(res => console.log(res.data))
-    .catch(err => console.error(err));
+    .catch(err => console.error(err.config));
 };
 
 export { submitPost };

@@ -21,8 +21,7 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 import * as ImagePicker from 'react-native-image-picker';
 
 // Helpers
-import { submitPost } from '../../helper/SubmitPost';
-import { submitPost2 } from '../../helper/SubmitPost2';
+import { submitPost } from '../../helper/SubmitPost2';
 
 // Contexts + Styles
 import { PostContext } from '../../contexts/PostContext';
@@ -178,8 +177,7 @@ const Post = () => {
       <SubmitButton
         text="Post"
         onPress={() => {
-          submitPost2(data);
-          // submitPost2(data);
+          submitPost(data);
         }}
       />
     </SafeAreaView>

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import PostFieldTextInputStyles from './PostFieldTextInputStyles';
 import PostContext from '../../contexts/PostContext';
+import { colors } from '../../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -34,7 +35,8 @@ const PostFieldTextInput = props => {
             ? 'default'
             : 'numeric'
         }
-        placeholder={props.placeholder}></TextInput>
+        placeholder={props.placeholder}
+        placeholderTextColor={colors.darkGray}></TextInput>
     </TouchableWithoutFeedback>
   );
 };
