@@ -48,7 +48,6 @@ const Post = () => {
     phoneNumber,
   };
 
-  // TODO Fix on close with no immage error
   const addImages = () => {
     const options = {
       title: 'Select Image',
@@ -56,6 +55,10 @@ const Post = () => {
       options: { selectionLimit: 0 },
     };
     ImagePicker.launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        alert('Cancelled image picker');
+        return;
+      }
       const pictures = response.assets.map(x => {
         return {
           name: x.fileName,
@@ -63,6 +66,7 @@ const Post = () => {
           uri: Platform.OS === 'ios' ? x.uri.replace('file://', '') : x.uri,
         };
       });
+
       const firstPicture = pictures[0];
       console.log(pictures);
 
