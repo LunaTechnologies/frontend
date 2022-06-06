@@ -153,6 +153,7 @@ const Home = () => {
         </View>
       </View>
     </SafeAreaView>
+
   );
 };
 
