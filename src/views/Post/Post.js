@@ -27,7 +27,6 @@ import { submitPost } from '../../helper/SubmitPost2';
 import { PostContext } from '../../contexts/PostContext';
 import PostStyles from './PostStyles';
 
-
 const { width, height } = Dimensions.get('window');
 
 const Post = () => {
@@ -49,21 +48,25 @@ const Post = () => {
     phoneNumber,
   };
 
+  // TODO Fix on close with no immage error
   const addImages = () => {
-    const options = { selectionLimit: 0 };
+    const options = {
+      title: 'Select Image',
+      type: 'library',
+      options: { selectionLimit: 0 },
+    };
     ImagePicker.launchImageLibrary(options, response => {
-
       const pictures = response.assets.map(x => {
-        return { 
+        return {
           name: x.fileName,
-          type: x.type, 
-          uri: Platform.OS === 'ios'? x.uri.replace('file://', '') : x.uri ,
+          type: x.type,
+          uri: Platform.OS === 'ios' ? x.uri.replace('file://', '') : x.uri,
         };
       });
       const firstPicture = pictures[0];
-      console.log(firstPicture)
+      console.log(pictures);
 
-      setImages(pictures);
+      setImages([...images, ...pictures]);
       // console.log(pictures);
     });
   };
@@ -84,7 +87,7 @@ const Post = () => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#fff'}}>
+    <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <BackArrow />
       <Text style={PostStyles.title}>Post</Text>
 
