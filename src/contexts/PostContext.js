@@ -4,8 +4,7 @@ export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
   const [title, setTitle] = useState('');
-  // const [images, setImages] = useState([]);
-  const [images, setImages] = useState({});
+  const [images, setImages] = useState([]);
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [currency, setCurrency] = useState('Lei');

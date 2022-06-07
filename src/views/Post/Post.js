@@ -30,6 +30,7 @@ import PostStyles from './PostStyles';
 const { width, height } = Dimensions.get('window');
 
 const Post = () => {
+  // States
   const { title, setTitle } = useContext(PostContext);
   const { images, setImages } = useContext(PostContext);
   const { description, setDescription } = useContext(PostContext);
@@ -48,11 +49,12 @@ const Post = () => {
     phoneNumber,
   };
 
+  // Image Picker
   const addImages = () => {
     const options = {
       title: 'Select Image',
       type: 'library',
-      options: { selectionLimit: 0 },
+      selectionLimit: 0,
     };
     ImagePicker.launchImageLibrary(options, response => {
       if (response.didCancel) {
@@ -67,27 +69,10 @@ const Post = () => {
         };
       });
 
-      const firstPicture = pictures[0];
       console.log(pictures);
-
       setImages([...images, ...pictures]);
-      // console.log(pictures);
+
     });
-  };
-
-  const post = () => {
-    /*
-{"title": "string","description":"string","phoneNumber": "string","price": 0,"username": "string","servType": "string","pictures": [{"path": "string"}]}
-
-    */
-    // console.log('Posted!');
-    console.log(title);
-    console.log(images);
-    console.log(description);
-    console.log(price);
-    console.log(currency);
-    console.log(payedPer);
-    console.log(phoneNumber);
   };
 
   return (

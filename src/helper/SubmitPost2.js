@@ -19,8 +19,8 @@ const submitPost = data => {
   const { title, images, description, price, currency, payedPer, phoneNumber } =
     data;
   const tokenTest =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwibmFtZSI6InRlc3RfdXNlcm5hbWUiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDQ5OTY5OCwiZXhwIjoxNjU0NTAwMjk4LCJpYXQiOjE2NTQ0OTk2OTh9.7vQqU8WbsHA07IgCXa7GA8Wtwf97RxMm1baOhjDoT5Q';
-  const refreshTest = '3aEELS1mQCeRAjUL9EsHQucfyg9ZLiL3ODaH9/NKtxY=';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDU4MjM0OCwiZXhwIjoxNjU0NTgyOTQ4LCJpYXQiOjE2NTQ1ODIzNDh9.1rzhRxMRWGVPsdQFo65Y2QbvlnNqyCn-NskOsM4DtO8';
+  const refreshTest = '9YN50pn7hAZq16Y9sl+U08+RakUz2S4YA3j4qYUhl7U=';
 
   const formData = new FormData();
 
