@@ -1,6 +1,7 @@
 import Axios from 'axios';
+import { RENTAL_API_URL } from '@env';
 
-const url = 'https://bcba-54-165-38-8.ngrok.io';
+const url = RENTAL_API_URL;
 
 const getData = (IdentificationString, setData, setDescTooLong) => {
   Axios.get(`${url}/api/Service/GetServiceByIdentificationString`, {
