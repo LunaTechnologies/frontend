@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
-    text: { color: colors.white },
+    text: { color: colors.white, fontSize: 20 },
   },
 });
 

@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { RENTAL_API_URL } from '@env';
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
-const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
+const apiurl = RENTAL_API_URL;
 
 const validate = (data, errors) => {
   const { email, password } = data;
