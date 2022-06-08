@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import { RENTAL_API_URL } from '@env';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 const apiurl = 'https://bcba-54-165-38-8.ngrok.io';
 
@@ -69,7 +69,6 @@ const submit = (body, login, errors) => {
     }
 
     try {
-      console.log(res.data.accessToken);
       await AsyncStorage.setItem('accessToken', res.data.accessToken);
       await AsyncStorage.setItem('refreshToken', res.data.refreshToken);
     } catch (err) {
