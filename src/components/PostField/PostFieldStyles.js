@@ -11,9 +11,4 @@ export default PostFieldStyles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  children: {
-    width: '100%',
-    justifyContent: 'space-around',
-    zIndex: 1,
-  },
 });

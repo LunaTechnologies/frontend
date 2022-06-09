@@ -12,13 +12,7 @@ const PostField = props => {
       }}>
       <PostFieldTitle text={props.text} />
 
-      <View
-        style={{
-          ...PostFieldStyles.children,
-          ...props.style,
-        }}>
-        {props.children}
-      </View>
+      <View>{props.children}</View>
     </SafeAreaView>
   );
 };

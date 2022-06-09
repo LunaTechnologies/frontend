@@ -133,23 +133,17 @@ const Post = () => {
         text="Payed Per"
         style={{
           flexDirection: 'row',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          backgroundColor: 'red',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          // backgroundColor: 'red',
+          height: 0.1 * height,
           zIndex: 3,
         }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 0.1 * height,
-            // backgroundColor: 'red',
-          }}>
-          <Dropdown
-            style={{ width: 0.5 * width }}
-            state={[payedPer, setPayedPer]}
-            options={['Hour', 'Day', 'Week', 'Month']}
-          />
-        </View>
+        <Dropdown
+          style={{ width: 0.4 * width }}
+          state={[payedPer, setPayedPer]}
+          options={['Hour', 'Day', 'Week', 'Month']}
+        />
       </PostField>
 
       <PostField text="Add Phone Number">
