@@ -108,7 +108,7 @@ const Post = () => {
         />
       </PostField>
 
-      <PostField text="Select Price">
+      <PostField text="Select Price" style={{ zIndex: 4 }}>
         <View
           style={{
             flexDirection: 'row',
@@ -136,6 +136,7 @@ const Post = () => {
           // justifyContent: 'center',
           // alignItems: 'center',
           backgroundColor: 'red',
+          zIndex: 3,
         }}>
         <View
           style={{
