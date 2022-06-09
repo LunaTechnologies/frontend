@@ -15,6 +15,7 @@ import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTex
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 // Packages
 import Icon from 'react-native-vector-icons/dist/AntDesign';
@@ -80,7 +81,7 @@ const Post = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <BackArrow />
-      <Text style={PostStyles.title}>Post</Text>
+      <PageTitle text="Post" />
 
       <PostField text="Add Title">
         <PostFieldTextInput
