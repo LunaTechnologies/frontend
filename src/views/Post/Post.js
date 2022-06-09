@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
@@ -49,6 +49,8 @@ const Post = () => {
     phoneNumber,
   };
 
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+
   // Image Picker
   const addImages = () => {
     const options = {
@@ -82,7 +84,7 @@ const Post = () => {
 
       <PostField text="Add Title">
         <PostFieldTextInput
-          state={{ value: title, setValue: setTitle }}
+          state={[title, setTitle]}
           placeholder="ex: iPhone 8"
         />
       </PostField>
@@ -100,7 +102,7 @@ const Post = () => {
       <PostField text="Add Description">
         <PostFieldTextInput
           style={{ height: 0.25 * height, textAlignVertical: 'top' }}
-          state={{ value: description, setValue: setDescription }}
+          state={[description, setDescription]}
           multiline={true}
           placeholder="Add the details you would like to see in a post! :)"
         />
@@ -115,13 +117,13 @@ const Post = () => {
           }}>
           <PostFieldTextInput
             style={{ width: 0.5 * width }}
-            state={{ value: price, setValue: setPrice }}
+            state={[price, setPrice]}
             keyboardType="numeric"
             placeholder="ex: 100"
           />
           <Dropdown
             style={{ width: 0.3 * width }}
-            state={{ selectedOption: currency, setSelectedOption: setCurrency }}
+            state={[currency, setCurrency]}
             options={['Lei', 'Euro', 'USD', 'GBP']}
           />
         </View>
@@ -143,7 +145,7 @@ const Post = () => {
           }}>
           <Dropdown
             style={{ width: 0.5 * width }}
-            state={{ selectedOption: payedPer, setSelectedOption: setPayedPer }}
+            state={[payedPer, setPayedPer]}
             options={['Hour', 'Day', 'Week', 'Month']}
           />
         </View>
@@ -151,7 +153,7 @@ const Post = () => {
 
       <PostField text="Add Phone Number">
         <PostFieldTextInput
-          state={{ value: phoneNumber, setValue: setPhoneNumber }}
+          state={[phoneNumber, setPhoneNumber]}
           keyboardType="numeric"
           placeholder="ex: 0123 456 789"
         />
@@ -163,13 +165,15 @@ const Post = () => {
           text="I agree to the terms and conditions"
           style={{ fontSize: 16, marginBottom: 0 }}
         />
-        <Switch />
+        <Switch state={[agreedToTerms, setAgreedToTerms]} />
       </View>
 
       <SubmitButton
         text="Post"
         onPress={() => {
-          submitPost(data);
+          agreedToTerms
+            ? submitPost(data)
+            : alert('You must agree to the terms and conditions!');
         }}
       />
     </SafeAreaView>

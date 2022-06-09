@@ -14,8 +14,8 @@ const { width, height } = Dimensions.get('window');
 const offset = SwitchStyles.circle.left;
 const initialOffset = SwitchStyles.circle.right;
 
-const Switch = () => {
-  const [toggled, setToggled] = useState(false);
+const Switch = props => {
+  const [toggled, setToggled] = props?.state ? props.state : useState(false);
   return (
     <TouchableOpacity
       style={{

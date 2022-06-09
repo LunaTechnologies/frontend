@@ -13,7 +13,7 @@ import { colors } from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 
 const PostFieldTextInput = props => {
-  const { value, setValue } = props.state;
+  const [value, setValue] = props.state;
 
   return (
     <TouchableWithoutFeedback

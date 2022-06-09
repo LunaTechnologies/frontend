@@ -13,7 +13,7 @@ const { width, height } = Dimensions.get('window');
 
 const Dropdown = props => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const { selectedOption, setSelectedOption } = props.state;
+  const [selectedOption, setSelectedOption] = props.state;
 
   return (
     <SafeAreaView
