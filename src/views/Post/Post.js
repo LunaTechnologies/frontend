@@ -21,7 +21,7 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 import * as ImagePicker from 'react-native-image-picker';
 
 // Helpers
-import { submitPost } from '../../helper/SubmitPost2';
+import { submitPost } from '../../helper/SubmitPost';
 
 // Contexts + Styles
 import { PostContext } from '../../contexts/PostContext';
@@ -56,6 +56,7 @@ const Post = () => {
       type: 'library',
       selectionLimit: 0,
     };
+
     ImagePicker.launchImageLibrary(options, response => {
       if (response.didCancel) {
         alert('Cancelled image picker');
@@ -71,7 +72,6 @@ const Post = () => {
 
       console.log(pictures);
       setImages([...images, ...pictures]);
-
     });
   };
 

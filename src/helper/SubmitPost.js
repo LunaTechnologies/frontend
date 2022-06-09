@@ -1,126 +1,65 @@
-import Axios from 'axios';
 import axios from 'axios';
 import { RENTAL_API_URL } from '@env';
-import { ACCESS_TOKEN } from '@env';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import { refresh } from '../utils/refreshToken';
+
+const getToken = async () => {
+  try {
+    const token = await AsyncStorage.getItem('accessToken');
+    return token;
+  } catch (err) {
+    console.error('AsyncStorage error STATUS:', err); // TODO Handle errors better
+  }
+};
 
 export const submitPost = data => {
-  const url = `${RENTAL_API_URL}/api/Service`;
-  // const token = ACCESS_TOKEN;
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDQyNjM3OSwiZXhwIjoxNjU0NDI2OTc5LCJpYXQiOjE2NTQ0MjYzNzl9.EGAT3Ul_MoOupctb2Vhmqpjk0kNKxcOE6HqDEZ5Ej2g';
-
+  const url = `${RENTAL_API_URL}/api/Service/CreateService`;
   const { title, images, description, price, currency, payedPer, phoneNumber } =
     data;
-  const bodyFormData = new FormData();
 
-  // // bodyFormData.append('pictures', images);
-  // // bodyFormData.append('pictures', JSON.stringify(images));
-  // bodyFormData.append('pictures', JSON.stringify(images));
-  // bodyFormData.append('Title', title);
-  // bodyFormData.append('Description', description);
-  // bodyFormData.append('PhoneNumber', phoneNumber);
-  // // bodyFormData.append('Price', parseFloat(price));
-  // bodyFormData.append('Price', 0);
-  // // bodyFormData.append('Username', 'alexeu123');
-  // // bodyFormData.append('ServType', payedPer);
-  // bodyFormData.append('ServType', 'zi');
-  // // bodyFormData.append('', );
+  const refreshTest = 'shLuQH7DTHA2s5MM084JD1zaIZf+CjdsOKAtYYGy8sw=';
 
+  const tokenTest =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDczNDczNCwiZXhwIjoxNjU0NzM1MzM0LCJpYXQiOjE2NTQ3MzQ3MzR9.of6ju_hWiPnzD4-_h4rHhaMxGvDX9xPy-oPMi-5vqd0';
 
+  const formData = new FormData();
 
-  bodyFormData.append('pictures', JSON.stringify(images));
-  bodyFormData.append('Title', "Titlu");
-  bodyFormData.append('Description', "Descriere");
-  bodyFormData.append('PhoneNumber', "07321");
-  bodyFormData.append('Price', 0);
-  bodyFormData.append('ServType', 'zi');
+  console.log(images);
 
+  images.forEach(image =>
+    formData.append('pictures', {
+      name: image.name,
+      uri: image.uri,
+      type: image.type,
+    }),
+  );
+  formData.append('Title', title);
+  formData.append('Description', description);
+  formData.append('PhoneNumber', phoneNumber);
+  formData.append('Price', parseFloat(price));
+  formData.append('ServType', 'zi');
 
-  console.log(bodyFormData);
-
-
-  console.log(`${url}/CreateService`)
+  // const token = getToken();
+  // if (!token) {
+  //   // TODO Handle error
+  //   console.error('Token Error');
+  //   return;
+  // }
 
   axios({
     method: 'post',
-    url: `${url}/CreateService`,
-    data: bodyFormData,
-    headers: { 'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${token}`},
+    url,
+    data: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${tokenTest}`,
+    },
   })
-    .then(response => {
-      console.log("\n\nRASPUNS\n\n")
-
-      console.log('\n\n');
-      // console.log(response.data);
-      console.log(response.status);
-      console.log(response.statusText);
-      // console.log(response.headers);
-      // console.log(response.config);
-    })
+    .then(res => console.log(res.data))
     .catch(err => {
-      console.log("\n\nEROARE\n\n")
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        // console.log('aici');
-        // console.log(err.response.headers);
+      if (err.message.search('401') != -1) {
+        refresh(tokenTest, refreshTest);
       }
-      console.log(err.message);
-      // console.log(err.request);
-      // console.log(err.config);
+      console.error(err.response.data ? err.response.data : err);
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Axios.get(
-  //   `${url}/GetServiceByIdentificationString?IdentificationString=Pc7kwl2FzOIooBH`,
-  // )
-  //   .then(response => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-
-  // Axios.post(`${url}/CreateService`, bodyFormData)
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  // });
-  // axios({
-  //   method: 'post',
-  //   url: `${url}/CreateService`,
-  //   data: bodyFormData,
-  //   headers: { 'Content-Type': 'multipart/form-data' },
-  // })
-  //   .then(response => {
-  //     //handle success
-  //     console.log(response);
-  //   })
-  //   .catch(err => {
-  //     //handle error
-  //     console.log(err);
-  //   });
-
-  // Axios.post(`${url}/CreateService`, bodyFormData)
-  //   .then(res => {
-  //     console.log(res);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-
-
 };
