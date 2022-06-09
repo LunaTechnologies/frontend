@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { colors } from '../../constants/colors';
+import {StyleSheet, Dimensions} from 'react-native';
+import {colors} from '../../constants/colors';
+
+const {width, height} = Dimensions.get('window');
 
 export default BackArrowStyles = StyleSheet.create({
   global: {
@@ -10,7 +12,7 @@ export default BackArrowStyles = StyleSheet.create({
   },
 
   arrow: {
-    color: colors.white,
+    color: colors.black,
     fontSize: 30,
   },
 });
