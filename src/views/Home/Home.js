@@ -10,6 +10,7 @@ import {
 
 // Components
 import PageTitle from '../../components/PageTitle/PageTitle';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import Tab from '../../components/Tab/Tab';
 // Packages
 
@@ -25,7 +26,7 @@ const Home = () => {
   // States
 
   const tabOptions = ['Home', 'Office', 'Terace', 'Club'];
-
+  const [search, setSearch] = useState('');
   return (
     <SafeAreaView>
       <PageTitle text="Catalog" style={HomeStyles.title} />
@@ -37,6 +38,10 @@ const Home = () => {
           return <Tab key={index} text={tab} />;
         })}
       </ScrollView>
+      <SearchBar
+        state={[search, setSearch]}
+        style={{ marginTop: 20, marginBotton: 20 }}
+      />
     </SafeAreaView>
   );
 };

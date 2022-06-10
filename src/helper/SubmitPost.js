@@ -17,10 +17,10 @@ export const submitPost = data => {
   const { title, images, description, price, currency, payedPer, phoneNumber } =
     data;
 
-  const refreshTest = 'shLuQH7DTHA2s5MM084JD1zaIZf+CjdsOKAtYYGy8sw=';
+  const refreshTest = 'DiECOWvvK0r8HGPpeT5k2VnuHDQHZxJ+pSVwck8bMgM=';
 
   const tokenTest =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDczNDczNCwiZXhwIjoxNjU0NzM1MzM0LCJpYXQiOjE2NTQ3MzQ3MzR9.of6ju_hWiPnzD4-_h4rHhaMxGvDX9xPy-oPMi-5vqd0';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDg1MDEyNywiZXhwIjoxNjU0ODUwNzI3LCJpYXQiOjE2NTQ4NTAxMjd9.MPbFTGwnZHJbm5JD-r7nuu02aQcLtu9ptq4H5gXxSUg';
 
   const formData = new FormData();
 
@@ -37,7 +37,7 @@ export const submitPost = data => {
   formData.append('Description', description);
   formData.append('PhoneNumber', phoneNumber);
   formData.append('Price', parseFloat(price));
-  formData.append('ServType', 'zi');
+  formData.append('ServType', 'Day');
 
   // const token = getToken();
   // if (!token) {

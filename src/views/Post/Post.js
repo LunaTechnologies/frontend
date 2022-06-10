@@ -122,11 +122,11 @@ const Post = () => {
             keyboardType="numeric"
             placeholder="ex: 100"
           />
-          <Dropdown
+          {/* <Dropdown
             style={{ width: 0.3 * width }}
             state={[currency, setCurrency]}
             options={['Lei', 'Euro', 'USD', 'GBP']}
-          />
+          /> */}
         </View>
       </PostField>
 
