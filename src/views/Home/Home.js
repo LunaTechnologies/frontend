@@ -45,23 +45,7 @@ const Home = () => {
         })}
       </ScrollView>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: 20,
-          marginBotton: 20,
-          // marginLeft: 'auto',
-          // marginRight: 'auto',
-          // paddingLeft: 'auto',
-          // paddingRight: 'auto',
-
-          // justifyContent: 'space-evenly',
-          justifyContent: 'center',
-          alignItems: 'center',
-          // width: '100%',
-          height: 0.1 * height,
-          // backgroundColor: 'green',
-        }}>
+      <View style={HomeStyles.searchContainer}>
         <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
         <TouchableOpacity
           onPress={filterOptions}
@@ -74,14 +58,6 @@ const Home = () => {
             }}
           />
         </TouchableOpacity>
-        {/* 
-        <Icon
-          name="options"
-          style={{
-            ...SearchBarStyles.searchIcon,
-            ...HomeStyles.filterOptionsIcon,
-          }}
-        /> */}
       </View>
     </SafeAreaView>
   );

@@ -16,19 +16,25 @@ export default HomeStyles = StyleSheet.create({
     marginLeft: 16,
   },
 
+  searchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBotton: 20,
+    height: 0.1 * height,
+    // backgroundColor: 'green',
+  },
+
   filterOptionsContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
     width: '12%',
-
     // backgroundColor: 'blue',
   },
 
   filterOptionsIcon: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-
     fontSize: 30,
   },
 });
