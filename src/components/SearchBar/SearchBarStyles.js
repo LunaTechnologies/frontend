@@ -7,9 +7,9 @@ export default SearchBarStyles = StyleSheet.create({
   container: {
     // backgroundColor: 'green',
     height: 0.08 * height,
-    width: 0.7 * width,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: 0.8 * width,
+    // marginLeft: 'auto',
+    // marginRight: 'auto',
     borderWidth: 1,
     borderColor: colors.black,
     borderRadius: 12,

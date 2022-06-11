@@ -15,4 +15,20 @@ export default HomeStyles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 16,
   },
+
+  filterOptionsContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '12%',
+
+    // backgroundColor: 'blue',
+  },
+
+  filterOptionsIcon: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+
+    fontSize: 30,
+  },
 });
