@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('window');
 
 export default TabStyles = StyleSheet.create({
   container: {
-    height: 0.06 * height,
+    height: 0.065 * height,
     width: 0.25 * width,
     backgroundColor: colors.darkerGray,
     borderRadius: 20,

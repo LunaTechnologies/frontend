@@ -37,6 +37,7 @@ const Home = () => {
     <SafeAreaView>
       <PageTitle text="Catalog" style={HomeStyles.title} />
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         style={HomeStyles.tabs}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>

@@ -21,14 +21,14 @@ import { PostProvider } from './src/contexts/PostContext';
 
 const App = () => {
   return (
-    <ScrollView>
+    <ScrollView keyboardShouldPersistTaps="handled">
       {/* <Login /> */}
       {/* <ServicePage id="Pc7kwl2FzOIooBH" /> */}
       {/* <ServicePage id="JpxBeQxT1Jlassq" /> */}
-      <PostProvider>
+      {/* <PostProvider>
         <Post />
-      </PostProvider>
-      {/* <Home /> */}
+      </PostProvider> */}
+      <Home />
     </ScrollView>
   );
 };
