@@ -23,7 +23,7 @@ export default HomeStyles = StyleSheet.create({
     marginTop: 20,
     marginBotton: 20,
     height: 0.1 * height,
-    // backgroundColor: 'green',
+    backgroundColor: 'green',
   },
 
   filterOptionsContainer: {
