@@ -11,7 +11,7 @@ export default SearchBarStyles = StyleSheet.create({
     // marginLeft: 'auto',
     // marginRight: 'auto',
     borderWidth: 1,
-    borderColor: colors.black,
+    // borderColor: colors.black,
     borderRadius: 12,
     flexDirection: 'row',
   },
@@ -37,5 +37,20 @@ export default SearchBarStyles = StyleSheet.create({
   searchIcon: {
     color: colors.black,
     fontSize: 24,
+  },
+  error: {
+    container: {
+      width,
+      height: 0.01 * height,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    text: {
+      color: colors.red,
+      fontSize: 20,
+      width,
+      height: 0.01 * height,
+    },
   },
 });

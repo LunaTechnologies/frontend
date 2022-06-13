@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -12,32 +12,46 @@ import {
 // Components
 import PageTitle from '../../components/PageTitle/PageTitle';
 import Tab from '../../components/Tab/Tab';
+import ErrorText from '../ErrorText/ErrorText';
 
 // Packages
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 // Helpers
+import { searchService } from '../../helper/SearchByTitle';
 
 // Contexts + Styles
-
+import { colors } from '../../constants/colors';
 import SearchBarStyles from './SearchBarStyles';
-
-const { width, height } = Dimensions.get('window');
 
 const SearchBar = ({ state, style }) => {
   // States
   const [search, setSearch] = state;
+  const [errorNotFound, setErrorNotFound] = useState(false);
+
   const clearButtonCondition = search.toString().length > 0;
-  const searchService = () => {
-    alert(search);
-  };
+
+  useEffect(() => {
+    if (search === '') setErrorNotFound(false);
+  }, [search]);
 
   return (
-    <SafeAreaView style={{ ...SearchBarStyles.container, ...style }}>
+    <SafeAreaView
+      style={{
+        borderColor: errorNotFound ? colors.red : colors.black,
+        ...SearchBarStyles.container,
+        ...style,
+      }}>
       <TouchableOpacity
         style={SearchBarStyles.searchIconContainer}
-        onPress={searchService}>
-        <Icon name="search1" style={SearchBarStyles.searchIcon} />
+        onPress={() => searchService(search, setErrorNotFound)}>
+        <Icon
+          name="search1"
+          style={{
+            ...SearchBarStyles.searchIcon,
+            color: errorNotFound ? colors.red : colors.black,
+          }}
+        />
       </TouchableOpacity>
       <TextInput
         style={{
@@ -51,8 +65,17 @@ const SearchBar = ({ state, style }) => {
       {clearButtonCondition && (
         <TouchableOpacity
           style={SearchBarStyles.searchIconContainer}
-          onPress={() => setSearch('')}>
-          <Icon name="close" style={SearchBarStyles.searchIcon} />
+          onPress={() => {
+            setSearch('');
+            setErrorNotFound(false);
+          }}>
+          <Icon
+            name="close"
+            style={{
+              ...SearchBarStyles.searchIcon,
+              color: errorNotFound && colors.red,
+            }}
+          />
         </TouchableOpacity>
       )}
     </SafeAreaView>
