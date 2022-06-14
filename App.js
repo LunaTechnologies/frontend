@@ -8,9 +8,11 @@ import Post from './src/views/Post/Post';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PostProvider } from './src/contexts/PostContext';
+import { LogBox } from 'react-native';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
+  LogBox.ignoreAllLogs();
 
   return (
     <NavigationContainer>

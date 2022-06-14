@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // Components
 import BackArrow from '../../components/BackArrow/BackArrow';
@@ -53,6 +54,7 @@ const Post = () => {
 
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [servTypes, setServTypes] = useState([]);
+  const navigation = useNavigation();
 
   // Image Picker
   const addImages = () => {
@@ -192,7 +194,7 @@ const Post = () => {
           text="Post"
           onPress={() => {
             agreedToTerms
-              ? submitPost(data)
+              ? submitPost(data, navigation)
               : alert('You must agree to the terms and conditions!');
           }}
         />

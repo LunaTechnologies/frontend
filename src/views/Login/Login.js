@@ -16,7 +16,6 @@ import styles from './LoginStyles';
 
 import {
   emailExists,
-  submit,
   usernameExists,
   validate,
 } from '../../helper/Auth';

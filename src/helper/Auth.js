@@ -76,6 +76,7 @@ const submit = (body, login, state) => {
     try {
       await AsyncStorage.setItem('accessToken', accessToken);
       await AsyncStorage.setItem('refreshToken', refreshToken);
+      console.log(await AsyncStorage.getItem('refreshToken'));
       console.log('Login successfull');
       state.navigation.navigate('Home');
     } catch (err) {
