@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 // Components
+import Price from '../Price/Price';
 
 // Packages
 import Icon from 'react-native-vector-icons/dist/AntDesign';
@@ -46,6 +47,7 @@ const ServiceCard = ({ service }) => {
         style={ServiceCardStyles.image}
         source={{ uri: service.thumbnailPath.path }}
       />
+
       <TouchableOpacity
         onPress={favoriteIconOnPress}
         style={ServiceCardStyles.favoriteIconContainer}>
@@ -59,16 +61,8 @@ const ServiceCard = ({ service }) => {
       </TouchableOpacity>
 
       <Text style={{ ...ServiceCardStyles.cardText }}>{service.title}</Text>
-      <View style={ServiceCardStyles.cardPriceContainer}>
-        <Text style={{ ...ServiceCardStyles.cardText }}>${service.price}</Text>
-        <Text
-          style={{
-            ...ServiceCardStyles.cardText,
-            ...ServiceCardStyles.cardServType,
-          }}>
-          /{service.servType}
-        </Text>
-      </View>
+
+      <Price service={service} />
     </TouchableOpacity>
   );
 };

@@ -19,7 +19,14 @@ export default HomeStyles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    textTransform: 'capitalize',
+    textAlignVertical: 'center',
+    color: colors.black,
+    // backgroundColor: 'red',
+  },
   tabs: {
     // flexDirection: 'row',
     // backgroundColor: 'pink',
@@ -31,7 +38,7 @@ export default HomeStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
-    marginBotton: 30,
+    marginBottom: 10,
     height: 0.1 * height,
     // backgroundColor: 'green',
   },
@@ -47,17 +54,39 @@ export default HomeStyles = StyleSheet.create({
   filterOptionsIcon: {
     fontSize: 30,
   },
-
-  cardsContainer: {
-    marginTop: 30,
-    marginBotton: 30,
-    // backgroundColor: 'yellow',
-  },
-
-  specialOfferImage: {
-    height: 0.2 * height,
-    width: 0.8 * width,
+  textContainer: {
+    justifyContent: 'space-between',
+    // backgroundColor: 'red',
+    width: 0.9 * width,
+    marginTop: 0,
+    marginBottom: 10,
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  cardsContainer: {
+    marginBottom: 30,
+    // backgroundColor: 'yellow',
+  },
+  specialOfferContainer: {
+    marginTop: 10,
+    marginBottom: 0.5 * height,
+    backgroundColor: 'yellow',
+  },
+  specialOfferImage: {
+    height: 0.2 * height,
+    width: 0.9 * width,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 20,
+  },
+  specialOfferTextContainer: {
+    backgroundColor: 'green',
+    position: 'absolute',
+    left: 0.1 * width,
+    top: 0.05 * height,
+  },
+  specialOfferText: {
+    color: colors.white,
+    fontSize: 16,
   },
 });

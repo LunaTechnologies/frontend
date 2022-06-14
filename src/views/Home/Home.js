@@ -13,6 +13,9 @@ import {
 import PageTitle from '../../components/PageTitle/PageTitle';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Tab from '../../components/Tab/Tab';
+import ServiceCard from '../../components/ServiceCard/ServiceCard';
+import Price from '../../components/Price/Price';
+
 // Packages
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 
@@ -22,8 +25,8 @@ import { getRandomServices } from '../../helper/GetRandomServices';
 // Contexts + Styles
 import SearchBarStyles from '../../components/SearchBar/SearchBarStyles';
 import HomeStyles from './HomeStyles';
-import ServiceCard from '../../components/ServiceCard/ServiceCard';
-import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
+import ServiceCardStyles from '../../components/ServiceCard/ServiceCardStyles';
+import { colors } from '../../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -108,6 +111,16 @@ const Home = () => {
           />
         </TouchableOpacity>
       </View>
+      <View
+        style={{
+          ...HomeStyles.searchContainer,
+          ...HomeStyles.textContainer,
+        }}>
+        <Text style={HomeStyles.subtitle}>New Offers For You</Text>
+        <TouchableOpacity>
+          <Text style={{ ...HomeStyles.subtitle, fontSize: 16 }}>View All</Text>
+        </TouchableOpacity>
+      </View>
 
       <ScrollView
         keyboardShouldPersistTaps="handled"
@@ -118,10 +131,26 @@ const Home = () => {
           return <ServiceCard key={index} service={service} />;
         })}
       </ScrollView>
-      <Image
-        style={HomeStyles.specialOfferImage}
-        source={{ uri: specialOffer.thumbnailPath.path }}
-      />
+
+      <Text
+        style={{
+          ...HomeStyles.textContainer,
+          ...HomeStyles.subtitle,
+        }}>
+        Special Offer Just For You
+      </Text>
+      <View style={HomeStyles.specialOfferContainer}>
+        <Image
+          style={HomeStyles.specialOfferImage}
+          source={{ uri: specialOffer.thumbnailPath.path }}
+        />
+        <View style={HomeStyles.specialOfferTextContainer}>
+          <Text style={HomeStyles.specialOfferText}>{specialOffer.price}</Text>
+          <Text style={HomeStyles.specialOfferText}>{specialOffer.title}</Text>
+
+          <Price service={specialOffer} style={{ color: colors.white }} />
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
