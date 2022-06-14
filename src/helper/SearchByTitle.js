@@ -20,4 +20,11 @@ const searchService = (search, setErrorNotFound) => {
     });
 };
 
-export { searchService };
+const searchService2 = search => {
+  return axios.get(`${RENTAL_API_URL}/api/Service/SearchServices`, {
+    params: { Title: search },
+    headers: { accept: '*/*' },
+  });
+};
+
+export { searchService, searchService2 };

@@ -8,6 +8,7 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // Components
 import PageTitle from '../../components/PageTitle/PageTitle';
@@ -18,7 +19,7 @@ import ErrorText from '../ErrorText/ErrorText';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 // Helpers
-import { searchService } from '../../helper/SearchByTitle';
+import { searchService, searchService2 } from '../../helper/SearchByTitle';
 
 // Contexts + Styles
 import { colors } from '../../constants/colors';
@@ -30,7 +31,7 @@ const SearchBar = ({ state, style }) => {
   const [errorNotFound, setErrorNotFound] = useState(false);
 
   const clearButtonCondition = search.toString().length > 0;
-
+  const navigation = useNavigation();
   useEffect(() => {
     if (search === '') setErrorNotFound(false);
   }, [search]);
@@ -44,7 +45,21 @@ const SearchBar = ({ state, style }) => {
       }}>
       <TouchableOpacity
         style={SearchBarStyles.searchIconContainer}
-        onPress={() => searchService(search, setErrorNotFound)}>
+        onPress={() => {
+          // searchService(search, setErrorNotFound)
+          searchService2(search)
+            .then(res => {
+              console.log('aici');
+              // console.log(res.data[0].title);
+              navigation.navigate('SearchPage', { data: res.data });
+            })
+            .catch(err => {
+              if (err.message.search('401') != -1) {
+                refresh(tokenTest, refreshTest);
+              }
+              // console.error(err.response.data ? err.response.data : err);
+            });
+        }}>
         <Icon
           name="search1"
           style={{

@@ -20,15 +20,15 @@ import SearchStyles from './SearchPageStyles';
 
 const { width, height } = Dimensions.get('window');
 
-const SearchPage = props => {
+const SearchPage = ({ data }) => {
   // States
   const [search, setSearch] = useState('');
   return (
     <SafeAreaView>
       <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
-      {/* {props.data.map((value, index) => {
+      {data.map((value, index) => {
         return <Text key={index}>{value.title}</Text>;
-      })} */}
+      })}
     </SafeAreaView>
   );
 };

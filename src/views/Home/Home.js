@@ -42,7 +42,7 @@ const Home = () => {
     getRandomServices(numberOfServices)
       .then(res => {
         console.log('Get Random Services');
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         setRandomServices(res.data);
       })
       .catch(err => {
