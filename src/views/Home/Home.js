@@ -145,10 +145,11 @@ const Home = () => {
           source={{ uri: specialOffer.thumbnailPath.path }}
         />
         <View style={HomeStyles.specialOfferTextContainer}>
-          <Text style={HomeStyles.specialOfferText}>{specialOffer.price}</Text>
-          <Text style={HomeStyles.specialOfferText}>{specialOffer.title}</Text>
-
           <Price service={specialOffer} style={{ color: colors.white }} />
+          <Text style={HomeStyles.specialOfferTitle}>{specialOffer.title}</Text>
+          <TouchableOpacity style={HomeStyles.specialOfferButtonContainer}>
+            <Text style={HomeStyles.specialOfferButtonText}>Learn More!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

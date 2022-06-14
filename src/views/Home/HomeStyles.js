@@ -70,7 +70,7 @@ export default HomeStyles = StyleSheet.create({
   specialOfferContainer: {
     marginTop: 10,
     marginBottom: 0.5 * height,
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
   },
   specialOfferImage: {
     height: 0.2 * height,
@@ -80,13 +80,36 @@ export default HomeStyles = StyleSheet.create({
     borderRadius: 20,
   },
   specialOfferTextContainer: {
-    backgroundColor: 'green',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     position: 'absolute',
     left: 0.1 * width,
-    top: 0.05 * height,
+    // top: 0.05 * height,
+    top: '50%',
+    transform: [{ translateY: -50 }],
+    width: '30%',
+    height: '70%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
   },
-  specialOfferText: {
+  specialOfferTitle: {
     color: colors.white,
     fontSize: 16,
+    textAlign: 'center',
+  },
+
+  specialOfferButtonContainer: {
+    backgroundColor: colors.black,
+    width: '75%',
+    height: '30%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 4,
+  },
+  specialOfferButtonText: {
+    color: colors.white,
+    height: '100%',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
 });
