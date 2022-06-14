@@ -30,7 +30,6 @@
 		F73E625971B847C19A5A6C33 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC38A576944253AD3C133B /* Octicons.ttf */; };
 		FE1D7325EE1D464D8193600F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */; };
 		631CAC4AA3334CFCBD04E585 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 620550051CFE4021B2E06071 /* Zocial.ttf */; };
-<<<<<<< HEAD
 		EAAE48D9887F481A84D4BE7B /* Overpass-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4130B708481427BA9C43DE6 /* Overpass-Italic-VariableFont_wght.ttf */; };
 		868DBF05D6AE424A98AD6E9F /* Overpass-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 081BDAA54E584C82933288A9 /* Overpass-VariableFont_wght.ttf */; };
 		4829E3C07D794112B18C94DE /* Overpass-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61578217892F4EFF8D12E316 /* Overpass-Black.ttf */; };
@@ -69,8 +68,6 @@
 		FF2AD0694FA444D59E619746 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBACD919EBDC4B0B843C1210 /* Octicons.ttf */; };
 		D684553E853948198278FF3D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3003C6554749B487D74712 /* SimpleLineIcons.ttf */; };
 		2FD2E1A61534476A92E9360C /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA968F0A12145DD810AFE74 /* Zocial.ttf */; };
-=======
->>>>>>> 1d213b113efe8e700040b67b7c39fd7d07afcef2
 		E48C7D9AAE4343B3BF04AC8D /* Overpass-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */; };
 		882F563376894E0EBAB2BAE9 /* Overpass-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */; };
 		3DDD40CFEFAC43BD91A6F406 /* Overpass-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3BCF2829201403CBA957186 /* Overpass-Black.ttf */; };
@@ -137,7 +134,6 @@
 		42DC38A576944253AD3C133B /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		620550051CFE4021B2E06071 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-<<<<<<< HEAD
 		A4130B708481427BA9C43DE6 /* Overpass-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-Italic-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass/Overpass-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		081BDAA54E584C82933288A9 /* Overpass-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass/Overpass-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		61578217892F4EFF8D12E316 /* Overpass-Black.ttf */ = {isa = PBXFileReference; name = "Overpass-Black.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -176,8 +172,6 @@
 		EBACD919EBDC4B0B843C1210 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8A3003C6554749B487D74712 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7CA968F0A12145DD810AFE74 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-=======
->>>>>>> 1d213b113efe8e700040b67b7c39fd7d07afcef2
 		2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-Italic-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Overpass-VariableFont_wght.ttf"; path = "../assets/fonts/Overpass-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D3BCF2829201403CBA957186 /* Overpass-Black.ttf */ = {isa = PBXFileReference; name = "Overpass-Black.ttf"; path = "../assets/fonts/Overpass/static/Overpass-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -323,7 +317,11 @@
 				42DC38A576944253AD3C133B /* Octicons.ttf */,
 				99B16B911CA44B8F85AF693B /* SimpleLineIcons.ttf */,
 				620550051CFE4021B2E06071 /* Zocial.ttf */,
-<<<<<<< HEAD
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
 		AB5883F673544C00A341820D /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
@@ -365,8 +363,6 @@
 				EBACD919EBDC4B0B843C1210 /* Octicons.ttf */,
 				8A3003C6554749B487D74712 /* SimpleLineIcons.ttf */,
 				7CA968F0A12145DD810AFE74 /* Zocial.ttf */,
-=======
->>>>>>> 1d213b113efe8e700040b67b7c39fd7d07afcef2
 				2E7C692F00264BA3820439C4 /* Overpass-Italic-VariableFont_wght.ttf */,
 				4B54395445BF4AD9BC9B2C32 /* Overpass-VariableFont_wght.ttf */,
 				D3BCF2829201403CBA957186 /* Overpass-Black.ttf */,
@@ -504,7 +500,6 @@
 				F73E625971B847C19A5A6C33 /* Octicons.ttf in Resources */,
 				FE1D7325EE1D464D8193600F /* SimpleLineIcons.ttf in Resources */,
 				631CAC4AA3334CFCBD04E585 /* Zocial.ttf in Resources */,
-<<<<<<< HEAD
 				EAAE48D9887F481A84D4BE7B /* Overpass-Italic-VariableFont_wght.ttf in Resources */,
 				868DBF05D6AE424A98AD6E9F /* Overpass-VariableFont_wght.ttf in Resources */,
 				4829E3C07D794112B18C94DE /* Overpass-Black.ttf in Resources */,
@@ -543,8 +538,6 @@
 				FF2AD0694FA444D59E619746 /* Octicons.ttf in Resources */,
 				D684553E853948198278FF3D /* SimpleLineIcons.ttf in Resources */,
 				2FD2E1A61534476A92E9360C /* Zocial.ttf in Resources */,
-=======
->>>>>>> 1d213b113efe8e700040b67b7c39fd7d07afcef2
 				E48C7D9AAE4343B3BF04AC8D /* Overpass-Italic-VariableFont_wght.ttf in Resources */,
 				882F563376894E0EBAB2BAE9 /* Overpass-VariableFont_wght.ttf in Resources */,
 				3DDD40CFEFAC43BD91A6F406 /* Overpass-Black.ttf in Resources */,
