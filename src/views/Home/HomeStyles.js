@@ -13,6 +13,12 @@ export default HomeStyles = StyleSheet.create({
     color: colors.black,
     letterSpacing: 1,
   },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   title: {
     textAlign: 'left',
     width: 0.8 * width,
@@ -69,7 +75,7 @@ export default HomeStyles = StyleSheet.create({
   },
   specialOfferContainer: {
     marginTop: 10,
-    marginBottom: 0.5 * height,
+    marginBottom: 0.1 * height,
     // backgroundColor: 'yellow',
   },
   specialOfferImage: {
@@ -111,5 +117,17 @@ export default HomeStyles = StyleSheet.create({
     height: '100%',
     textAlign: 'center',
     textAlignVertical: 'center',
+  },
+  addIconButton: {
+    width: 30,
+    height: 30,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 30,
+  },
+  addIcon: {
+    fontSize: 28,
+    color: colors.black,
   },
 });

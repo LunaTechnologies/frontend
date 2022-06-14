@@ -16,14 +16,13 @@ import styles from './LoginStyles';
 
 import {
   emailExists,
-  submit,
   usernameExists,
   validate,
 } from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
-const Login = () => {
+const Login = ({ navigation }) => {
   // Page state: Signup or Login
   const [login, setLogin] = useState(true);
 
@@ -50,19 +49,18 @@ const Login = () => {
   });
   const [registerSuccess, setRegisterSuccess] = useState(false);
 
-  const errors = {
-    email: { emailError, setEmailError },
-    password: { passwordError, setPasswordError },
-    username: { usernameError, setUsernameError },
-    confirmPassword: { confirmPasswordError, setConfirmPasswordError },
-    login: { loginError, setLoginError, setLogin },
+  const state = {
+    email: { setEmailError },
+    password: { setPasswordError },
+    username: { setUsernameError },
+    confirmPassword: { setConfirmPasswordError },
+    login: { setLoginError, setLogin },
     register: {
-      registerError,
       setRegisterError,
-      registerSuccess,
       setRegisterSuccess,
     },
     exist: { setEmailExist, setUsernameExist },
+    navigation,
   };
 
   const errorMessageStatus = {
@@ -164,7 +162,7 @@ const Login = () => {
                   setEmail(email);
                   setColor(colors.lightOrange);
                   setOpacity(100);
-                  emailExists(email, errors.exist);
+                  emailExists(email, state.exist);
                 }}
               />
               {emailError && <ErrorText text="Email is invalid" />}
@@ -188,7 +186,7 @@ const Login = () => {
                   value={username}
                   onChangeText={username => {
                     setUsername(username);
-                    usernameExists(username, errors.exist);
+                    usernameExists(username, state.exist);
                   }}
                 />
                 {usernameError && <ErrorText text="Username cannot be empty" />}
@@ -273,7 +271,6 @@ const Login = () => {
             <TouchableOpacity
               style={styles.form.submit}
               onPress={() => {
-                submit(
                   validate(
                     login
                       ? {
@@ -286,11 +283,9 @@ const Login = () => {
                           password,
                           confirmPassword,
                         },
-                    errors,
-                  ),
-                  login,
-                  errors,
-                );
+                    login,
+                    state,
+                  );
               }}>
               <Text style={styles.form.submit.text}>
                 {login ? 'Login' : 'Signup'}
@@ -303,7 +298,9 @@ const Login = () => {
             ...styles.skipSection,
             ...{ height: (login ? 0.08 : 0.15) * height },
           }}>
-          <TouchableOpacity style={styles.skipSection.skip}>
+          <TouchableOpacity
+            style={styles.skipSection.skip}
+            onPress={() => navigation.navigate('Home')}>
             <Text
               style={{
                 fontSize: 18,

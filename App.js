@@ -1,35 +1,46 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-// Pages
-import Home from './src/views/Home/Home';
 import Login from './src/views/Login/Login';
-// import ServicePage from './src/views/ServicePage/ServicePage';
+import Home from './src/views/Home/Home';
+import ServicePage from './src/views/ServicePage/ServicePage';
 import Post from './src/views/Post/Post';
 
-// Contexts
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PostProvider } from './src/contexts/PostContext';
+import { LogBox } from 'react-native';
 
 const App = () => {
+  const Stack = createNativeStackNavigator();
+  LogBox.ignoreAllLogs();
+
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
-      {/* <Login /> */}
-      {/* <ServicePage id="Pc7kwl2FzOIooBH" /> */}
-      {/* <ServicePage id="JpxBeQxT1Jlassq" /> */}
-      {/* <PostProvider>
-        <Post />
-      </PostProvider> */}
-      <Home />
-    </ScrollView>
+    <NavigationContainer>
+      <PostProvider>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Login"
+            component={Login}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={Home}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Service"
+            component={ServicePage}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="PostService"
+            component={Post}
+          />
+        </Stack.Navigator>
+      </PostProvider>
+    </NavigationContainer>
   );
 };
 

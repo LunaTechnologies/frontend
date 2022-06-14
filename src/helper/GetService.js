@@ -9,7 +9,7 @@ const getData = (IdentificationString, setData, setDescTooLong) => {
   })
     .then(res => {
       setData(res.data);
-      if (res.data.description.length >= 100) setDescTooLong(true);
+      if (res.data.description && res.data.description.length >= 100) setDescTooLong(true);
     })
     .catch(err => console.error(err));
 };

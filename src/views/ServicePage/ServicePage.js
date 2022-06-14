@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import styles from './ServicePageStyles.js';
 import { getData } from '../../helper/GetService';
 import { colors } from '../../constants/colors';
@@ -21,6 +22,8 @@ const { width, height } = Dimensions.get('window');
 const ServicePage = ({ id }) => {
   const [data, setData] = useState({});
   const [descTooLong, setDescTooLong] = useState(true);
+  const route = useRoute();
+  const identificationString = id || route.params.id;
 
   const dummyData = [
     {
@@ -35,7 +38,7 @@ const ServicePage = ({ id }) => {
   ];
 
   useEffect(() => {
-    getData(id, setData, setDescTooLong);
+    getData(identificationString, setData, setDescTooLong);
   }, []);
 
   return (

@@ -1,10 +1,10 @@
 import Axios from 'axios';
 import { RENTAL_API_URL } from '@env';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const apiurl = RENTAL_API_URL;
 
-const validate = (data, errors) => {
+const validate = (data, login, state) => {
   const { email, password } = data;
   const emailRegex = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z.-]+.[a-zA-Z-.]+$');
   const checkPassword = password => {
@@ -21,29 +21,32 @@ const validate = (data, errors) => {
   if (!emailRegex.test(email)) {
     // Error with email
     error = true;
-    errors.email.setEmailError(true);
+    state.email.setEmailError(true);
   }
   if (!checkPassword(password)) {
     // Error with password
     error = true;
-    errors.password.setPasswordError(true);
+    state.password.setPasswordError(true);
   }
   if (data.userName === '') {
     // Error with empty username
     error = true;
-    errors.username.setUsernameError(true);
+    state.username.setUsernameError(true);
   }
-  if (data.confirmPassword !== data.password) {
+  if (!login && data.confirmPassword !== data.password) {
     // Error with confirm password
     error = true;
-    errors.confirmPassword.setConfirmPasswordError(true);
+    state.confirmPassword.setConfirmPasswordError(true);
   }
 
-  return error ? null : data;
+  if (!error) submit(data, login, state);
 };
 
-const submit = (body, login, errors) => {
-  if (!body) return;
+const submit = (body, login, state) => {
+  if (!body) {
+    // TODO Add error handling
+    return;
+  }
 
   const baseurl = `${apiurl}/api/Auth`;
   const endpoint = login ? '/login' : '/register';
@@ -64,26 +67,29 @@ const submit = (body, login, errors) => {
   // Login callback function
   const loginClosure = async res => {
     if (!res.data.success) {
-      errors.login.setLoginError(true);
+      state.login.setLoginError(true);
       return;
     }
 
+    const { accessToken, refreshToken } = res.data;
+
     try {
-      await AsyncStorage.setItem('accessToken', res.data.accessToken);
-      await AsyncStorage.setItem('refreshToken', res.data.refreshToken);
+      await AsyncStorage.setItem('accessToken', accessToken);
+      await AsyncStorage.setItem('refreshToken', refreshToken);
+      console.log(await AsyncStorage.getItem('refreshToken'));
+      console.log('Login successfull');
+      state.navigation.navigate('Home');
     } catch (err) {
-      console.error(err);
+      console.error('Error async storage: ', err);
     }
-    // TODO Move to next page
-    console.log('Login successfull');
   };
 
   // Register callback function
   const registerClosure = res => {
     console.log(res);
     if (res.data === 'Registered') {
-      errors.login.setLogin(true);
-      errors.register.setRegisterSuccess(true);
+      state.login.setLogin(true);
+      state.register.setRegisterSuccess(true);
       return;
     } else {
       return;
@@ -91,29 +97,28 @@ const submit = (body, login, errors) => {
   };
 
   const url = `${baseurl}${endpoint}`;
-  console.log(formatBody);
 
   Axios.post(url, formatBody, {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(login ? loginClosure : registerClosure)
     .catch(err => {
-      errors.register.setRegisterError({
+      state.register.setRegisterError({
         success: false,
         text: err.response.data,
       });
     });
 };
 
-const emailExists = (email, errors) => {
+const emailExists = (email, state) => {
   Axios.get(`${apiurl}/api/User/emailExist`, { params: { email } })
-    .then(({ data }) => errors.setEmailExist(data))
+    .then(({ data }) => state.setEmailExist(data))
     .catch(() => {});
 };
 
-const usernameExists = (username, errors) => {
+const usernameExists = (username, state) => {
   Axios.get(`${apiurl}/api/User/usernameExist?username=${username}`)
-    .then(({ data }) => errors.setUsernameExist(data))
+    .then(({ data }) => state.setUsernameExist(data))
     .catch(() => {});
 };
 
