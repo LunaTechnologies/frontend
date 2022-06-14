@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,6 +8,7 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // Components
 import Price from '../Price/Price';
@@ -27,6 +28,7 @@ const ServiceCard = ({ service }) => {
   // States
   const [favoriteIconStyles, setFavoriteIconStyles] = useState({});
   const [addFavorite, setAddFavorite] = useState(false);
+  const navigation = useNavigation();
 
   // Functions
   const favoriteIconOnPress = () => {
@@ -42,7 +44,11 @@ const ServiceCard = ({ service }) => {
   };
 
   return (
-    <TouchableOpacity style={ServiceCardStyles.container}>
+    <TouchableOpacity
+      style={ServiceCardStyles.container}
+      onPress={() => {
+        navigation.navigate('Service', { id: service.identificationString });
+      }}>
       <Image
         style={ServiceCardStyles.image}
         source={{ uri: service.thumbnailPath.path }}

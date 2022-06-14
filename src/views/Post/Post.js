@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 
 // Components
@@ -102,98 +103,100 @@ const Post = () => {
 
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
-      <BackArrow />
-      <PageTitle text="Post" />
+      <ScrollView>
+        <BackArrow color={'#000'} />
+        <PageTitle text="Post" />
 
-      <PostField text="Add Title">
-        <PostFieldTextInput
-          state={[title, setTitle]}
-          placeholder="ex: iPhone 8"
-        />
-      </PostField>
-
-      <PostField text="Upload Images">
-        <TouchableOpacity onPress={addImages}>
-          <View style={PostStyles.addImagesButton}>
-            <View style={PostStyles.addImagesBackgroundCircle} />
-            <Icon name="pluscircleo" style={PostStyles.addImageIcon} />
-            <Text style={PostStyles.addImagesText}>Add Images</Text>
-          </View>
-        </TouchableOpacity>
-      </PostField>
-
-      <PostField text="Add Description">
-        <PostFieldTextInput
-          style={{ height: 0.25 * height, textAlignVertical: 'top' }}
-          state={[description, setDescription]}
-          multiline={true}
-          placeholder="Add the details you would like to see in a post! :)"
-        />
-      </PostField>
-
-      <PostField text="Select Price" style={{ zIndex: 4 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 0.1 * height,
-            // backgroundColor: 'red',
-          }}>
+        <PostField text="Add Title">
           <PostFieldTextInput
-            style={{ width: 0.5 * width }}
-            state={[price, setPrice]}
-            keyboardType="numeric"
-            placeholder="ex: 100"
+            state={[title, setTitle]}
+            placeholder="ex: iPhone 8"
           />
-          {/* <Dropdown
+        </PostField>
+
+        <PostField text="Upload Images">
+          <TouchableOpacity onPress={addImages}>
+            <View style={PostStyles.addImagesButton}>
+              <View style={PostStyles.addImagesBackgroundCircle} />
+              <Icon name="pluscircleo" style={PostStyles.addImageIcon} />
+              <Text style={PostStyles.addImagesText}>Add Images</Text>
+            </View>
+          </TouchableOpacity>
+        </PostField>
+
+        <PostField text="Add Description">
+          <PostFieldTextInput
+            style={{ height: 0.25 * height, textAlignVertical: 'top' }}
+            state={[description, setDescription]}
+            multiline={true}
+            placeholder="Add the details you would like to see in a post! :)"
+          />
+        </PostField>
+
+        <PostField text="Select Price" style={{ zIndex: 4 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              height: 0.1 * height,
+              // backgroundColor: 'red',
+            }}>
+            <PostFieldTextInput
+              style={{ width: 0.5 * width }}
+              state={[price, setPrice]}
+              keyboardType="numeric"
+              placeholder="ex: 100"
+            />
+            {/* <Dropdown
             style={{ width: 0.3 * width }}
             state={[currency, setCurrency]}
             options={['Lei', 'Euro', 'USD', 'GBP']}
           /> */}
+          </View>
+        </PostField>
+
+        <PostField
+          text="Payed Per"
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            // backgroundColor: 'red',
+            height: 0.1 * height,
+            zIndex: 3,
+          }}>
+          <Dropdown
+            style={{ width: 0.4 * width }}
+            state={[payedPer, setPayedPer]}
+            options={servTypes}
+          />
+        </PostField>
+
+        <PostField text="Add Phone Number">
+          <PostFieldTextInput
+            state={[phoneNumber, setPhoneNumber]}
+            keyboardType="numeric"
+            placeholder="ex: 0123 456 789"
+          />
+        </PostField>
+
+        <View style={PostStyles.terms}>
+          <Icon name="book" style={PostStyles.termsIcon} />
+          <PostFieldTitle
+            text="I agree to the terms and conditions"
+            style={{ fontSize: 16, marginBottom: 0 }}
+          />
+          <Switch state={[agreedToTerms, setAgreedToTerms]} />
         </View>
-      </PostField>
 
-      <PostField
-        text="Payed Per"
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          // backgroundColor: 'red',
-          height: 0.1 * height,
-          zIndex: 3,
-        }}>
-        <Dropdown
-          style={{ width: 0.4 * width }}
-          state={[payedPer, setPayedPer]}
-          options={servTypes}
+        <SubmitButton
+          text="Post"
+          onPress={() => {
+            agreedToTerms
+              ? submitPost(data)
+              : alert('You must agree to the terms and conditions!');
+          }}
         />
-      </PostField>
-
-      <PostField text="Add Phone Number">
-        <PostFieldTextInput
-          state={[phoneNumber, setPhoneNumber]}
-          keyboardType="numeric"
-          placeholder="ex: 0123 456 789"
-        />
-      </PostField>
-
-      <View style={PostStyles.terms}>
-        <Icon name="book" style={PostStyles.termsIcon} />
-        <PostFieldTitle
-          text="I agree to the terms and conditions"
-          style={{ fontSize: 16, marginBottom: 0 }}
-        />
-        <Switch state={[agreedToTerms, setAgreedToTerms]} />
-      </View>
-
-      <SubmitButton
-        text="Post"
-        onPress={() => {
-          agreedToTerms
-            ? submitPost(data)
-            : alert('You must agree to the terms and conditions!');
-        }}
-      />
+      </ScrollView>
     </SafeAreaView>
   );
 };
