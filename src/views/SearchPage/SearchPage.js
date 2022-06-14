@@ -40,7 +40,6 @@ const SearchPage = () => {
           return <Text key={index}>{value.title}</Text>;
         })}
       </View>
-      {/* <Text>{data}</Text> */}
     </SafeAreaView>
   );
 };

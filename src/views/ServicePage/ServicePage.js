@@ -59,7 +59,7 @@ const ServicePage = ({ id }) => {
           <View style={styles.priceSection}>
             <Text style={styles.priceSection.price}>
               <Text style={styles.priceSection.valueStyle}>
-                {data.price + ' '}
+                ${data.price + ' '}
               </Text>
 
               <Text style={styles.priceSection.lengthStyle}>
