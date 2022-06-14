@@ -20,23 +20,42 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 import ServiceCardStyles from './ServiceCardStyles';
 
 const { width, height } = Dimensions.get('window');
+import { colors } from '../../constants/colors';
 
 const ServiceCard = ({ service }) => {
   // States
+  const [favoriteIconStyles, setFavoriteIconStyles] = useState({});
+  const [addFavorite, setAddFavorite] = useState(false);
+
+  // Methods
+  const favoriteIconOnPress = () => {
+    setAddFavorite(!addFavorite);
+    if (!addFavorite)
+      setFavoriteIconStyles({
+        color: 'red',
+        backgroundColor: 'rgba(0,0,0,0)',
+        //   fontSize: 22,
+      });
+    else setFavoriteIconStyles({});
+    //   alert('Added to Favorites!');
+  };
 
   return (
     <TouchableOpacity style={ServiceCardStyles.container}>
       <Image
         style={ServiceCardStyles.image}
-        // source={require('../../../assets/images/coolest-cars-feature.jpg')}
         source={{ uri: service.thumbnailPath.path }}
       />
       <TouchableOpacity
-        onPress={() => {
-          alert('Added to Favorites!');
-        }}
+        onPress={favoriteIconOnPress}
         style={ServiceCardStyles.favoriteIconContainer}>
-        <Icon name="hearto" style={ServiceCardStyles.favoriteIcon} />
+        <Icon
+          name={addFavorite ? 'heart' : 'hearto'}
+          style={{
+            ...ServiceCardStyles.favoriteIcon,
+            ...favoriteIconStyles,
+          }}
+        />
       </TouchableOpacity>
 
       <Text style={{ ...ServiceCardStyles.cardText }}>{service.title}</Text>
