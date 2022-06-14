@@ -4,6 +4,7 @@ import Login from './src/views/Login/Login';
 import Home from './src/views/Home/Home';
 import ServicePage from './src/views/ServicePage/ServicePage';
 import Post from './src/views/Post/Post';
+import SearchPage from './src/views/SearchPage/SearchPage';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -37,6 +38,11 @@ const App = () => {
             options={{ headerShown: false }}
             name="PostService"
             component={Post}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="SearchPage"
+            component={SearchPage}
           />
         </Stack.Navigator>
       </PostProvider>
