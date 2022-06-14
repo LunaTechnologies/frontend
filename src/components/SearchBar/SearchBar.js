@@ -49,9 +49,10 @@ const SearchBar = ({ state, style }) => {
           // searchService(search, setErrorNotFound);
           searchServices(search).then(res => {
             // console.log(res.data);
-            navigation.navigate('SearchPage', {
-              data: res.data,
-            });
+            if (res.data)
+              navigation.navigate('SearchPage', {
+                data: res.data,
+              });
           });
         }}>
         <Icon

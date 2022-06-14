@@ -12,6 +12,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 // Components
 
 // Packages
+import { useRoute } from '@react-navigation/native';
 
 // Helpers
 
@@ -20,18 +21,26 @@ import SearchPageStyles from './SearchPageStyles';
 
 const { width, height } = Dimensions.get('window');
 
-const SearchPage = ({ data }) => {
+const SearchPage = () => {
   // States
+  const [search, setSearch] = useState('');
+  const route = useRoute();
+  const data = route.params.data;
+  // const identificationString = id || route.params.id;
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   return (
     <SafeAreaView>
-      <Text>search</Text>
-      {/* <SearchBar /> */}
-      {/* <View>
+      <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
+
+      <View>
         {data.map((value, index) => {
           return <Text key={index}>{value.title}</Text>;
         })}
-      </View> */}
+      </View>
+      {/* <Text>{data}</Text> */}
     </SafeAreaView>
   );
 };

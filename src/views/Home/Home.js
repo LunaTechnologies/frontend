@@ -88,93 +88,87 @@ const Home = () => {
   return randomServices.length == 0 ? (
     <Text style={HomeStyles.loading}>Loading...</Text>
   ) : (
-    <SafeAreaView>
-      <ScrollView>
-        <View style={HomeStyles.titleContainer}>
-          <PageTitle text="Catalog" style={HomeStyles.title} />
-          <TouchableOpacity
-            style={HomeStyles.addIconButton}
-            onPress={() => navigation.navigate('PostService')}>
-            <IconAnt name="pluscircleo" style={HomeStyles.addIcon} />
-          </TouchableOpacity>
-        </View>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          style={HomeStyles.tabs}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          {tabOptions.map((tab, index) => {
-            return <Tab key={index} text={tab} />;
-          })}
-        </ScrollView>
-
-        <View style={HomeStyles.searchContainer}>
-          <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
-          <TouchableOpacity
-            onPress={filterOptions}
-            style={HomeStyles.filterOptionsContainer}>
-            <Icon
-              name="options"
-              style={{
-                ...SearchBarStyles.searchIcon,
-                ...HomeStyles.filterOptionsIcon,
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            ...HomeStyles.searchContainer,
-            ...HomeStyles.textContainer,
-          }}>
-          <Text style={HomeStyles.subtitle}>New Offers For You</Text>
-          <TouchableOpacity>
-            <Text style={{ ...HomeStyles.subtitle, fontSize: 16 }}>
-              View All
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          style={HomeStyles.cardsContainer}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          {randomServices.map((service, index) => {
-            return <ServiceCard key={index} service={service} />;
-          })}
-        </ScrollView>
-
-        <Text
-          style={{
-            ...HomeStyles.textContainer,
-            ...HomeStyles.subtitle,
-          }}>
-          Special Offer Just For You
-        </Text>
-        <View style={HomeStyles.specialOfferContainer}>
-          <Image
-            style={HomeStyles.specialOfferImage}
-            source={{ uri: specialOffer.thumbnailPath.path }}
-          />
-          <View style={HomeStyles.specialOfferTextContainer}>
-            <Price service={specialOffer} style={{ color: colors.white }} />
-            <Text style={HomeStyles.specialOfferTitle}>
-              {specialOffer.title}
-            </Text>
-            <TouchableOpacity
-              style={HomeStyles.specialOfferButtonContainer}
-              onPress={() => {
-                navigation.navigate('Service', {
-                  id: specialOffer.identificationString,
-                });
-              }}>
-              <Text style={HomeStyles.specialOfferButtonText}>Learn More!</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+    <ScrollView keyboardShouldPersistTaps="handled">
+      <View style={HomeStyles.titleContainer}>
+        <PageTitle text="Catalog" style={HomeStyles.title} />
+        <TouchableOpacity
+          style={HomeStyles.addIconButton}
+          onPress={() => navigation.navigate('PostService')}>
+          <IconAnt name="pluscircleo" style={HomeStyles.addIcon} />
+        </TouchableOpacity>
+      </View>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={HomeStyles.tabs}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
+        {tabOptions.map((tab, index) => {
+          return <Tab key={index} text={tab} />;
+        })}
       </ScrollView>
-    </SafeAreaView>
+
+      <View style={HomeStyles.searchContainer}>
+        <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
+        <TouchableOpacity
+          onPress={filterOptions}
+          style={HomeStyles.filterOptionsContainer}>
+          <Icon
+            name="options"
+            style={{
+              ...SearchBarStyles.searchIcon,
+              ...HomeStyles.filterOptionsIcon,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          ...HomeStyles.searchContainer,
+          ...HomeStyles.textContainer,
+        }}>
+        <Text style={HomeStyles.subtitle}>New Offers For You</Text>
+        <TouchableOpacity>
+          <Text style={{ ...HomeStyles.subtitle, fontSize: 16 }}>View All</Text>
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={HomeStyles.cardsContainer}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
+        {randomServices.map((service, index) => {
+          return <ServiceCard key={index} service={service} />;
+        })}
+      </ScrollView>
+
+      <Text
+        style={{
+          ...HomeStyles.textContainer,
+          ...HomeStyles.subtitle,
+        }}>
+        Special Offer Just For You
+      </Text>
+      <View style={HomeStyles.specialOfferContainer}>
+        <Image
+          style={HomeStyles.specialOfferImage}
+          source={{ uri: specialOffer.thumbnailPath.path }}
+        />
+        <View style={HomeStyles.specialOfferTextContainer}>
+          <Price service={specialOffer} style={{ color: colors.white }} />
+          <Text style={HomeStyles.specialOfferTitle}>{specialOffer.title}</Text>
+          <TouchableOpacity
+            style={HomeStyles.specialOfferButtonContainer}
+            onPress={() => {
+              navigation.navigate('Service', {
+                id: specialOffer.identificationString,
+              });
+            }}>
+            <Text style={HomeStyles.specialOfferButtonText}>Learn More!</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
