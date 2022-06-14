@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
-const refresh = async (access = null, refresh = null) => {
+const refresh = async (access, refresh) => {
   const base = 'https://f6ef-54-165-38-8.ngrok.io';
   try {
     let accessToken = access;
