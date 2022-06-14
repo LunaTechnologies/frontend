@@ -42,7 +42,7 @@ const Home = () => {
     getRandomServices(numberOfServices)
       .then(res => {
         console.log('Get Random Services');
-        console.log(res.data[0]);
+        console.log(res.data.length);
         setRandomServices(res.data);
       })
       .catch(err => {
@@ -54,7 +54,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchRandomServices();
+    fetchRandomServices(5);
   }, []);
 
   return (
@@ -84,11 +84,16 @@ const Home = () => {
           />
         </TouchableOpacity>
       </View>
-      <View style={{ ...HomeStyles.searchContainer, height: 'auto' }}>
+
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={HomeStyles.cardsContainer}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
         {randomServices.map((service, index) => {
           return <ServiceCard key={index} service={service} />;
         })}
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

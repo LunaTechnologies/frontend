@@ -12,7 +12,8 @@ export default HomeStyles = StyleSheet.create({
   },
 
   tabs: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
+    // backgroundColor: 'pink',
     marginLeft: 16,
   },
 
@@ -20,10 +21,10 @@ export default HomeStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
-    marginBotton: 20,
+    marginTop: 30,
+    marginBotton: 30,
     height: 0.1 * height,
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
   },
 
   filterOptionsContainer: {
@@ -36,5 +37,11 @@ export default HomeStyles = StyleSheet.create({
 
   filterOptionsIcon: {
     fontSize: 30,
+  },
+
+  cardsContainer: {
+    marginTop: 30,
+    marginBotton: 30,
+    // backgroundColor: 'yellow',
   },
 });

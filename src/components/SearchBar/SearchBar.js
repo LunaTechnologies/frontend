@@ -47,6 +47,7 @@ const SearchBar = ({ state, style }) => {
         value={search.toString()}
         onChangeText={setSearch}
         placeholder={'Search Services'}
+        onSubmitEditing={searchService}
       />
       {clearButtonCondition && (
         <TouchableOpacity
