@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   View,
   Text,
+  Image,
   TouchableOpacity,
   Dimensions,
   ScrollView,
@@ -22,6 +23,7 @@ import { getRandomServices } from '../../helper/GetRandomServices';
 import SearchBarStyles from '../../components/SearchBar/SearchBarStyles';
 import HomeStyles from './HomeStyles';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
+import PostFieldTitle from '../../components/PostFieldTitle/PostFieldTitle';
 
 const { width, height } = Dimensions.get('window');
 
@@ -31,13 +33,16 @@ const Home = () => {
   const tabOptions = ['Home', 'Office', 'Terace', 'Club'];
   const [search, setSearch] = useState('');
   const [randomServices, setRandomServices] = useState([]);
-
+  // const [specialOffer, setSpecialOffer] = useState({
+  //   thumbnailPath: { path: '' },
+  // });
+  const [specialOffer, setSpecialOffer] = useState({});
   // Functions
   const filterOptions = () => {
     alert('Filter options are still under development!');
   };
 
-  // Fetch ServTypes
+  // Fetch Services
   const fetchRandomServices = (numberOfServices = 2) => {
     getRandomServices(numberOfServices)
       .then(res => {
@@ -49,15 +54,34 @@ const Home = () => {
         if (err.message.search('401') != -1) {
           refresh(tokenTest, refreshTest);
         }
-        console.error(err.response.data ? err.response.data : err);
+        // console.error(err.response.data ? err.response.data : err);
+      });
+  };
+
+  const fetchSpecialOffer = () => {
+    getRandomServices(1)
+      .then(res => {
+        console.log('Get Special Service');
+        setSpecialOffer(res.data[0]);
+      })
+      .catch(err => {
+        if (err.message.search('401') != -1) {
+          refresh(tokenTest, refreshTest);
+        }
+        // console.error(err.response.data ? err.response.data : err);
       });
   };
 
   useEffect(() => {
     fetchRandomServices(5);
+    fetchSpecialOffer();
   }, []);
 
-  return (
+  // return <Text style={HomeStyles.loading}>Loading...</Text>;
+
+  return randomServices.length == 0 ? (
+    <Text style={HomeStyles.loading}>Loading...</Text>
+  ) : (
     <SafeAreaView>
       <PageTitle text="Catalog" style={HomeStyles.title} />
       <ScrollView
@@ -94,6 +118,10 @@ const Home = () => {
           return <ServiceCard key={index} service={service} />;
         })}
       </ScrollView>
+      <Image
+        style={HomeStyles.specialOfferImage}
+        source={{ uri: specialOffer.thumbnailPath.path }}
+      />
     </SafeAreaView>
   );
 };

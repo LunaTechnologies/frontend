@@ -27,7 +27,7 @@ const ServiceCard = ({ service }) => {
   const [favoriteIconStyles, setFavoriteIconStyles] = useState({});
   const [addFavorite, setAddFavorite] = useState(false);
 
-  // Methods
+  // Functions
   const favoriteIconOnPress = () => {
     setAddFavorite(!addFavorite);
     if (!addFavorite)

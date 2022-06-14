@@ -4,6 +4,15 @@ import { colors } from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 
 export default HomeStyles = StyleSheet.create({
+  loading: {
+    height: height,
+    width: width,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 24,
+    color: colors.black,
+    letterSpacing: 1,
+  },
   title: {
     textAlign: 'left',
     width: 0.8 * width,
@@ -43,5 +52,12 @@ export default HomeStyles = StyleSheet.create({
     marginTop: 30,
     marginBotton: 30,
     // backgroundColor: 'yellow',
+  },
+
+  specialOfferImage: {
+    height: 0.2 * height,
+    width: 0.8 * width,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 });
