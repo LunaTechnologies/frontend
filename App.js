@@ -15,6 +15,7 @@ import Home from './src/views/Home/Home';
 import Login from './src/views/Login/Login';
 // import ServicePage from './src/views/ServicePage/ServicePage';
 import Post from './src/views/Post/Post';
+import SearchPage from './src/views/Search/SearchPage';
 
 // Contexts
 import { PostProvider } from './src/contexts/PostContext';
@@ -28,7 +29,8 @@ const App = () => {
       {/* <PostProvider>
         <Post />
       </PostProvider> */}
-      <Home />
+      {/* <Home /> */}
+      <SearchPage />
     </ScrollView>
   );
 };
