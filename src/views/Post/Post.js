@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -15,13 +15,14 @@ import PostFieldTextInput from '../../components/PostFieldTextInput/PostFieldTex
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Switch from '../../components/Switch/Switch';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 // Packages
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import * as ImagePicker from 'react-native-image-picker';
 
 // Helpers
-import { submitPost } from '../../helper/SubmitPost';
+import { submitPost, getServiceTypes } from '../../helper/SubmitPost';
 
 // Contexts + Styles
 import { PostContext } from '../../contexts/PostContext';
@@ -50,6 +51,7 @@ const Post = () => {
   };
 
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [servTypes, setServTypes] = useState([]);
 
   // Image Picker
   const addImages = () => {
@@ -77,10 +79,31 @@ const Post = () => {
     });
   };
 
+  // Fetch ServTypes
+  const fetchServiceTypes = () => {
+    getServiceTypes()
+      .then(res => {
+        console.log('Fetched Service Types');
+        const servTypesArray = res.data.map(value => value.type);
+        setServTypes(servTypesArray);
+        setPayedPer(servTypesArray.includes('Day') ? 'Day' : servTypesArray[0]);
+      })
+      .catch(err => {
+        if (err.message.search('401') != -1) {
+          refresh(tokenTest, refreshTest);
+        }
+        console.error(err.response.data ? err.response.data : err);
+      });
+  };
+
+  useEffect(() => {
+    fetchServiceTypes();
+  }, []);
+
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <BackArrow />
-      <Text style={PostStyles.title}>Post</Text>
+      <PageTitle text="Post" />
 
       <PostField text="Add Title">
         <PostFieldTextInput
@@ -121,11 +144,11 @@ const Post = () => {
             keyboardType="numeric"
             placeholder="ex: 100"
           />
-          <Dropdown
+          {/* <Dropdown
             style={{ width: 0.3 * width }}
             state={[currency, setCurrency]}
             options={['Lei', 'Euro', 'USD', 'GBP']}
-          />
+          /> */}
         </View>
       </PostField>
 
@@ -142,7 +165,7 @@ const Post = () => {
         <Dropdown
           style={{ width: 0.4 * width }}
           state={[payedPer, setPayedPer]}
-          options={['Hour', 'Day', 'Week', 'Month']}
+          options={servTypes}
         />
       </PostField>
 

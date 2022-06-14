@@ -9,21 +9,27 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Dropdown from './src/components/Dropdown/Dropdown';
-import { PostProvider } from './src/contexts/PostContext';
-import Catalog from './src/views/Catalog/Catalog';
+
+// Pages
+import Home from './src/views/Home/Home';
+import Login from './src/views/Login/Login';
+// import ServicePage from './src/views/ServicePage/ServicePage';
 import Post from './src/views/Post/Post';
+
+// Contexts
+import { PostProvider } from './src/contexts/PostContext';
+
 const App = () => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        {/* <Catalog /> */}
-        <PostProvider>
-          <Post />
-        </PostProvider>
-        {/* <Dropdown options={['Lei', 'Euro', 'USD', 'GBP']} /> */}
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView keyboardShouldPersistTaps="handled">
+      {/* <Login /> */}
+      {/* <ServicePage id="Pc7kwl2FzOIooBH" /> */}
+      {/* <ServicePage id="JpxBeQxT1Jlassq" /> */}
+      {/* <PostProvider>
+        <Post />
+      </PostProvider> */}
+      <Home />
+    </ScrollView>
   );
 };
 

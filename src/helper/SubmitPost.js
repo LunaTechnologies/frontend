@@ -17,10 +17,10 @@ export const submitPost = data => {
   const { title, images, description, price, currency, payedPer, phoneNumber } =
     data;
 
-  const refreshTest = 'shLuQH7DTHA2s5MM084JD1zaIZf+CjdsOKAtYYGy8sw=';
-
   const tokenTest =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NDczNDczNCwiZXhwIjoxNjU0NzM1MzM0LCJpYXQiOjE2NTQ3MzQ3MzR9.of6ju_hWiPnzD4-_h4rHhaMxGvDX9xPy-oPMi-5vqd0';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmFtZSI6ImY2NFNob3AiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY1NTAzMjgyNCwiZXhwIjoxNjU1MDMzNDI0LCJpYXQiOjE2NTUwMzI4MjR9.JdnXovHErLp6qNDgdAJyY2GABn4y1gQyK6sU67GPMts';
+
+  const refreshTest = 'O8kqn/TlONthAtE6SBYxACoorYSxmgbg0xfKZnwIEEA=';
 
   const formData = new FormData();
 
@@ -37,7 +37,7 @@ export const submitPost = data => {
   formData.append('Description', description);
   formData.append('PhoneNumber', phoneNumber);
   formData.append('Price', parseFloat(price));
-  formData.append('ServType', 'zi');
+  formData.append('ServType', payedPer);
 
   // const token = getToken();
   // if (!token) {
@@ -62,4 +62,12 @@ export const submitPost = data => {
       }
       console.error(err.response.data ? err.response.data : err);
     });
+};
+
+export const getServiceTypes = () => {
+  const url = `${RENTAL_API_URL}/api/RentalType/GetAllRentalTypes`;
+  return axios({
+    method: 'get',
+    url,
+  });
 };

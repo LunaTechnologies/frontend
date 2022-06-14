@@ -4,17 +4,6 @@ import { colors } from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 
 export default PostStyles = StyleSheet.create({
-  title: {
-    color: colors.black,
-    fontSize: 32,
-    fontFamily: 'Overpass',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    // backgroundColor: 'red',
-    height: 0.1 * height,
-  },
-
   addImagesButton: {
     backgroundColor: colors.lightOrange,
     borderRadius: 12,
