@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -14,11 +14,7 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-import {
-  emailExists,
-  usernameExists,
-  validate,
-} from '../../helper/Auth';
+import { emailExists, usernameExists, validate } from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
@@ -48,6 +44,9 @@ const Login = ({ navigation }) => {
     test: '',
   });
   const [registerSuccess, setRegisterSuccess] = useState(false);
+
+  const passwordRef = useRef();
+  const repeatPasswordRef = useRef();
 
   const state = {
     email: { setEmailError },
@@ -97,7 +96,7 @@ const Login = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.logoSection}>
           <View style={styles.logo}></View>
         </View>
@@ -164,6 +163,10 @@ const Login = ({ navigation }) => {
                   setOpacity(100);
                   emailExists(email, state.exist);
                 }}
+                onSubmitEditing={() => {
+                  passwordRef.current.focus();
+                }}
+                blurOnSubmit={false}
               />
               {emailError && <ErrorText text="Email is invalid" />}
             </View>
@@ -207,6 +210,7 @@ const Login = ({ navigation }) => {
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={true}
+                ref={passwordRef}
               />
               {passwordError && (
                 <ErrorText text="Password must contain a number, a special character, a lower- and upper-case letter and be at least 8 characters long" />
@@ -271,21 +275,21 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
               style={styles.form.submit}
               onPress={() => {
-                  validate(
-                    login
-                      ? {
-                          email,
-                          password,
-                        }
-                      : {
-                          userName: username,
-                          email,
-                          password,
-                          confirmPassword,
-                        },
-                    login,
-                    state,
-                  );
+                validate(
+                  login
+                    ? {
+                        email,
+                        password,
+                      }
+                    : {
+                        userName: username,
+                        email,
+                        password,
+                        confirmPassword,
+                      },
+                  login,
+                  state,
+                );
               }}>
               <Text style={styles.form.submit.text}>
                 {login ? 'Login' : 'Signup'}
