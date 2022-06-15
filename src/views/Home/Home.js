@@ -88,7 +88,7 @@ const Home = () => {
   return randomServices.length == 0 ? (
     <Text style={HomeStyles.loading}>Loading...</Text>
   ) : (
-    <ScrollView keyboardShouldPersistTaps="handled">
+    <ScrollView style={HomeStyles.global} keyboardShouldPersistTaps="handled">
       <View style={HomeStyles.titleContainer}>
         <PageTitle text="Catalog" style={HomeStyles.title} />
         <TouchableOpacity

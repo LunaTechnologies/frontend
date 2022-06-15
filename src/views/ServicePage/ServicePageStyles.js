@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
     height: height * 0.07,
     display: 'flex',
     justifyContent: 'center',
-    paddingLeft: 20,
+    paddingLeft: 30,
+    // backgroundColor: 'blue',
     title: {
-      fontSize: 25,
+      fontSize: 30,
       fontWeight: '500',
       color: colors.black,
     },
@@ -32,7 +33,8 @@ const styles = StyleSheet.create({
     height: 0.05 * height,
     display: 'flex',
     justifyContent: 'center',
-    paddingLeft: 20,
+    paddingLeft: 16,
+    // backgroundColor: 'red',
     price: {
       color: colors.black,
       fontSize: 15,
@@ -46,11 +48,14 @@ const styles = StyleSheet.create({
 
   descriptionSection: {
     paddingHorizontal: 20,
-    title: { height: 0.05 * height, color: colors.black, fontSize: 20 },
+    marginVertical: 0.03 * height,
+    // marginTop: 0.03 * height,
+    // backgroundColor: 'yellow',
+    title: { height: 0.05 * height, color: colors.black, fontSize: 16 },
     descriptionContainer: {
       minHeight: 0.2 * height,
       backgroundColor: colors.gray,
-      borderRadius: 20,
+      borderRadius: 12,
       paddingHorizontal: 10,
       display: 'flex',
       justifyContent: 'center',

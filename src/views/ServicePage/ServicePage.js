@@ -44,7 +44,7 @@ const ServicePage = ({ id }) => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.imageSection}>
           <BackArrow color={colors.white} />
           <CarouselImage
@@ -68,14 +68,20 @@ const ServicePage = ({ id }) => {
               </Text>
             </Text>
           </View>
+
           <View style={styles.descriptionSection}>
             <Text style={styles.descriptionSection.title}>Description</Text>
-            <View style={styles.descriptionSection.descriptionContainer}>
-              <Text style={styles.descriptionSection.description}>
-                {data.description}
-              </Text>
-            </View>
+            {data.description == null ? (
+              <Text>no description</Text>
+            ) : (
+              <View style={styles.descriptionSection.descriptionContainer}>
+                <Text style={styles.descriptionSection.description}>
+                  {data.description}
+                </Text>
+              </View>
+            )}
           </View>
+
           <View style={styles.ownerSection}>
             <Image
               style={styles.ownerSection.image}
