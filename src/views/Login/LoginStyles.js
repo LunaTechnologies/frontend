@@ -32,6 +32,17 @@ const styles = StyleSheet.create({
     left: -20,
   },
 
+  imageLogo: {
+    height: 0.1 * height,
+    // height: 40,
+    // width: 'auto',
+    // width: 81.54,
+    height: 0.14 * height,
+    width: 50,
+    backgroundColor: 'red',
+    marginBottom: -20,
+  },
+
   title: {
     fontSize: 30,
     width,

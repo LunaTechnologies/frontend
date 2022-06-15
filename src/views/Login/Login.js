@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   Text,
   View,
+  Image,
   Keyboard,
   Platform,
   TextInput,
@@ -98,9 +99,14 @@ const Login = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.logoSection}>
+        {/* <View style={styles.logoSection}>
           <View style={styles.logo}></View>
-        </View>
+        </View> */}
+
+        <Image
+          style={styles.imageLogo}
+          source={require('../../../assets/images/logo.png')}
+        />
 
         <View style={styles.title}>
           <Text style={styles.title.text}>Hey,</Text>
