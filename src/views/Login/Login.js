@@ -45,8 +45,9 @@ const Login = ({ navigation }) => {
   });
   const [registerSuccess, setRegisterSuccess] = useState(false);
 
+  const usernameRef = useRef();
   const passwordRef = useRef();
-  const repeatPasswordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   const state = {
     email: { setEmailError },
@@ -164,7 +165,8 @@ const Login = ({ navigation }) => {
                   emailExists(email, state.exist);
                 }}
                 onSubmitEditing={() => {
-                  passwordRef.current.focus();
+                  if (!login) usernameRef.current.focus();
+                  else passwordRef.current.focus();
                 }}
                 blurOnSubmit={false}
               />
@@ -191,6 +193,11 @@ const Login = ({ navigation }) => {
                     setUsername(username);
                     usernameExists(username, state.exist);
                   }}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current.focus();
+                  }}
+                  blurOnSubmit={false}
                 />
                 {usernameError && <ErrorText text="Username cannot be empty" />}
               </View>
@@ -211,6 +218,10 @@ const Login = ({ navigation }) => {
                 onChangeText={setPassword}
                 secureTextEntry={true}
                 ref={passwordRef}
+                onSubmitEditing={() => {
+                  if (!login) confirmPasswordRef.current.focus();
+                }}
+                blurOnSubmit={login ? true : false}
               />
               {passwordError && (
                 <ErrorText text="Password must contain a number, a special character, a lower- and upper-case letter and be at least 8 characters long" />
@@ -239,6 +250,7 @@ const Login = ({ navigation }) => {
                   value={confirmPassword}
                   onChangeText={setConfirmPassword}
                   secureTextEntry={true}
+                  ref={confirmPasswordRef}
                 />
                 {confirmPasswordError && (
                   <ErrorText text="Passwords do not match" />
