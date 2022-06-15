@@ -38,13 +38,19 @@ const SearchBar = ({ state, style }) => {
 
   const submitSearch = () => {
     // searchService(search, setErrorNotFound);
-    searchServices(search).then(res => {
-      // console.log(res.data);
-      if (res.data)
-        navigation.navigate('SearchPage', {
-          data: res.data,
-        });
-    });
+    searchServices(search)
+      .then(res => {
+        // console.log(res.data);
+        if (res.data)
+          navigation.navigate('SearchPage', {
+            data: res.data,
+          });
+        setErrorNotFound(false);
+      })
+      .catch(err => {
+        console.log(err.response.data);
+        setErrorNotFound(true);
+      });
   };
 
   return (
