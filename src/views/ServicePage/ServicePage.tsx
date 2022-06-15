@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import styles from './ServicePageStyles.js';
+import styles from './ServicePageStyles';
 import { getData } from '../../helper/GetService';
 import { colors } from '../../constants/colors';
 
