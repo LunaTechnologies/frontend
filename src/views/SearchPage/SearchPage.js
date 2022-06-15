@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   View,
   Text,
+  Image,
   TouchableOpacity,
   Dimensions,
   ScrollView,
@@ -10,6 +11,7 @@ import {
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 // Components
+import Price from '../../components/Price/Price';
 
 // Packages
 import { useRoute } from '@react-navigation/native';
@@ -33,11 +35,23 @@ const SearchPage = () => {
 
   return (
     <SafeAreaView>
-      <SearchBar state={[search, setSearch]} style={{ width: '80%' }} />
+      <SearchBar
+        state={[search, setSearch]}
+        style={SearchPageStyles.searchBar}
+      />
 
       <View>
         {data.map((value, index) => {
-          return <Text key={index}>{value.title}</Text>;
+          return (
+            <TouchableOpacity key={index}>
+              <Image
+                style={SearchPageStyles.image}
+                source={{ uri: value.thumbnailPath.path }}
+              />
+              <Text>{value.title}</Text>
+              <Price service={value} />
+            </TouchableOpacity>
+          );
         })}
       </View>
     </SafeAreaView>

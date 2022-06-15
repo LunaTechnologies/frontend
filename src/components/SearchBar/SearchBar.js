@@ -36,6 +36,17 @@ const SearchBar = ({ state, style }) => {
     if (search === '') setErrorNotFound(false);
   }, [search]);
 
+  const submitSearch = () => {
+    // searchService(search, setErrorNotFound);
+    searchServices(search).then(res => {
+      // console.log(res.data);
+      if (res.data)
+        navigation.navigate('SearchPage', {
+          data: res.data,
+        });
+    });
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -45,16 +56,7 @@ const SearchBar = ({ state, style }) => {
       }}>
       <TouchableOpacity
         style={SearchBarStyles.searchIconContainer}
-        onPress={() => {
-          // searchService(search, setErrorNotFound);
-          searchServices(search).then(res => {
-            // console.log(res.data);
-            if (res.data)
-              navigation.navigate('SearchPage', {
-                data: res.data,
-              });
-          });
-        }}>
+        onPress={submitSearch}>
         <Icon
           name="search1"
           style={{
@@ -71,7 +73,7 @@ const SearchBar = ({ state, style }) => {
         value={search.toString()}
         onChangeText={setSearch}
         placeholder={'Search Services'}
-        onSubmitEditing={searchService}
+        onSubmitEditing={submitSearch}
       />
       {clearButtonCondition && (
         <TouchableOpacity
