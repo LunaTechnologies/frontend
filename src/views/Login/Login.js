@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   Text,
   View,
+  Image,
   Keyboard,
   Platform,
   TextInput,
@@ -14,11 +15,7 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-import {
-  emailExists,
-  usernameExists,
-  validate,
-} from '../../helper/Auth';
+import { emailExists, usernameExists, validate } from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
@@ -48,6 +45,10 @@ const Login = ({ navigation }) => {
     test: '',
   });
   const [registerSuccess, setRegisterSuccess] = useState(false);
+
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   const state = {
     email: { setEmailError },
@@ -97,10 +98,15 @@ const Login = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <ScrollView>
-        <View style={styles.logoSection}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* <View style={styles.logoSection}>
           <View style={styles.logo}></View>
-        </View>
+        </View> */}
+
+        <Image
+          style={styles.imageLogo}
+          source={require('../../../assets/images/logo.png')}
+        />
 
         <View style={styles.title}>
           <Text style={styles.title.text}>Hey,</Text>
@@ -164,6 +170,11 @@ const Login = ({ navigation }) => {
                   setOpacity(100);
                   emailExists(email, state.exist);
                 }}
+                onSubmitEditing={() => {
+                  if (!login) usernameRef.current.focus();
+                  else passwordRef.current.focus();
+                }}
+                blurOnSubmit={false}
               />
               {emailError && <ErrorText text="Email is invalid" />}
             </View>
@@ -188,6 +199,11 @@ const Login = ({ navigation }) => {
                     setUsername(username);
                     usernameExists(username, state.exist);
                   }}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current.focus();
+                  }}
+                  blurOnSubmit={false}
                 />
                 {usernameError && <ErrorText text="Username cannot be empty" />}
               </View>
@@ -207,6 +223,11 @@ const Login = ({ navigation }) => {
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={true}
+                ref={passwordRef}
+                onSubmitEditing={() => {
+                  if (!login) confirmPasswordRef.current.focus();
+                }}
+                blurOnSubmit={login ? true : false}
               />
               {passwordError && (
                 <ErrorText text="Password must contain a number, a special character, a lower- and upper-case letter and be at least 8 characters long" />
@@ -235,6 +256,7 @@ const Login = ({ navigation }) => {
                   value={confirmPassword}
                   onChangeText={setConfirmPassword}
                   secureTextEntry={true}
+                  ref={confirmPasswordRef}
                 />
                 {confirmPasswordError && (
                   <ErrorText text="Passwords do not match" />
@@ -271,21 +293,21 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
               style={styles.form.submit}
               onPress={() => {
-                  validate(
-                    login
-                      ? {
-                          email,
-                          password,
-                        }
-                      : {
-                          userName: username,
-                          email,
-                          password,
-                          confirmPassword,
-                        },
-                    login,
-                    state,
-                  );
+                validate(
+                  login
+                    ? {
+                        email,
+                        password,
+                      }
+                    : {
+                        userName: username,
+                        email,
+                        password,
+                        confirmPassword,
+                      },
+                  login,
+                  state,
+                );
               }}>
               <Text style={styles.form.submit.text}>
                 {login ? 'Login' : 'Signup'}

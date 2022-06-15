@@ -13,6 +13,9 @@ export default HomeStyles = StyleSheet.create({
     color: colors.black,
     letterSpacing: 1,
   },
+  global: {
+    backgroundColor: colors.white,
+  },
   titleContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -33,6 +36,21 @@ export default HomeStyles = StyleSheet.create({
     color: colors.black,
     // backgroundColor: 'red',
   },
+
+  addIconButton: {
+    position: 'absolute',
+    width: 30,
+    height: 30,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    right: 30,
+  },
+  addIcon: {
+    fontSize: 28,
+    color: colors.black,
+  },
+
   tabs: {
     // flexDirection: 'row',
     // backgroundColor: 'pink',
@@ -117,17 +135,5 @@ export default HomeStyles = StyleSheet.create({
     height: '100%',
     textAlign: 'center',
     textAlignVertical: 'center',
-  },
-  addIconButton: {
-    width: 30,
-    height: 30,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 30,
-  },
-  addIcon: {
-    fontSize: 28,
-    color: colors.black,
   },
 });

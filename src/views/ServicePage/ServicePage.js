@@ -17,7 +17,7 @@ import CarouselImage from '../../components/CarouselImages/CarouselImages';
 import BackArrow from '../../components/BackArrow/BackArrow';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
-
+import HomeStyles from '../Home/HomeStyles.js';
 const { width, height } = Dimensions.get('window');
 
 const ServicePage = ({ id }) => {
@@ -25,6 +25,7 @@ const ServicePage = ({ id }) => {
   const [descTooLong, setDescTooLong] = useState(true);
   const route = useRoute();
   const identificationString = id || route.params.id;
+  const [readyToLoad, setReadyToLoad] = useState(false);
 
   const dummyData = [
     {
@@ -39,12 +40,21 @@ const ServicePage = ({ id }) => {
   ];
 
   useEffect(() => {
-    getData(identificationString, setData, setDescTooLong);
+    getData(identificationString)
+      .then(res => {
+        setData(res.data);
+        if (res.data.description && res.data.description.length >= 100)
+          setDescTooLong(true);
+        setReadyToLoad(true);
+      })
+      .catch(err => console.error(err));
   }, []);
 
-  return (
+  return !readyToLoad ? (
+    <Text style={HomeStyles.loading}>Loading...</Text>
+  ) : (
     <SafeAreaView style={styles.background}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.imageSection}>
           <BackArrow color={colors.white} />
           <CarouselImage
@@ -68,14 +78,20 @@ const ServicePage = ({ id }) => {
               </Text>
             </Text>
           </View>
+
           <View style={styles.descriptionSection}>
             <Text style={styles.descriptionSection.title}>Description</Text>
-            <View style={styles.descriptionSection.descriptionContainer}>
-              <Text style={styles.descriptionSection.description}>
-                {data.description}
-              </Text>
-            </View>
+            {data.description == null ? (
+              <Text>no description</Text>
+            ) : (
+              <View style={styles.descriptionSection.descriptionContainer}>
+                <Text style={styles.descriptionSection.description}>
+                  {data.description}
+                </Text>
+              </View>
+            )}
           </View>
+
           <View style={styles.ownerSection}>
             <Image
               style={styles.ownerSection.image}
