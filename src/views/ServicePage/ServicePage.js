@@ -16,6 +16,7 @@ import { colors } from '../../constants/colors';
 import CarouselImage from '../../components/CarouselImages/CarouselImages';
 import BackArrow from '../../components/BackArrow/BackArrow';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
 const { width, height } = Dimensions.get('window');
 
@@ -100,11 +101,17 @@ const ServicePage = ({ id }) => {
             <Text style={styles.phoneSection.title}>Phone Number: </Text>
             <Text style={styles.phoneSection.number}>{data.phoneNumber}</Text>
           </View>
-          <View style={styles.rentSection}>
+          {/* <View style={styles.rentSection}>
             <TouchableOpacity style={styles.rentSection.button}>
               <Text style={styles.rentSection.text}>Rent</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
+          <SubmitButton
+            text="Rent"
+            onPress={() => {
+              alert('Rented!');
+            }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

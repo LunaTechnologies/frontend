@@ -8,10 +8,11 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import { useNavigation } from '@react-navigation/native';
 
 // Components
 import Price from '../../components/Price/Price';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 // Packages
 import { useRoute } from '@react-navigation/native';
@@ -28,28 +29,38 @@ const SearchPage = () => {
   const [search, setSearch] = useState('');
   const route = useRoute();
   const data = route.params.data;
-  // const identificationString = id || route.params.id;
+  const navigation = useNavigation();
+
   useEffect(() => {
     console.log(data);
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={SearchPageStyles.global}>
       <SearchBar
         state={[search, setSearch]}
         style={SearchPageStyles.searchBar}
       />
 
-      <View>
+      <View style={SearchPageStyles.results}>
         {data.map((value, index) => {
           return (
-            <TouchableOpacity key={index}>
+            <TouchableOpacity
+              key={index}
+              style={SearchPageStyles.resultContainer}
+              onPress={() => {
+                navigation.navigate('Service', {
+                  id: value.identificationString,
+                });
+              }}>
               <Image
-                style={SearchPageStyles.image}
+                style={SearchPageStyles.resultImage}
                 source={{ uri: value.thumbnailPath.path }}
               />
-              <Text>{value.title}</Text>
-              <Price service={value} />
+              <View style={SearchPageStyles.resultDetails}>
+                <Text style={SearchPageStyles.resultTitle}>{value.title}</Text>
+                <Price service={value} />
+              </View>
             </TouchableOpacity>
           );
         })}
