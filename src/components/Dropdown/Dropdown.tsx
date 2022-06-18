@@ -11,7 +11,13 @@ import DropdownStyles from './DropdownStyles';
 
 const { width, height } = Dimensions.get('window');
 
-const Dropdown = props => {
+interface Props {
+  style: any;
+  state: any;
+  options: any[];
+}
+
+const Dropdown = (props: Props) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [selectedOption, setSelectedOption] = props.state;
 

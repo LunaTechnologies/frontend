@@ -3,12 +3,18 @@ import { View, Image } from 'react-native';
 import { styles } from './CarouselImagesStyles';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-const CarouselImages = ({ images, width, height }) => {
+interface Props {
+  images: any;
+  width: number;
+  height: number;
+}
+
+const CarouselImages = ({ images, width, height }: Props) => {
   let carouselRef = useRef();
   const [activeSlide, setActiveSlide] = useState(0);
 
   const renderItem = ({ item, index }) => (
-    <View style={styles.conainer}>
+    <View style={styles.container}>
       <Image
         style={{ ...styles.image, width, height }}
         source={{ uri: item.path }}

@@ -4,7 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import BackArrowStyles from './BackArrowStyles';
 
-const BackArrow = ({ color, handler }) => {
+interface Props {
+  color: string;
+  handler: () => void;
+}
+
+const BackArrow = ({ color, handler }: Props) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
