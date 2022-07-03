@@ -3,7 +3,12 @@ import { Text, TouchableOpacity } from 'react-native';
 
 import SubmitButtonStyles from './SubmitButtonStyles';
 
-const SubmitButton = props => {
+interface Props {
+  text: string;
+  onPress: () => void;
+}
+
+const SubmitButton = (props: Props) => {
   return (
     <TouchableOpacity
       style={SubmitButtonStyles.background}

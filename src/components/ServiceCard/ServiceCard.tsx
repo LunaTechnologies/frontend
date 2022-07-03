@@ -21,10 +21,11 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 // Contexts + Styles
 import ServiceCardStyles from './ServiceCardStyles';
 
-const { width, height } = Dimensions.get('window');
-import { colors } from '../../constants/colors';
+interface Props {
+  service: any;
+}
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service }: Props) => {
   // States
   const [favoriteIconStyles, setFavoriteIconStyles] = useState({});
   const [addFavorite, setAddFavorite] = useState(false);

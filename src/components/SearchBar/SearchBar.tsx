@@ -25,7 +25,12 @@ import { searchServices } from '../../helper/SearchServices';
 import { colors } from '../../constants/colors';
 import SearchBarStyles from './SearchBarStyles';
 
-const SearchBar = ({ state, style }) => {
+interface Props {
+  state: any;
+  style: any;
+}
+
+const SearchBar = ({ state, style }: Props) => {
   // States
   const [search, setSearch] = state;
   const [errorNotFound, setErrorNotFound] = useState(false);

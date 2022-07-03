@@ -3,7 +3,12 @@ import { View, Text } from 'react-native';
 import { colors } from '../../constants/colors';
 import { styles } from './ErrorTextStyles';
 
-const ErrorText = props => {
+interface Props {
+  success: boolean;
+  text: string;
+}
+
+const ErrorText = (props: Props) => {
   return (
     <View style={styles.errorField}>
       <Text

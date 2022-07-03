@@ -14,15 +14,15 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import { colors } from '../../constants/colors';
 import styles from './LoginStyles';
 
-import {
-  emailExists,
-  usernameExists,
-  validate,
-} from '../../helper/Auth';
+import { emailExists, usernameExists, validate } from '../../helper/Auth';
 
 const { height } = Dimensions.get('window');
 
-const Login = ({ navigation }) => {
+interface Props {
+  navigation: any | undefined;
+}
+
+const Login = ({ navigation }: Props) => {
   // Page state: Signup or Login
   const [login, setLogin] = useState(true);
 
@@ -271,21 +271,21 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
               style={styles.form.submit}
               onPress={() => {
-                  validate(
-                    login
-                      ? {
-                          email,
-                          password,
-                        }
-                      : {
-                          userName: username,
-                          email,
-                          password,
-                          confirmPassword,
-                        },
-                    login,
-                    state,
-                  );
+                validate(
+                  login
+                    ? {
+                        email,
+                        password,
+                      }
+                    : {
+                        userName: username,
+                        email,
+                        password,
+                        confirmPassword,
+                      },
+                  login,
+                  state,
+                );
               }}>
               <Text style={styles.form.submit.text}>
                 {login ? 'Login' : 'Signup'}

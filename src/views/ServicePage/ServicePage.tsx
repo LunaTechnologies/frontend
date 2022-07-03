@@ -20,7 +20,11 @@ import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
 const { width, height } = Dimensions.get('window');
 
-const ServicePage = ({ id }) => {
+interface Props {
+  id: string;
+}
+
+const ServicePage = ({ id }: Props) => {
   const [data, setData] = useState({});
   const [descTooLong, setDescTooLong] = useState(true);
   const route = useRoute();

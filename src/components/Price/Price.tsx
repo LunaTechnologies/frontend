@@ -18,9 +18,12 @@ import {
 // Contexts + Styles
 import PriceStyles from './PriceStyles';
 
-const { width, height } = Dimensions.get('window');
+interface Props {
+  service: any | undefined;
+  style: any;
+}
 
-const Price = ({ service, style }) => {
+const Price = ({ service, style }: Props) => {
   // States
 
   return (

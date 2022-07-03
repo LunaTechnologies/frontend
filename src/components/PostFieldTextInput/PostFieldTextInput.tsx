@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {
-  SafeAreaView,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Dimensions,
-} from 'react-native';
+import React from 'react';
+import { TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import PostFieldTextInputStyles from './PostFieldTextInputStyles';
-import PostContext from '../../contexts/PostContext';
 import { colors } from '../../constants/colors';
 
-const { width, height } = Dimensions.get('window');
+interface Props {
+  state: any;
+  style: any;
+  multiline: boolean | undefined;
+  keyboardType: string;
+  placeholder: string;
+}
 
-const PostFieldTextInput = props => {
+const PostFieldTextInput = (props: Props) => {
   const [value, setValue] = props.state;
 
   return (

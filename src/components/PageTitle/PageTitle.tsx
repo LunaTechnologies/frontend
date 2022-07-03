@@ -1,17 +1,14 @@
-import React, { useState, useContext } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import React from 'react';
+import { Text } from 'react-native';
 
 import PageTitleStyles from './PageTitleStyles';
 
-const { width, height } = Dimensions.get('window');
+interface Props {
+  text: string;
+  style: any;
+}
 
-const PageTitle = ({ text, style }) => {
+const PageTitle = ({ text, style }: Props) => {
   return <Text style={{ ...PageTitleStyles.title, ...style }}>{text}</Text>;
 };
 

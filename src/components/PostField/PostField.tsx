@@ -1,9 +1,15 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import PostFieldTitle from '../PostFieldTitle/PostFieldTitle';
 import PostFieldStyles from './PostFieldStyles';
 
-const PostField = props => {
+interface Props {
+  text: string;
+  children: any;
+  style: any;
+}
+
+const PostField = (props: Props) => {
   return (
     <SafeAreaView
       style={{

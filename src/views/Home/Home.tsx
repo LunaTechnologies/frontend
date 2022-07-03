@@ -30,8 +30,6 @@ import HomeStyles from './HomeStyles';
 import ServiceCardStyles from '../../components/ServiceCard/ServiceCardStyles';
 import { colors } from '../../constants/colors';
 
-const { width, height } = Dimensions.get('window');
-
 const Home = () => {
   // States
 

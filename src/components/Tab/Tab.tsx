@@ -1,11 +1,5 @@
-import React, { useState, useContext } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
 // Components
 
@@ -17,9 +11,11 @@ import {
 
 import TabStyles from './TabStyles';
 
-const { width, height } = Dimensions.get('window');
+interface Props {
+  text: string;
+}
 
-const Tab = ({ text }) => {
+const Tab = ({ text }: Props) => {
   // States
 
   return (

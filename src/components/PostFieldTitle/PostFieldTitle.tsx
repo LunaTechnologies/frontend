@@ -1,8 +1,14 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import { Text } from 'react-native';
 import PostFieldTitleStyles from './PostFieldTitleStyles';
 
-const PostFieldTitle = props => {
+interface Props {
+  text: string;
+  style: any;
+  optional: string | boolean;
+}
+
+const PostFieldTitle = (props: Props) => {
   return (
     <Text
       style={{

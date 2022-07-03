@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { colors } from '../../constants/colors';
 
 import SwitchStyles from './SwitchStyles';
 
-const { width, height } = Dimensions.get('window');
 const offset = SwitchStyles.circle.left;
 const initialOffset = SwitchStyles.circle.right;
 
-const Switch = props => {
+interface Props {
+  state: any | undefined;
+}
+
+const Switch = (props: Props) => {
   const [toggled, setToggled] = props?.state ? props.state : useState(false);
   return (
     <TouchableOpacity

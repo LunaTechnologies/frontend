@@ -1,6 +1,7 @@
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import CatalogStyles from './CatalogStyles';
+
 const Catalog = () => {
   return (
     <SafeAreaView>
